@@ -1,13 +1,16 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Grace Foster - Front-End Developer Portfolio showcasing web development projects and skills">
+    <meta name="keywords" content="Front-End Developer, Web Development, Portfolio, Grace Foster">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/ymr3llk.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="favicon" href="images/GKF_Icon.png" type="image/x-icon">
 
     <title>Grace Foster Portfolio</title>
 
@@ -32,10 +35,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navmenu""">
+            <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a href="index.html" class="nav-link">01. Home</a>
+                        <a href="index.html" class="nav-link active" aria-current="page">01. Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="projects.html" class="nav-link">02. Projects</a>
@@ -44,7 +47,7 @@
                         <a href="about.html" class="nav-link">03. About</a>
                     </li>
                     <li class="nav-item">
-                        <a href="resume.html" class="nav-link">02. Resume</a>
+                        <a href="resume.html" class="nav-link">04. Resume</a>
                     </li>
                 </ul>
             </div>
@@ -62,11 +65,11 @@
 
 
     <!-- Footer -->
-    <div class="footer">
-        <p>Copyright ©
-            <script src="function.js"></script> Grace Foster
-        </p>
-    </div>
+    <footer class="footer">
+        <p>Copyright © <span id="current-year"></span> Grace Foster</p>
+    </footer>
+
+    <script src="function.js"></script>
 
 </body>
 

@@ -1,6 +1,17 @@
 {
+  "name": "my-portfolio",
+  "version": "1.0.0",
+  "description": "Grace Foster's Portfolio Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx http-server -p 3000"
+  },
   "dependencies": {
     "node": "^20.3.1",
     "typeit": "^8.7.1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }
