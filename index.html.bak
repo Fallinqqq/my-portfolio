@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Grace Foster - Front-End Developer Portfolio showcasing web development projects and skills">
+    <meta name="keywords" content="Front-End Developer, Web Development, Portfolio, Grace Foster">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ymr3llk.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="favicon" href="images/GKF_Icon.png" type="image/x-icon">
+
+    <title>Grace Foster Portfolio</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+</head>
+
+<body class="body">
+
+    <!-- Responsive Navigation Bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand site-title" href="/">GRACE FOSTER</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="resume.html">Resume</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h1 class="main-heading">Creating Amazing<br>Websites for<br>Modern Web.</h1>
+                    <p class="subtitle">Front-End Developer passionate about creating user-friendly and visually appealing websites.</p>
+                    <a href="projects.html" class="cta-button">VIEW MY WORK</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <div class="marquee-content">
+                    <span>WORK POWERFULLY • DREAM BIG • CREATE BOLDLY •&nbsp;</span>
+                    <span>WORK POWERFULLY • DREAM BIG • CREATE BOLDLY •&nbsp;</span>
+                    <span>WORK POWERFULLY • DREAM BIG • CREATE BOLDLY •&nbsp;</span>
+                    <span>WORK POWERFULLY • DREAM BIG • CREATE BOLDLY •&nbsp;</span>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <span>WORK POWERFULLY • DREAM BIG • CREATE BOLDLY •&nbsp;</span>
+                    <span>WORK POWERFULLY • DREAM BIG • CREATE BOLDLY •&nbsp;</span>
+                    <span>WORK POWERFULLY • DREAM BIG • CREATE BOLDLY •&nbsp;</span>
+                    <span>WORK POWERFULLY • DREAM BIG • CREATE BOLDLY •&nbsp;</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Copyright © <span id="current-year"></span> Grace Foster</p>
+    </footer>
+
+    <script src="function.js"></script>
+
+</body>
+
+</html>
