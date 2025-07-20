@@ -92,7 +92,7 @@ const Home = () => {
             className="flex justify-center gap-8"
           >
             <a 
-              href="https://github.com/gracefoster" 
+              href="https://github.com/Fallinqqq" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white/70 hover:text-accent-300 transition-colors duration-300 transform hover:scale-110"
@@ -100,7 +100,7 @@ const Home = () => {
               <FaGithub size={28} />
             </a>
             <a 
-              href="https://linkedin.com/in/gracefoster" 
+              href="https://www.linkedin.com/in/gracekfoster/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white/70 hover:text-accent-300 transition-colors duration-300 transform hover:scale-110"
@@ -108,7 +108,7 @@ const Home = () => {
               <FaLinkedin size={28} />
             </a>
             <a 
-              href="mailto:grace@example.com"
+              href="mailto:gkfoster15@gmail.com"
               className="text-white/70 hover:text-accent-300 transition-colors duration-300 transform hover:scale-110"
             >
               <FaEnvelope size={28} />
