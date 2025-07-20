@@ -1,0 +1,73 @@
+/* Import Google Fonts - Must be first before all other CSS */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+
+/* Import Tailwind CSS - Modern utility-first CSS framework */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables for consistent theming */
+:root {
+  --color-primary: #a782f1;
+  --color-accent: #81bbdd;
+  --color-text-light: #f8fafc;
+  --color-text-dark: #1e293b;
+}
+
+/* Base styles - ensuring consistent typography and smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #8b5cf6 100%);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Remove default Vite styles that might interfere with layout */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Custom component classes using Tailwind's @apply directive */
+@layer components {
+  /* Navigation link hover effect */
+  .nav-link-hover {
+    @apply transition-colors duration-300 hover:text-accent-300;
+  }
+  
+  /* Card component with glassmorphism effect */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl;
+  }
+  
+  /* Button with modern gradient */
+  .btn-primary {
+    @apply bg-gradient-to-r from-accent-400 to-accent-600 hover:from-accent-500 hover:to-accent-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+  }
+  
+  /* Section spacing - updated for better responsiveness */
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8 w-full;
+  }
+
+  /* Container for centered content with full width support */
+  .container-centered {
+    @apply max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* Portfolio-specific utility classes */
+.page-transition {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hero-gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #8b5cf6 50%, #6d28d9 100%);
+}
