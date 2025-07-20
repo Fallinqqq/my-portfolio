@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { FaGithub, FaExternalLinkAlt, FaReact, FaJs, FaCss3Alt, FaHtml5, FaFigma } from 'react-icons/fa'
 import { SiTailwindcss, SiTypescript, SiAdobephotoshop, SiAdobeillustrator } from 'react-icons/si'
 
@@ -89,8 +90,7 @@ const Portfolio = () => {
   ]
 
   const categories = ["All", "Web Development", "Branding", "Web Design", "UI/UX Design"]
-  const [activeCategory, setActiveCategory] = React.useState("All")
-  const [React] = [require('react')]
+  const [activeCategory, setActiveCategory] = useState("All")
 
   const filteredProjects = activeCategory === "All" 
     ? projects 
