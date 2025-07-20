@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaBehance } from 'react-icons/fa'
 
 const Home = () => {
   return (
@@ -106,6 +106,14 @@ const Home = () => {
               className="text-white/70 hover:text-accent-300 transition-colors duration-300 transform hover:scale-110"
             >
               <FaLinkedin size={28} />
+            </a>
+            <a 
+              href="https://www.behance.net/gracefostaa" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white/70 hover:text-accent-300 transition-colors duration-300 transform hover:scale-110"
+            >
+              <FaBehance size={28} />
             </a>
             <a 
               href="mailto:gkfoster15@gmail.com"
