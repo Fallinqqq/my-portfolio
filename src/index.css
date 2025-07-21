@@ -8,10 +8,13 @@
 
 /* Custom CSS Variables for consistent theming */
 :root {
-  --color-primary: #a782f1;
-  --color-accent: #81bbdd;
-  --color-text-light: #f8fafc;
-  --color-text-dark: #1e293b;
+  --color-primary: #7A9663;      /* camouflage green */
+  --color-primary-dark: #556842;  /* ebony */
+  --color-accent: #766DA7;        /* rhythm purple */
+  --color-accent-light: #A0AE91;  /* laurel green */
+  --color-background: #15191E;    /* eerie black */
+  --color-text-light: #A0AE91;    /* laurel green for text */
+  --color-text-dark: #15191E;     /* eerie black for dark text on light backgrounds */
 }
 
 /* Base styles - ensuring consistent typography and smooth scrolling */
@@ -21,7 +24,8 @@ html {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  background: linear-gradient(135deg, var(--color-primary) 0%, #8b5cf6 100%);
+  background: var(--color-background);
+  color: var(--color-text-light);
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -37,19 +41,19 @@ body {
 
 /* Custom component classes using Tailwind's @apply directive */
 @layer components {
-  /* Navigation link hover effect */
+  /* Navigation link hover effect for dark theme */
   .nav-link-hover {
-    @apply transition-colors duration-300 hover:text-accent-300;
+    @apply transition-colors duration-300 hover:text-accent-400;
   }
   
-  /* Card component with glassmorphism effect */
+  /* Card component with glassmorphism effect for dark theme */
   .glass-card {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl;
+    @apply bg-neutral-400/10 backdrop-blur-lg border border-text-primary/20 rounded-xl shadow-xl;
   }
   
-  /* Button with modern gradient */
+  /* Button with modern gradient for dark theme */
   .btn-primary {
-    @apply bg-gradient-to-r from-accent-400 to-accent-600 hover:from-accent-500 hover:to-accent-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+    @apply bg-gradient-to-r from-primary-400 to-accent-400 hover:from-primary-300 hover:to-accent-300 text-background-primary font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
   }
   
   /* Section spacing - updated for better responsiveness */
@@ -69,5 +73,5 @@ body {
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #8b5cf6 50%, #6d28d9 100%);
+  background: linear-gradient(135deg, var(--color-background) 0%, #1a1f26 50%, var(--color-primary-dark) 100%);
 }

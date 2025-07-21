@@ -15,7 +15,7 @@ import Contact from './pages/Contact'
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-primary-500 via-purple-600 to-primary-700 w-full overflow-x-hidden">
+      <div className="min-h-screen bg-background-primary text-text-primary w-full overflow-x-hidden">
         {/* Navigation - Sticky header with modern glassmorphism effect */}
         <Navbar />
         
