@@ -131,7 +131,7 @@ const Portfolio = () => {
                 className={`px-6 py-3 rounded-full transition-all duration-300 font-medium ${
                   activeCategory === category
                     ? 'bg-accent-400 text-white'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20'
+                    : 'bg-white/10 text-text-secondary hover:bg-white/20'
                 }`}
               >
                 {category}
@@ -167,7 +167,7 @@ const Portfolio = () => {
                 
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-white mb-3">{project.title}</h3>
-                  <p className="text-white/80 mb-4 leading-relaxed">{project.description}</p>
+                  <p className="text-text-secondary mb-4 leading-relaxed">{project.description}</p>
                   
                   {/* Technologies */}
                   <div className="flex flex-wrap gap-2 mb-6">
@@ -232,7 +232,7 @@ const Portfolio = () => {
                 
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-white/80 text-sm mb-4 line-clamp-3">{project.description}</p>
+                  <p className="text-text-secondary text-sm mb-4 line-clamp-3">{project.description}</p>
                   
                   <div className="flex gap-3">
                     <a 
@@ -269,7 +269,7 @@ const Portfolio = () => {
           className="text-center mt-16 glass-card p-8"
         >
           <h2 className="text-3xl font-bold text-white mb-4">Like What You See?</h2>
-          <p className="text-xl text-white/90 mb-8">
+          <p className="text-xl text-text-secondary mb-8">
             Let's discuss how I can help bring your next project to life.
           </p>
           <a href="/contact" className="btn-primary">

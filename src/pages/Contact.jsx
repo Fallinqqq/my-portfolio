@@ -92,7 +92,7 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Let's Connect</h1>
+          <h1 className="text-5xl md:text-6xl font-bold text-text-primary mb-6">Let's Connect</h1>
           <p className="text-xl text-accent-300 max-w-3xl mx-auto">
             Ready to bring your ideas to life? I'd love to hear about your project and explore how we can work together.
           </p>
@@ -107,11 +107,11 @@ const Contact = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="glass-card p-8"
           >
-            <h2 className="text-3xl font-bold text-white mb-8">Send Me a Message</h2>
+            <h2 className="text-3xl font-bold text-text-primary mb-8">Send Me a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-white mb-2 font-medium">Name *</label>
+                  <label className="block text-text-primary mb-2 font-medium">Name *</label>
                   <input 
                     type="text" 
                     name="name"
@@ -123,7 +123,7 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-white mb-2 font-medium">Email *</label>
+                  <label className="block text-text-primary mb-2 font-medium">Email *</label>
                   <input 
                     type="email" 
                     name="email"
@@ -137,7 +137,7 @@ const Contact = () => {
               </div>
               
               <div>
-                <label className="block text-white mb-2 font-medium">Subject *</label>
+                <label className="block text-text-primary mb-2 font-medium">Subject *</label>
                 <input 
                   type="text" 
                   name="subject"
@@ -150,7 +150,7 @@ const Contact = () => {
               </div>
               
               <div>
-                <label className="block text-white mb-2 font-medium">Message *</label>
+                <label className="block text-text-primary mb-2 font-medium">Message *</label>
                 <textarea 
                   name="message"
                   value={formData.message}
@@ -181,7 +181,7 @@ const Contact = () => {
             </form>
 
             <div className="mt-8 pt-8 border-t border-white/20">
-              <p className="text-white/80 text-sm text-center">
+              <p className="text-text-primary/80 text-sm text-center">
                 Prefer email? Reach out directly at{' '}
                 <a href="mailto:grace@gracefoster.com" className="text-accent-300 hover:text-accent-400 transition-colors duration-300">
                   grace@gracefoster.com
@@ -200,12 +200,12 @@ const Contact = () => {
           >
             {/* Contact Details */}
             <div className="glass-card p-8">
-              <h2 className="text-3xl font-bold text-white mb-8">Get in Touch</h2>
+              <h2 className="text-3xl font-bold text-text-primary mb-8">Get in Touch</h2>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-center space-x-4">
                     <div className="bg-accent-400 p-3 rounded-full">
-                      <info.icon className="text-white text-xl" />
+                      <info.icon className="text-text-primary text-xl" />
                     </div>
                     <div>
                       <h3 className="text-white font-semibold">{info.title}</h3>
@@ -217,7 +217,7 @@ const Contact = () => {
                           {info.content}
                         </a>
                       ) : (
-                        <p className="text-white/80">{info.content}</p>
+                        <p className="text-text-primary/80">{info.content}</p>
                       )}
                     </div>
                   </div>
@@ -227,18 +227,18 @@ const Contact = () => {
 
             {/* Availability */}
             <div className="glass-card p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Availability</h3>
+              <h3 className="text-2xl font-bold text-text-primary mb-4">Availability</h3>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-white">Response Time:</span>
+                  <span className="text-text-primary">Response Time:</span>
                   <span className="text-accent-300 font-semibold">Within 24 hours</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-white">Project Start:</span>
+                  <span className="text-text-primary">Project Start:</span>
                   <span className="text-accent-300 font-semibold">2-3 weeks</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-white">Time Zone:</span>
+                  <span className="text-text-primary">Time Zone:</span>
                   <span className="text-accent-300 font-semibold">PST (UTC-8)</span>
                 </div>
               </div>
@@ -246,8 +246,8 @@ const Contact = () => {
 
             {/* Services */}
             <div className="glass-card p-8">
-              <h3 className="text-2xl font-bold text-white mb-4">Services I Offer</h3>
-              <ul className="space-y-3 text-white/90">
+              <h3 className="text-2xl font-bold text-text-primary mb-4">Services I Offer</h3>
+              <ul className="space-y-3 text-text-primary/90">
                 <li className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-accent-400 rounded-full"></div>
                   <span>Web Development (React, Next.js)</span>
@@ -273,7 +273,7 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="glass-card p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Connect With Me</h3>
+              <h3 className="text-2xl font-bold text-text-primary mb-6">Connect With Me</h3>
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
                   <a
@@ -284,7 +284,7 @@ const Contact = () => {
                     className="group bg-white/10 hover:bg-white/20 p-4 rounded-lg transition-all duration-300 transform hover:scale-110"
                   >
                     <social.icon 
-                      className="text-2xl text-white group-hover:text-accent-300 transition-colors duration-300" 
+                      className="text-2xl text-primary-400 group-hover:text-accent-400 transition-colors duration-300" 
                     />
                   </a>
                 ))}
@@ -301,29 +301,29 @@ const Contact = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-16 glass-card p-8"
         >
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-text-primary mb-8 text-center">Frequently Asked Questions</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h4 className="text-xl font-semibold text-white mb-3">What's your typical project timeline?</h4>
-              <p className="text-white/80">
+              <h4 className="text-xl font-semibold text-text-primary mb-3">What's your typical project timeline?</h4>
+              <p className="text-text-primary/80">
                 Most projects take 2-6 weeks depending on complexity. I'll provide a detailed timeline after our initial consultation.
               </p>
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-white mb-3">Do you work with remote clients?</h4>
-              <p className="text-white/80">
+              <h4 className="text-xl font-semibold text-text-primary mb-3">Do you work with remote clients?</h4>
+              <p className="text-text-primary/80">
                 Absolutely! I work with clients worldwide and have extensive experience with remote collaboration tools.
               </p>
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-white mb-3">What's included in your web development service?</h4>
-              <p className="text-white/80">
+              <h4 className="text-xl font-semibold text-text-primary mb-3">What's included in your web development service?</h4>
+              <p className="text-text-primary/80">
                 Full responsive design, performance optimization, SEO basics, cross-browser compatibility, and post-launch support.
               </p>
             </div>
             <div>
-              <h4 className="text-xl font-semibold text-white mb-3">Do you offer ongoing maintenance?</h4>
-              <p className="text-white/80">
+              <h4 className="text-xl font-semibold text-text-primary mb-3">Do you offer ongoing maintenance?</h4>
+              <p className="text-text-primary/80">
                 Yes! I provide maintenance packages to keep your website updated, secure, and performing at its best.
               </p>
             </div>

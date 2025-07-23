@@ -1,5 +1,5 @@
 /* Import Google Fonts - Must be first before all other CSS */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 /* Import Tailwind CSS - Modern utility-first CSS framework */
 @tailwind base;
@@ -8,13 +8,13 @@
 
 /* Custom CSS Variables for consistent theming */
 :root {
-  --color-primary: #7A9663;      /* camouflage green */
-  --color-primary-dark: #556842;  /* ebony */
-  --color-accent: #766DA7;        /* rhythm purple */
-  --color-accent-light: #A0AE91;  /* laurel green */
-  --color-background: #15191E;    /* eerie black */
-  --color-text-light: #A0AE91;    /* laurel green for text */
-  --color-text-dark: #15191E;     /* eerie black for dark text on light backgrounds */
+  --color-primary: #C6C2F2;      /* lavender */
+  --color-primary-dark: #262628;  /* obsidian */
+  --color-accent: #BDDC82;        /* lime */
+  --color-accent-light: #FFF6EE;  /* cream */
+  --color-background: #262628;    /* obsidian background */
+  --color-text-light: #FFF6EE;    /* cream for text */
+  --color-text-dark: #262628;     /* obsidian for dark text on light backgrounds */
 }
 
 /* Base styles - ensuring consistent typography and smooth scrolling */
@@ -23,14 +23,28 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
   background: var(--color-background);
-  color: var(--color-text-light);
+  color: #262628;
   min-height: 100vh;
   margin: 0;
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Radial gradient background overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  z-index: -2;
+  height: 100vh;
+  width: 100vw;
+  transform: rotate(180deg);
+  background: white;
+  background-image: radial-gradient(60% 120% at 50% 50%, hsla(0, 0%, 100%, 0) 0%, #C6C2F2 100%);
 }
 
 /* Remove default Vite styles that might interfere with layout */
@@ -41,6 +55,15 @@ body {
 
 /* Custom component classes using Tailwind's @apply directive */
 @layer components {
+  /* Font family overrides */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  nav, .navbar {
+    font-family: 'Poppins', sans-serif;
+  }
+  
   /* Navigation link hover effect for dark theme */
   .nav-link-hover {
     @apply transition-colors duration-300 hover:text-accent-400;
@@ -51,9 +74,9 @@ body {
     @apply bg-neutral-400/10 backdrop-blur-lg border border-text-primary/20 rounded-xl shadow-xl;
   }
   
-  /* Button with modern gradient for dark theme */
+  /* Button with cherry background and white text */
   .btn-primary {
-    @apply bg-gradient-to-r from-primary-400 to-accent-400 hover:from-primary-300 hover:to-accent-300 text-background-primary font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+    @apply bg-accent-400 hover:bg-opacity-80 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
   }
   
   /* Section spacing - updated for better responsiveness */
@@ -73,5 +96,24 @@ body {
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, var(--color-background) 0%, #1a1f26 50%, var(--color-primary-dark) 100%);
+  background: linear-gradient(135deg, var(--color-background) 0%, #383839 50%, var(--color-primary) 100%);
+}
+
+/* Infinite scroll carousel animation */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-infinite-scroll:hover {
+  animation-play-state: paused;
 }

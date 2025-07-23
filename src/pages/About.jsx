@@ -85,14 +85,14 @@ const About = () => {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mt-6 flex flex-wrap justify-center gap-3"
           >
-            <span className="px-4 py-2 bg-primary-400/20 text-primary-300 rounded-full text-sm font-medium">
+            <span className="px-4 py-2 bg-accent-400/20 text-accent-400 rounded-full text-sm font-medium">
               Creative Problem Solver
             </span>
             <span className="px-4 py-2 bg-accent-400/20 text-accent-400 rounded-full text-sm font-medium">
               Design Enthusiast
             </span>
-            <span className="px-4 py-2 bg-primary-300/20 text-primary-300 rounded-full text-sm font-medium">
-              Code Artist
+            <span className="px-4 py-2 bg-accent-400/20 text-accent-400 rounded-full text-sm font-medium">
+              Graphic & Web
             </span>
           </motion.div>
         </motion.div>
@@ -239,12 +239,12 @@ const About = () => {
             I'm always excited to collaborate on new projects and bring creative ideas to life.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="btn-primary">
+            <a href="/contact" className="bg-accent-500 hover:bg-opacity-80 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
               Start a Project
             </a>
             <a 
               href="/resume.pdf" 
-              className="bg-text-primary/20 hover:bg-text-primary/30 text-text-primary font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="bg-primary-300 hover:bg-opacity-80 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               download
             >
               Download Resume
