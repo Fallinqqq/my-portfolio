@@ -1,50 +1,39 @@
 import { motion } from 'framer-motion'
-import { FaCode, FaPalette, FaLightbulb, FaUsers, FaGraduationCap, FaAward } from 'react-icons/fa'
-
-// Import the image directly for better bundling
 import graceProfile from '../assets/grace-profile.jpg'
 
 const About = () => {
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 60 },
-    visible: { opacity: 1, y: 0 }
-  }
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.3
-      }
+  const skills = [
+    {
+      category: "Design",
+      items: ["UI/UX Design", "Brand Identity", "Typography", "Visual Design", "Design Systems"]
+    },
+    {
+      category: "Development",
+      items: ["React", "JavaScript", "TypeScript", "HTML/CSS", "Responsive Design"]
+    },
+    {
+      category: "Tools",
+      items: ["Figma", "Adobe Creative Suite", "VS Code", "Git", "Tailwind CSS"]
     }
-  }
+  ]
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="section-padding"
-    >
-      <div className="container-centered">
-        {/* Header with Profile Image */}
+    <div className="py-24 px-8">
+      <div className="max-w-4xl mx-auto">
+        {/* Profile Section */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          {/* Profile Image with Creative Frame */}
-          <div className="relative mb-8 flex justify-center">
-            <div className="relative group">
-              {/* Decorative background circles */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary-400 to-accent-400 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-              <div className="absolute -inset-2 bg-gradient-to-r from-accent-400 to-primary-300 rounded-full opacity-30 group-hover:opacity-40 transition-opacity duration-300"></div>
-              
-              {/* Main image container */}
-              <div className="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-4 border-text-primary/30 shadow-2xl group-hover:scale-105 transition-transform duration-300">
+          <div className="mb-8 inline-block">
+            <div className="relative">
+              <img 
+                src={graceProfile} 
+                alt="Grace Foster"
+                className="w-40 h-40 object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500"
+              />
                 <img 
                   src={graceProfile} 
                   alt="Grace Foster - Graphic Designer & Front-End Developer"
