@@ -21,12 +21,27 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
     
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const form = e.target
+      const formData = new FormData(form)
+      
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+
+      if (response.ok) {
+        alert('Thank you for your message! I\'ll get back to you soon.')
+        setFormData({ name: '', email: '', message: '' })
+      } else {
+        alert('There was an error sending your message. Please try again.')
+      }
+    } catch (error) {
+      alert('There was an error sending your message. Please try again.')
+    } finally {
       setIsSubmitting(false)
-      alert('Thank you for your message! I\'ll get back to you soon.')
-      setFormData({ name: '', email: '', message: '' })
-    }, 2000)
+    }
   }
 
   const contactLinks = [
@@ -101,7 +116,18 @@ const Contact = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="md:col-span-3"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true" 
+              netlify-honeypot="bot-field"
+              onSubmit={handleSubmit} 
+              className="space-y-6"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <div hidden>
+                <input name="bot-field" />
+              </div>
               <div>
                 <label htmlFor="name" className="block text-sm text-gray-400 mb-2">Name</label>
                 <input
