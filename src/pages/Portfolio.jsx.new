@@ -1,0 +1,111 @@
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+
+const Portfolio = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [hoveredProject, setHoveredProject] = useState(null);
+  
+  const categories = ['All', 'Web Development', 'Branding', 'Design'];
+  
+  const projects = [
+    {
+      id: 1,
+      title: "E-Commerce Fashion Platform",
+      description: "A minimalist e-commerce platform focused on user experience and clean design principles.",
+      image: "/api/placeholder/1200/800",
+      category: "Web Development",
+      technologies: ["React", "Node.js", "MongoDB"],
+      github: "https://github.com/yourusername/project1",
+      live: "https://project1.com"
+    },
+    {
+      id: 2,
+      title: "Brand Identity System",
+      description: "Complete brand identity package including logo design, color palette, and guidelines.",
+      image: "/images/BehanceBrandGuide_Willow-Word_FOSTER-01.png",
+      category: "Branding",
+      technologies: ["Illustrator", "Photoshop"],
+      github: "",
+      live: "https://behance.net/yourusername"
+    }
+  ];
+
+  const filteredProjects = projects.filter(project => 
+    selectedCategory === 'All' || project.category === selectedCategory
+  );
+
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <h1 className="text-4xl font-bold text-center mb-12">Portfolio</h1>
+      
+      <div className="flex justify-center gap-4 mb-8">
+        {categories.map(category => (
+          <button
+            key={category}
+            onClick={() => setSelectedCategory(category)}
+            className={`px-4 py-2 rounded-md transition-colors duration-200 
+              ${selectedCategory === category 
+                ? 'bg-primary text-white' 
+                : 'bg-gray-200 hover:bg-gray-300'}`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProjects.map(project => (
+          <motion.div
+            key={project.id}
+            className="relative rounded-lg overflow-hidden shadow-lg"
+            whileHover={{ scale: 1.02 }}
+            onHoverStart={() => setHoveredProject(project.id)}
+            onHoverEnd={() => setHoveredProject(null)}
+          >
+            <img 
+              src={project.image} 
+              alt={project.title}
+              className="w-full h-64 object-cover"
+            />
+            
+            <motion.div 
+              className="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center p-6 text-white"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: hoveredProject === project.id ? 1 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+              <p className="text-center mb-4">{project.description}</p>
+              
+              <div className="flex gap-4">
+                {project.github && (
+                  <a 
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-primary"
+                  >
+                    <FaGithub size={24} />
+                  </a>
+                )}
+                {project.live && (
+                  <a 
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-primary"
+                  >
+                    <FaExternalLinkAlt size={24} />
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Portfolio;

@@ -1,247 +1,163 @@
 import { motion } from 'framer-motion'
 import graceProfile from '../assets/grace-profile.jpg'
+import { FaLinkedin, FaGithub, FaEnvelope, FaDownload, FaCode, FaBriefcase } from 'react-icons/fa'
 
 const About = () => {
-  const skills = [
-    {
-      category: "Design",
-      items: ["UI/UX Design", "Brand Identity", "Typography", "Visual Design", "Design Systems"]
-    },
-    {
-      category: "Development",
-      items: ["React", "JavaScript", "TypeScript", "HTML/CSS", "Responsive Design"]
-    },
-    {
-      category: "Tools",
-      items: ["Figma", "Adobe Creative Suite", "VS Code", "Git", "Tailwind CSS"]
-    }
-  ]
-
   return (
-    <div className="py-24 px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="pt-24 pb-8 px-8">
+      <div className="max-w-3xl mx-auto">
         {/* Profile Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
-          <div className="mb-8 inline-block">
-            <div className="relative">
+          <div className="mb-8 relative inline-block">
+            <div className="w-48 h-48 mx-auto overflow-hidden rounded-full border-4 border-gray-200 shadow-lg">
               <img 
                 src={graceProfile} 
                 alt="Grace Foster"
-                className="w-40 h-40 object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500"
+                className="w-full h-full object-cover transition-all duration-500 hover:scale-110"
+                onError={(e) => {
+                  e.target.src = '/images/grace-profile.jpg';
+                }}
               />
-                <img 
-                  src={graceProfile} 
-                  alt="Grace Foster - Graphic Designer & Front-End Developer"
-                  className="w-full h-full object-cover relative z-10"
-                  onError={(e) => {
-                    console.log('Image failed to load from assets, trying public path');
-                    e.target.src = '/images/grace-profile.jpg';
-                    e.target.onerror = () => {
-                      console.log('Both image paths failed');
-                      e.target.style.display = 'none';
-                    };
-                  }}
-                  onLoad={() => console.log('Image loaded successfully')}
-                />
-                {/* Fallback content if image doesn't load */}
-                <div className="absolute inset-0 flex items-center justify-center bg-primary-400/20 text-text-primary text-lg font-semibold z-0">
-                  GF
-                </div>
-                {/* Subtle overlay for better text contrast */}
-                <div className="absolute inset-0 bg-gradient-to-t from-background-primary/20 to-transparent"></div>
-              </div>
-              
-              {/* Floating accent elements */}
-              <div className="absolute -top-2 -right-2 w-6 h-6 bg-accent-400 rounded-full opacity-80 animate-pulse"></div>
-              <div className="absolute -bottom-3 -left-3 w-4 h-4 bg-primary-400 rounded-full opacity-60 animate-pulse delay-1000"></div>
             </div>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-text-primary mb-4">About Me</h1>
-          <p className="text-xl text-accent-400 max-w-3xl mx-auto">
-            Passionate about creating beautiful, functional designs that make a difference
-          </p>
-          
-          {/* Personal tagline */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-4xl md:text-5xl font-bold mb-6"
+          >
+            About Me
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-lg text-gray-600 mb-8 leading-relaxed"
+          >
+            I'm a passionate Graphic Designer and Front-End Developer with a keen eye for detail and a love for creating beautiful, functional designs. I specialize in bringing creative ideas to life through clean code and intuitive user experiences.
+          </motion.p>
+
+          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="mt-6 flex flex-wrap justify-center gap-3"
+            transition={{ delay: 0.6 }}
+            className="flex justify-center space-x-6"
           >
-            <span className="px-4 py-2 bg-accent-400/20 text-accent-400 rounded-full text-sm font-medium">
-              Creative Problem Solver
-            </span>
-            <span className="px-4 py-2 bg-accent-400/20 text-accent-400 rounded-full text-sm font-medium">
-              Design Enthusiast
-            </span>
-            <span className="px-4 py-2 bg-accent-400/20 text-accent-400 rounded-full text-sm font-medium">
-              Graphic & Web
-            </span>
-          </motion.div>
-        </motion.div>
-
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          {/* Personal Story */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="glass-card p-8"
-          >
-            <h2 className="text-3xl font-bold text-text-primary mb-6">My Journey</h2>
-            <div className="text-text-primary/90 space-y-4 text-lg leading-relaxed">
-              <p>
-                Hi, I'm Grace! I'm a passionate <span className="text-accent-400 font-semibold">Graphic Designer</span> and 
-                <span className="text-accent-400 font-semibold"> Front-End Developer</span> with over 5 years of experience 
-                creating digital experiences that captivate and engage users.
-              </p>
-              <p>
-                My journey began with a love for art and design, which naturally evolved into a fascination 
-                with how technology can bring creative visions to life. I specialize in bridging the gap 
-                between beautiful aesthetics and functional, user-friendly interfaces.
-              </p>
-              <p>
-                When I'm not coding or designing, you can find me exploring new coffee shops, 
-                sketching in my notebook, or experimenting with the latest design trends and web technologies.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Skills & Expertise */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="glass-card p-8"
-          >
-            <h2 className="text-3xl font-bold text-text-primary mb-6">Expertise</h2>
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <FaPalette className="text-accent-400 text-2xl mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold text-text-primary mb-2">Design</h3>
-                  <p className="text-text-primary/80">UI/UX Design, Branding, Typography, Color Theory, Adobe Creative Suite</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <FaCode className="text-accent-400 text-2xl mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold text-text-primary mb-2">Development</h3>
-                  <p className="text-text-primary/80">React, JavaScript, TypeScript, CSS3, HTML5, Responsive Design</p>
-                </div>
-              </div>
-              <div className="flex items-start space-x-4">
-                <FaLightbulb className="text-accent-400 text-2xl mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold text-text-primary mb-2">Strategy</h3>
-                  <p className="text-text-primary/80">User Research, Wireframing, Prototyping, Design Systems</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Stats Section */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
-        >
-          {[
-            { number: '50+', label: 'Projects Completed', icon: FaAward },
-            { number: '5+', label: 'Years Experience', icon: FaGraduationCap },
-            { number: '30+', label: 'Happy Clients', icon: FaUsers },
-            { number: '100%', label: 'Passion Driven', icon: FaLightbulb }
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              variants={fadeInUp}
-              className="glass-card p-6 text-center"
+            <a 
+              href="https://linkedin.com/in/yourusername" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-blue-500 transition-colors"
             >
-              <stat.icon className="text-accent-400 text-3xl mx-auto mb-4" />
-              <div className="text-3xl font-bold text-text-primary mb-2">{stat.number}</div>
-              <div className="text-text-primary/80 text-sm">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Values & Philosophy */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="glass-card p-8 mb-16"
-        >
-          <h2 className="text-3xl font-bold text-text-primary mb-8 text-center">My Philosophy</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="bg-accent-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaUsers className="text-background-primary text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-text-primary mb-3">User-Centered</h3>
-              <p className="text-text-primary/80">
-                Every design decision is made with the user's needs and experience at the forefront.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-accent-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaLightbulb className="text-background-primary text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-text-primary mb-3">Innovation</h3>
-              <p className="text-text-primary/80">
-                Constantly exploring new technologies and design trends to deliver cutting-edge solutions.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-accent-400 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <FaCode className="text-background-primary text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-text-primary mb-3">Quality</h3>
-              <p className="text-text-primary/80">
-                Attention to detail and commitment to delivering high-quality, maintainable code.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-center"
-        >
-          <h2 className="text-3xl font-bold text-text-primary mb-6">Let's Work Together</h2>
-          <p className="text-xl text-text-primary/90 mb-8 max-w-2xl mx-auto">
-            I'm always excited to collaborate on new projects and bring creative ideas to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="bg-accent-500 hover:bg-opacity-80 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-              Start a Project
+              <FaLinkedin size={24} />
             </a>
             <a 
-              href="/resume.pdf" 
-              className="bg-primary-300 hover:bg-opacity-80 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-              download
+              href="https://github.com/yourusername" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
             >
-              Download Resume
+              <FaGithub size={24} />
             </a>
+            <a 
+              href="mailto:gkfoster15@gmail.com" 
+              className="text-gray-600 hover:text-red-500 transition-colors"
+            >
+              <FaEnvelope size={24} />
+            </a>
+          </motion.div>
+        </motion.div>
+        
+        {/* Professional Summary */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          className="mb-4"
+        >
+          <h2 className="text-2xl font-bold mb-6 text-center">Professional Summary</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Skills Section */}
+            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold mb-4 flex items-center">
+                <FaCode className="mr-2 text-gray-700" />
+                Skills
+              </h3>
+              <div className="space-y-3">
+                <p className="font-medium">Design</p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Adobe Creative Suite</span>
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Photoshop</span>
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Illustrator</span>
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">InDesign</span>
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Figma</span>
+                </div>
+              
+                <p className="font-medium mt-4">Development</p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">HTML5 & CSS3</span>
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">JavaScript</span>
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">React</span>
+                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Responsive Design</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Experience Highlight */}
+            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
+              <h3 className="text-xl font-semibold mb-4 flex items-center">
+                <FaBriefcase className="mr-2 text-gray-700" />
+                Experience
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-medium">Graphic Designer</p>
+                  <p className="text-gray-600 text-sm">2020 - Present</p>
+                  <p className="text-sm mt-1">Creating compelling visual designs for digital and print media</p>
+                </div>
+                <div>
+                  <p className="font-medium">Web Designer</p>
+                  <p className="text-gray-600 text-sm">2018 - 2020</p>
+                  <p className="text-sm mt-1">Designed and developed responsive websites</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8">
+            <p className="text-gray-600 mb-4">
+              For more details about my experience, education, and skills, please download my resume.
+            </p>
+            
+            {/* Download Resume Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mt-4"
+            >
+              <a 
+                href="/files/GraceFoster-Resume.pdf" 
+                download="GraceFoster-Resume.pdf"
+                className="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors"
+              >
+                <FaDownload className="mr-2" />
+                Download Resume
+              </a>
+            </motion.div>
           </div>
         </motion.div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 

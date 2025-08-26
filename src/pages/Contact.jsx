@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa'
+import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaTwitter } from 'react-icons/fa'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -48,8 +48,8 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       label: "Email",
-      href: "mailto:hello@gracefoster.com",
-      text: "hello@gracefoster.com"
+      href: "mailto:gkfoster15@gmail.com",
+      text: "gkfoster15@gmail.com"
     },
     {
       icon: FaLinkedin,
@@ -62,11 +62,6 @@ const Contact = () => {
       label: "GitHub",
       href: "https://github.com/gracefoster",
       text: "github.com/gracefoster"
-    },
-    {
-      icon: FaMapMarkerAlt,
-      title: "Location",
-      content: "San Francisco, CA"
     }
   ]
 
@@ -92,14 +87,13 @@ const Contact = () => {
   ]
 
   return (
-      return (
-    <div className="py-24 px-8">
+    <div className="pt-24 pb-8 px-8">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-6"
         >
           <h1 className="text-3xl font-light mb-6">Get in Touch</h1>
           <p className="text-gray-600 max-w-lg mx-auto">
@@ -114,15 +108,18 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-3"
+            className="md:col-span-3 relative"
           >
+            {/* Light grey curved background with opacity */}
+            <div className="absolute inset-0 bg-gray-200/60 rounded-2xl -z-10"></div>
+            
             <form 
               name="contact" 
               method="POST" 
               data-netlify="true" 
               netlify-honeypot="bot-field"
               onSubmit={handleSubmit} 
-              className="space-y-6"
+              className="space-y-6 p-6 sm:p-8"
             >
               <input type="hidden" name="form-name" value="contact" />
               <div hidden>
@@ -137,7 +134,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 focus:border-gray-200 focus:ring-0 transition-colors"
+                  className="w-full px-4 py-3 bg-white/90 border border-gray-100 focus:border-gray-300 focus:ring-0 rounded-md shadow-sm transition-colors"
                 />
               </div>
               
@@ -150,7 +147,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 focus:border-gray-200 focus:ring-0 transition-colors"
+                  className="w-full px-4 py-3 bg-white/90 border border-gray-100 focus:border-gray-300 focus:ring-0 rounded-md shadow-sm transition-colors"
                 />
               </div>
               
@@ -163,14 +160,14 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={6}
-                  className="w-full px-4 py-3 bg-gray-50 border border-gray-100 focus:border-gray-200 focus:ring-0 transition-colors"
+                  className="w-full px-4 py-3 bg-white/90 border border-gray-100 focus:border-gray-300 focus:ring-0 rounded-md shadow-sm transition-colors"
                 ></textarea>
               </div>
               
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-3 text-sm font-light tracking-wide text-white bg-black hover:bg-gray-900 transition-colors disabled:opacity-50"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white bg-black hover:bg-gray-800 transition-colors disabled:opacity-50 rounded-md shadow-md"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </button>
@@ -182,7 +179,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="md:col-span-2 space-y-8"
+            className="md:col-span-2 space-y-6 px-2 md:px-6 py-4"
           >
             {contactLinks.map((link) => (
               <a
@@ -196,7 +193,11 @@ const Contact = () => {
                 <span className="text-sm">{link.text}</span>
               </a>
             ))}
-  )
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
-export default Contact
+export default Contact;

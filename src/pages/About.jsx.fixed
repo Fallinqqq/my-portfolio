@@ -1,0 +1,82 @@
+import { motion } from 'framer-motion'
+import graceProfile from '../assets/grace-profile.jpg'
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
+
+const About = () => {
+  return (
+    <div className="py-24 px-8">
+      <div className="max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="mb-8 relative inline-block">
+            <div className="w-48 h-48 mx-auto overflow-hidden rounded-full border-4 border-gray-200 shadow-lg">
+              <img 
+                src={graceProfile} 
+                alt="Grace Foster"
+                className="w-full h-full object-cover transition-all duration-500 hover:scale-110"
+                onError={(e) => {
+                  e.target.src = '/images/grace-profile.jpg';
+                }}
+              />
+            </div>
+          </div>
+
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="text-4xl md:text-5xl font-bold mb-6"
+          >
+            About Me
+          </motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-lg text-gray-600 mb-8 leading-relaxed"
+          >
+            I'm a passionate Graphic Designer and Front-End Developer with a keen eye for detail and a love for creating beautiful, functional designs. I specialize in bringing creative ideas to life through clean code and intuitive user experiences.
+          </motion.p>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+            className="flex justify-center space-x-6"
+          >
+            <a 
+              href="https://linkedin.com/in/yourusername" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-blue-500 transition-colors"
+            >
+              <FaLinkedin size={24} />
+            </a>
+            <a 
+              href="https://github.com/yourusername" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <FaGithub size={24} />
+            </a>
+            <a 
+              href="mailto:your.email@example.com" 
+              className="text-gray-600 hover:text-red-500 transition-colors"
+            >
+              <FaEnvelope size={24} />
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+
+export default About

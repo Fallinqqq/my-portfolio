@@ -10,12 +10,11 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Resume', path: '/resume' },
     { name: 'Contact', path: '/contact' }
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-95">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-200/60">
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}

@@ -7,11 +7,11 @@ const Home = () => {
     { icon: FaGithub, url: 'https://github.com/gracefoster', label: 'GitHub' },
     { icon: FaLinkedin, url: 'https://linkedin.com/in/gracefoster', label: 'LinkedIn' },
     { icon: FaBehance, url: 'https://behance.net/gracefoster', label: 'Behance' },
-    { icon: FaEnvelope, url: 'mailto:hello@gracefoster.com', label: 'Email' }
+    { icon: FaEnvelope, url: 'mailto:gkfoster15@gmail.com', label: 'Email' }
   ]
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-8">
+    <div className="flex items-center justify-center min-h-screen px-8">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,7 +20,7 @@ const Home = () => {
           className="text-center space-y-8"
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight">
-            Creative Developer & Designer
+            Creative Graphic Designer
           </h1>
           
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
