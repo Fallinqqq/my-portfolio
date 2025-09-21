@@ -285,7 +285,7 @@ const Home = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="w-full max-w-6xl mx-auto py-8 px-8"
+        className="w-full max-w-6xl mx-auto pt-4 pb-20 px-8"
       >
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">

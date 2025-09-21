@@ -83,29 +83,6 @@ const ProjectModal = ({ project, onClose }) => {
               </div>
             )}
           </div>
-
-          <div className="flex gap-4 mt-8">
-            {project.liveLink && (
-              <a
-                href={project.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition-colors"
-              >
-                View Live
-              </a>
-            )}
-            {project.githubLink && (
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full hover:bg-gray-300 transition-colors"
-              >
-                View Code
-              </a>
-            )}
-          </div>
         </div>
       </motion.div>
     </motion.div>
