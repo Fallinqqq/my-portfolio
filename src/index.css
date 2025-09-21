@@ -1,5 +1,5 @@
 /* Import Google Fonts - Must be first before all other CSS */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 /* Import Tailwind CSS */
 @tailwind base;
@@ -10,12 +10,14 @@
 :root {
   --color-primary: #000000;       /* pure black */
   --color-text: #1a1a1a;         /* soft black for text */
+  --color-text-secondary: #6b6b6b; /* muted gray for secondary text */
   --color-gray: #666666;         /* medium gray */
-  --color-gray-light: #f5f5f5;   /* light gray */
+  --color-gray-light: #f8f8f8;   /* very light gray background */
   --color-background: #ffffff;    /* pure white */
-  --color-hover: #e6e6e6;        /* hover state gray */
-  --font-heading: "Helvetica", "Arial", sans-serif; /* Helvetica for headings and navbar */
-  --font-body: 'Poppins', sans-serif;         /* Original font for body text */
+  --color-hover: #f0f0f0;        /* subtle hover state */
+  --color-border: #e5e5e5;       /* light border color */
+  --font-heading: "Playfair Display", "Georgia", serif; /* Elegant serif for headings */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Clean sans-serif for body */
 }
 
 /* Base styles */
@@ -27,7 +29,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background: var(--color-background);
+  background: white;
   color: var(--color-text);
   min-height: 100vh;
 }
@@ -36,6 +38,25 @@ body {
 .bg-animation {
   animation: animateGradient 25s ease infinite;
   background-size: 300% 300% !important;
+  background: linear-gradient(
+    45deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+}
+
+.bg-aurora {
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1) 0%,
+    rgba(118, 75, 162, 0.1) 25%,
+    rgba(240, 147, 251, 0.1) 50%,
+    rgba(245, 87, 108, 0.1) 75%,
+    rgba(79, 172, 254, 0.1) 100%
+  );
 }
 
 @keyframes animateGradient {
@@ -62,19 +83,24 @@ body {
   .heading-1 {
     @apply text-4xl md:text-5xl lg:text-6xl tracking-tight;
     font-family: var(--font-heading);
-    font-weight: 600;
-    font-style: normal;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
   }
   
   .heading-2 {
     @apply text-2xl md:text-3xl;
     font-family: var(--font-heading);
-    font-weight: 600;
-    font-style: normal;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
   }
   
   .body-text {
-    @apply text-gray-600 leading-relaxed;
+    @apply leading-relaxed;
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-weight: 400;
   }
 
   /* Button styles */
@@ -140,6 +166,28 @@ body {
 
 .animate-fadeIn {
   animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+/* Portfolio hover glow effect */
+.portfolio-glow {
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.portfolio-glow:hover {
+  box-shadow: 
+    0 0 20px rgba(59, 130, 246, 0.3),
+    0 0 40px rgba(59, 130, 246, 0.2),
+    0 0 60px rgba(59, 130, 246, 0.1);
+  transform: translateY(-4px);
 }
 
 /* Typography utilities */

@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FaGithub, FaLinkedin, FaEnvelope, FaBehance, FaExternalLinkAlt, FaReact, FaNode, FaPython, FaDocker } from 'react-icons/fa'
 import { SiTypescript, SiTailwindcss, SiMongodb, SiPostgresql, SiDjango, SiFigma, SiAdobeillustrator, SiAdobephotoshop } from 'react-icons/si'
@@ -8,6 +8,54 @@ import ProjectModal from '../components/ProjectModal'
 const Home = () => {
   const [hoveredProject, setHoveredProject] = useState(null)
   const [selectedProject, setSelectedProject] = useState(null)
+  const [displayedText, setDisplayedText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isTyping, setIsTyping] = useState(true)
+  const [isPaused, setIsPaused] = useState(false)
+  const fullText = "Grace Foster"
+
+  // Enhanced typing effect with backspace
+  useEffect(() => {
+    if (isPaused) {
+      const timeout = setTimeout(() => {
+        setIsPaused(false)
+      }, isTyping ? 2000 : 1000) // Pause 2s after typing, 1s after backspacing
+      
+      return () => clearTimeout(timeout)
+    }
+
+    if (!isPaused) {
+      if (isTyping) {
+        // Typing forward
+        if (currentIndex < fullText.length) {
+          const timeout = setTimeout(() => {
+            setDisplayedText(prev => prev + fullText[currentIndex])
+            setCurrentIndex(prev => prev + 1)
+          }, 120) // Typing speed
+          
+          return () => clearTimeout(timeout)
+        } else {
+          // Finished typing, pause then start backspacing
+          setIsPaused(true)
+          setIsTyping(false)
+        }
+      } else {
+        // Backspacing
+        if (currentIndex > 0) {
+          const timeout = setTimeout(() => {
+            setDisplayedText(prev => prev.slice(0, -1))
+            setCurrentIndex(prev => prev - 1)
+          }, 80) // Backspace speed (slightly faster)
+          
+          return () => clearTimeout(timeout)
+        } else {
+          // Finished backspacing, pause then start typing again
+          setIsPaused(true)
+          setIsTyping(true)
+        }
+      }
+    }
+  }, [currentIndex, fullText, isTyping, isPaused])
   
   // Function for smooth scrolling with custom duration
   const smoothScrollTo = (element, duration = 1500) => {
@@ -172,29 +220,47 @@ const Home = () => {
   ]
 
   return (
-    <div className="flex flex-col items-center px-8">
+    <div className="flex flex-col items-center bg-white min-h-screen"
+         style={{ fontFamily: 'var(--font-body)' }}>
       {/* Hero Section */}
-      <div className="min-h-[90vh] flex items-center justify-center w-full">
-        <div className="max-w-4xl mx-auto">
+      <div className="min-h-[80vh] flex items-center justify-center w-full">
+        <div className="max-w-4xl mx-auto px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center space-y-8"
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="text-center space-y-12"
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl tracking-tight text-gray-800" style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}>
-              Creative Graphic Designer
-            </h1>
-            
-            <p className="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-              I design and build digital experiences that combine aesthetic beauty with functional excellence. Specializing in web development and brand identity design.
+            <div className="space-y-6">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl text-gray-900 min-h-[1.2em]" 
+                  style={{ 
+                    fontFamily: 'var(--font-heading)', 
+                    fontWeight: 500,
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.02em'
+                  }}>
+                {displayedText}
+                <span className="cursor-blink">|</span>
+              </h1>
+              
+              <div className="h-px w-12 bg-gray-400 mx-auto"></div>
+              
+              <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+                 style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}>
+                Graphic & Web Designer based in Lynchburg, VA.
+              </p>
+            </div>
+
+            <p className="text-lg text-gray-500 max-w-lg mx-auto leading-relaxed"
+               style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}>
+              Creating thoughtful digital experiences through design and development.
             </p>
 
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="flex justify-center space-x-6"
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="flex justify-center space-x-8"
             >
               {socialLinks.map((link) => (
                 <a
@@ -202,50 +268,13 @@ const Home = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-gray-800 transition-colors"
+                  className="text-gray-400 hover:text-gray-800 transition-colors duration-300"
                   aria-label={link.label}
                 >
-                  <link.icon className="w-5 h-5" />
+                  <link.icon className="w-6 h-6" />
                 </a>
               ))}
             </motion.div>
-
-            {/* Clickable Double Chevron Arrow pointing to portfolio */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="mt-12"
-            >
-              <motion.div
-                initial={{ y: 0, opacity: 0.7 }}
-                animate={{ y: [0, 10, 0], opacity: [0.7, 1, 0.7] }}
-                transition={{ 
-                  repeat: Infinity, 
-                  duration: 2,
-                  ease: "easeInOut" 
-                }}
-                className="flex justify-center"
-              >
-                <a 
-                  onClick={(e) => {
-                    e.preventDefault();
-                    const element = document.getElementById('portfolio-header');
-                    smoothScrollTo(element, 500); // Custom scroll with 0.5 second duration
-                  }}
-                  href="#portfolio-header" 
-                  className="cursor-pointer hover:opacity-80 transition-opacity"
-                  aria-label="Scroll to Portfolio"
-                >
-                  <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.5 8.25L12 15.75L19.5 8.25" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M4.5 14.25L12 21.75L19.5 14.25" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </a>
-              </motion.div>
-            </motion.div>
-
-            {/* View Portfolio button removed */}
           </motion.div>
         </div>
       </div>
@@ -255,42 +284,45 @@ const Home = () => {
         id="portfolio"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="w-full max-w-7xl mx-auto py-16"
+        transition={{ delay: 0.3 }}
+        className="w-full max-w-6xl mx-auto py-8 px-8"
       >
-        <h2 id="portfolio-header" className="text-3xl font-light text-center mb-12 text-gray-800">My Portfolio</h2>
-
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
           {projects.map((project, index) => (
               <motion.div
                 key={project.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group cursor-pointer portfolio-glow rounded-lg"
                 onClick={() => setSelectedProject(project)}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
               >
-                <div className="relative overflow-hidden bg-white/70 backdrop-blur-sm rounded-lg shadow-md">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full aspect-[4/3] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  {hoveredProject === project.id && (
-                    <motion.div 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="absolute inset-0 bg-black bg-opacity-40 flex flex-col items-center justify-center p-4 text-white"
-                    >
-                      <h3 className="text-xl font-bold mb-2 text-center">{project.title}</h3>
-                      <p className="text-sm text-center mb-4 opacity-90">{project.description}</p>
-                      <button className="bg-white text-black px-4 py-2 rounded-full text-sm hover:bg-gray-100 transition-colors">
-                        View Details
-                      </button>
-                    </motion.div>
-                  )}
+                <div className="space-y-6 p-4 rounded-lg">
+                  <div className="relative overflow-hidden bg-gray-50 rounded-lg">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                    />
+                  </div>
+                  
+                  <div className="space-y-3">
+                    <h3 className="text-xl md:text-2xl text-gray-900 group-hover:text-gray-600 transition-colors duration-300"
+                        style={{ 
+                          fontFamily: 'var(--font-heading)', 
+                          fontWeight: 500,
+                          letterSpacing: '-0.01em'
+                        }}>
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-500 leading-relaxed"
+                       style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}>
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             ))}
