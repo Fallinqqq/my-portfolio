@@ -4,15 +4,17 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.NODE_ENV === 'production' && !process.env.NETLIFY ? '/my-portfolio/' : '/', // GitHub Pages only in production
+  base: '/', // Set base to root path
   build: {
     outDir: 'dist',
-    sourcemap: false,
+    sourcemap: true, // Enable sourcemaps for debugging
     minify: 'esbuild',
   },
   server: {
     port: 5173,
-    open: true
+    open: true,
+    strictPort: false, // Try another port if 5173 is in use
+    host: '0.0.0.0' // Listen on all interfaces
   },
   preview: {
     port: 3000,

@@ -184,9 +184,9 @@ body {
 
 .portfolio-glow:hover {
   box-shadow: 
-    0 0 20px rgba(59, 130, 246, 0.3),
-    0 0 40px rgba(59, 130, 246, 0.2),
-    0 0 60px rgba(59, 130, 246, 0.1);
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 40px rgba(255, 255, 255, 0.3),
+    0 0 60px rgba(255, 255, 255, 0.2);
   transform: translateY(-4px);
 }
 
@@ -202,4 +202,83 @@ body {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
+}
+
+/* Hover glow text effect */
+.glowing-text {
+  position: relative;
+  color: #1a1a1a;
+  display: inline-block;
+  transition: all 0.3s ease-out;
+  padding: 0.1em 0.3em;
+  margin: -0.1em -0.3em;
+  border-radius: 4px;
+}
+
+/* Apply glow only on hover */
+.glowing-text-container:hover .glowing-text {
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.7),
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+/* Moving glow overlay element on hover */
+.glowing-text::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  z-index: -1;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.3s ease-out;
+}
+
+/* Second glow overlay on hover */
+.glowing-text::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  z-index: -2;
+  border-radius: 50%;
+  opacity: 0;
+  filter: blur(15px);
+  transition: opacity 0.3s ease-out;
+}
+
+/* Show and animate the glow overlays on hover */
+.glowing-text-container:hover .glowing-text::before,
+.glowing-text-container:hover .glowing-text::after {
+  opacity: 1;
+  animation: moveGlow 8s ease-in-out infinite;
+}
+
+.glowing-text-container:hover .glowing-text::after {
+  animation-duration: 12s;
+  animation-direction: reverse;
+}
+
+@keyframes moveGlow {
+  0% { transform: translate(0%, 0%) scale(1); }
+  25% { transform: translate(10%, -10%) scale(1.05); }
+  50% { transform: translate(-5%, -5%) scale(0.95); }
+  75% { transform: translate(-10%, 10%) scale(1.1); }
+  100% { transform: translate(0%, 0%) scale(1); }
 }

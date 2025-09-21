@@ -95,25 +95,26 @@ const Home = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Fashion Platform",
-      description: "A minimalist e-commerce platform focused on user experience and clean design principles.",
-      longDescription: "This modern e-commerce platform combines sleek design with powerful functionality. Built with performance and scalability in mind, it features real-time inventory management, secure payment processing, and a responsive user interface.",
-      image: "/images/grace-profile.jpg",
-      additionalImages: ["/images/grace-profile.jpg", "/images/grace-profile.jpg"],
+      title: "Commvault",
+      description: "Created various marketing Resources for Commvault including brochures, banners, and digital ads.",
+      longDescription: "Created various marketing materials for cross functional teams at Commvault including various Data sheets, infographics, whitepapers, and digital ads.",
+      image: "/images/Commvault.png",
+      additionalImages: ["/images/CVLT-Clumio_Records_Retention-_Requirements_Education_v1.1-1-1.pdf", "/images/CVLT-Establishing-Higher-Education-Minimum-Viability_Infographic_v1.2.pdf"],
+      category: "Web Development",
       technologies: [
-        { name: "React", icon: FaReact },
-        { name: "TypeScript", icon: SiTypescript },
-        { name: "Tailwind CSS", icon: SiTailwindcss }
+        { name: "Adobe Indesign", icon: SiAdobeillustrator }, // Using illustrator as fallback
+        { name: "Adobe Illustrator", icon: SiAdobeillustrator },
+        { name: "Adobe Photoshop", icon: SiAdobephotoshop },
       ],
       features: [
-        "Responsive design for all devices",
-        "Real-time inventory tracking",
-        "Secure payment integration",
-        "User authentication and profiles",
-        "Advanced search and filtering"
+        "Infographics",
+        "Whitepapers",
+        "Data sheets",
+        "Digital ads",
+        "Print materials",
+        "Brand consistency"
       ],
-      liveLink: "https://fashion-platform-demo.com",
-      githubLink: "https://github.com/gracefoster/fashion-platform"
+      liveLink: "https://commvault.com",
     },
     {
       id: 2,
@@ -220,7 +221,7 @@ const Home = () => {
   ]
 
   return (
-    <div className="flex flex-col items-center bg-white min-h-screen"
+    <div className="flex flex-col items-center min-h-screen"
          style={{ fontFamily: 'var(--font-body)' }}>
       {/* Hero Section */}
       <div className="min-h-[80vh] flex items-center justify-center w-full">
@@ -245,15 +246,18 @@ const Home = () => {
               
               <div className="h-px w-12 bg-gray-400 mx-auto"></div>
               
-              <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto leading-relaxed"
+              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed relative glowing-text-container"
                  style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}>
-                Graphic & Web Designer based in Lynchburg, VA.
+                <span className="glowing-text">
+                  Versatile and detail-oriented Graphic & Web Designer
+                  creating thoughtful digital experiences through design.
+                </span>
               </p>
             </div>
 
             <p className="text-lg text-gray-500 max-w-lg mx-auto leading-relaxed"
                style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}>
-              Creating thoughtful digital experiences through design and development.
+             
             </p>
 
             <motion.div 
@@ -271,7 +275,7 @@ const Home = () => {
                   className="text-gray-400 hover:text-gray-800 transition-colors duration-300"
                   aria-label={link.label}
                 >
-                  <link.icon className="w-6 h-6" />
+                  <link.icon className="w-8 h-8" />
                 </a>
               ))}
             </motion.div>

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { FaGithub, FaExternalLinkAlt, FaReact, FaNode, FaPython, FaDocker } from 'react-icons/fa'
+import { FaGithub, FaExternalLinkAlt, FaReact, FaNode, FaPython, FaDocker, FaAd } from 'react-icons/fa'
 import { SiTypescript, SiTailwindcss, SiMongodb, SiPostgresql, SiDjango, SiFigma, SiAdobeillustrator, SiAdobephotoshop } from 'react-icons/si'
 import ProjectModal from '../components/ProjectModal'
 
@@ -14,23 +14,24 @@ const Portfolio = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Fashion Platform",
-      description: "A minimalist e-commerce platform focused on user experience and clean design principles.",
-      longDescription: "This modern e-commerce platform combines sleek design with powerful functionality. Built with performance and scalability in mind, it features real-time inventory management, secure payment processing, and a responsive user interface.",
+      title: "Commvault",
+      description: "Created various marketing Resources for Commvault including brochures, banners, and digital ads.",
+      longDescription: "Created various marketing materials for cross functional teams at Commvault including various Data sheets, infographics, whitepapers, and digital ads.",
       image: "/images/grace-profile.jpg",
       additionalImages: ["/images/grace-profile.jpg", "/images/grace-profile.jpg"],
       category: "Web Development",
       technologies: [
-        { name: "React", icon: FaReact },
-        { name: "TypeScript", icon: SiTypescript },
-        { name: "Tailwind CSS", icon: SiTailwindcss }
+        { name: "Adobe Indesign", icon: SiAdobeillustrator }, // Using illustrator as fallback
+        { name: "Adobe Illustrator", icon: SiAdobeillustrator },
+        { name: "Adobe Photoshop", icon: SiAdobephotoshop },
       ],
       features: [
-        "Responsive design for all devices",
-        "Real-time inventory tracking",
-        "Secure payment integration",
-        "User authentication and profiles",
-        "Advanced search and filtering"
+        "Infographics",
+        "Whitepapers",
+        "Data sheets",
+        "Digital ads",
+        "Print materials",
+        "Brand consistency"
       ],
       liveLink: "https://fashion-platform-demo.com",
       githubLink: "https://github.com/gracefoster/fashion-platform",
