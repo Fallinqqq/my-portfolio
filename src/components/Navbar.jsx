@@ -7,18 +7,16 @@ const Navbar = () => {
   const location = useLocation()
 
   const navItems = [
-    { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Portfolio', path: '/portfolio' },
     { name: 'Contact', path: '/contact' }
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-200/60">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/30 backdrop-blur-sm shadow-sm">
       <div className="max-w-7xl mx-auto px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="text-lg font-light tracking-wider text-black">
+          <Link to="/" className="text-lg tracking-wider text-black" style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}>
             GRACE FOSTER
           </Link>
 
@@ -28,11 +26,12 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-sm font-light tracking-wide transition-colors ${
+                className={`text-sm tracking-wide transition-colors ${
                   location.pathname === item.path
                     ? 'text-black'
                     : 'text-gray-500 hover:text-black'
                 }`}
+                style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}
               >
                 {item.name}
               </Link>
@@ -73,6 +72,7 @@ const Navbar = () => {
                       ? 'text-black'
                       : 'text-gray-500 hover:text-black'
                   }`}
+                  style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}
                 >
                   {item.name}
                 </Link>

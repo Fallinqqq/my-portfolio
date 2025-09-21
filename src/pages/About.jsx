@@ -30,7 +30,8 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-4xl md:text-5xl font-bold mb-6"
+            className="text-4xl md:text-5xl mb-6"
+            style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}
           >
             About Me
           </motion.h1>
@@ -83,7 +84,7 @@ const About = () => {
           transition={{ delay: 0.7, duration: 0.8 }}
           className="mb-4"
         >
-          <h2 className="text-2xl font-bold mb-6 text-center">Professional Summary</h2>
+          <h2 className="text-2xl mb-6 text-center" style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}>Professional Summary</h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             {/* Skills Section */}

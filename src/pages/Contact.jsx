@@ -95,7 +95,7 @@ const Contact = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-6"
         >
-          <h1 className="text-3xl font-light mb-6">Get in Touch</h1>
+          <h1 className="text-3xl mb-6" style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}>Get in Touch</h1>
           <p className="text-gray-600 max-w-lg mx-auto">
             Have a project in mind or want to collaborate? I'd love to hear from you. 
             Send me a message and I'll get back to you soon.

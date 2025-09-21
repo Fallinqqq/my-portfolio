@@ -14,35 +14,63 @@
   --color-gray-light: #f5f5f5;   /* light gray */
   --color-background: #ffffff;    /* pure white */
   --color-hover: #e6e6e6;        /* hover state gray */
+  --font-heading: "Helvetica", "Arial", sans-serif; /* Helvetica for headings and navbar */
+  --font-body: 'Poppins', sans-serif;         /* Original font for body text */
 }
 
 /* Base styles */
 html {
   scroll-behavior: smooth;
+  /* Slower scroll behavior */
+  --scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-body);
   background: var(--color-background);
   color: var(--color-text);
   min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  position: relative;
-  letter-spacing: -0.01em;
+}
+
+/* Aurora background with animation */
+.bg-animation {
+  animation: animateGradient 25s ease infinite;
+  background-size: 300% 300% !important;
+}
+
+@keyframes animateGradient {
+  0% {
+    background-position: 0% 25%;
+  }
+  25% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 100% 75%;
+  }
+  75% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 0% 25%;
+  }
 }
 
 /* Custom component classes using Tailwind's @apply directive */
 @layer components {
   /* Font styles */
   .heading-1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-light tracking-tight;
+    @apply text-4xl md:text-5xl lg:text-6xl tracking-tight;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-style: normal;
   }
   
   .heading-2 {
-    @apply text-2xl md:text-3xl font-light;
+    @apply text-2xl md:text-3xl;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-style: normal;
   }
   
   .body-text {

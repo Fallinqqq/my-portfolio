@@ -8,7 +8,6 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
-import Portfolio from './pages/Portfolio'
 import Contact from './pages/Contact'
 import { useEffect } from 'react'
 
@@ -21,8 +20,19 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen text-text-primary w-full overflow-x-hidden relative flex flex-col">
-        {/* Background grid pattern */}
-        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+        {/* Aurora Dream Corner Whispers Background with Animation */}
+        <div 
+          className="absolute inset-0 -z-10 h-full w-full bg-animation"
+          style={{
+            background: `
+              radial-gradient(ellipse 85% 65% at 8% 8%, rgba(175, 109, 255, 0.42), transparent 60%),
+              radial-gradient(ellipse 75% 60% at 75% 35%, rgba(255, 235, 170, 0.55), transparent 62%),
+              radial-gradient(ellipse 70% 60% at 15% 80%, rgba(255, 100, 180, 0.40), transparent 62%),
+              radial-gradient(ellipse 70% 60% at 92% 92%, rgba(120, 190, 255, 0.45), transparent 62%),
+              linear-gradient(180deg, #f7eaff 0%, #fde2ea 100%)
+            `
+          }}
+        />
         
         {/* Navigation - Sticky header with modern glassmorphism effect */}
         <Navbar />
@@ -33,7 +43,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
-              <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
           </div>
