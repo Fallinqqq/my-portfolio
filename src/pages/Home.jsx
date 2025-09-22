@@ -99,7 +99,7 @@ const Home = () => {
       description: "Created various marketing Resources for Commvault including brochures, banners, and digital ads.",
       longDescription: "Created various marketing materials for cross functional teams at Commvault including various Data sheets, infographics, whitepapers, and digital ads.",
       image: "/images/Commvault.png",
-      additionalImages: ["/images/CVLT-Clumio_Records_Retention-_Requirements_Education_v1.1-1-1.pdf", "/images/CVLT-Establishing-Higher-Education-Minimum-Viability_Infographic_v1.2.pdf"],
+      additionalImages: ["/images/CVLT-Clumio_Records_Retention-_Requirements_Education_v1.1-1-1.pdf", "/images/CVLT-Establishing-Higher-Education-Minimum-Viability_Infographic_v1.2.pdf", "/images/59.-Cloud-Data-Management_Whitepaper_v1.2.pdf"],
       category: "Web Development",
       technologies: [
         { name: "Adobe Indesign", icon: SiAdobeillustrator }, // Using illustrator as fallback
