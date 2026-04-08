@@ -1,5 +1,5 @@
 import { FaReact, FaNode, FaPython, FaDocker } from 'react-icons/fa'
-import { SiMongodb, SiPostgresql, SiDjango, SiFigma, SiAdobeillustrator, SiAdobephotoshop } from 'react-icons/si'
+import { SiMongodb, SiPostgresql, SiDjango, SiFigma, SiAdobe } from 'react-icons/si'
 
 export const projects = [
   {
@@ -17,9 +17,9 @@ export const projects = [
     ],
     category: 'Web Development',
     technologies: [
-      { name: 'Adobe Indesign', icon: SiAdobeillustrator },
-      { name: 'Adobe Illustrator', icon: SiAdobeillustrator },
-      { name: 'Adobe Photoshop', icon: SiAdobephotoshop }
+      { name: 'Adobe Indesign', icon: SiAdobe },
+      { name: 'Adobe Illustrator', icon: SiAdobe },
+      { name: 'Adobe Photoshop', icon: SiAdobe }
     ],
     features: [
       'Infographics',
@@ -41,8 +41,8 @@ export const projects = [
     longDescription: 'Social media content and print collateral designed for Steven Francis Fine Art Gallery. Focused on elegant, art-forward visuals that reflect the gallery\'s aesthetic and attract collectors and art enthusiasts.',
     image: '/api/placeholder/1200/800',
     technologies: [
-      { name: 'Adobe Illustrator', icon: SiAdobeillustrator },
-      { name: 'Adobe Photoshop', icon: SiAdobephotoshop }
+      { name: 'Adobe Illustrator', icon: SiAdobe },
+      { name: 'Adobe Photoshop', icon: SiAdobe }
     ],
     features: [
       'Social media templates',
@@ -135,8 +135,8 @@ export const projects = [
     image: '/images/BehanceBrandGuide_Willow-Word_FOSTER-01.png',
     technologies: [
       { name: 'Figma', icon: SiFigma },
-      { name: 'Illustrator', icon: SiAdobeillustrator },
-      { name: 'Photoshop', icon: SiAdobephotoshop }
+      { name: 'Illustrator', icon: SiAdobe },
+      { name: 'Photoshop', icon: SiAdobe }
     ],
     features: [
       'Logo suite',
@@ -157,8 +157,8 @@ export const projects = [
     longDescription: 'Brand identity and marketing design for Havens House, a residential interior design studio. Focused on warm, elevated aesthetics that reflect the studio\'s approach to thoughtful living spaces.',
     image: '/api/placeholder/1200/800',
     technologies: [
-      { name: 'Illustrator', icon: SiAdobeillustrator },
-      { name: 'Photoshop', icon: SiAdobephotoshop }
+      { name: 'Illustrator', icon: SiAdobe },
+      { name: 'Photoshop', icon: SiAdobe }
     ],
     features: [
       'Logo design',
