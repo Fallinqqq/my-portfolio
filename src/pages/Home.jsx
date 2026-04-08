@@ -14,9 +14,9 @@ const fadeUp = {
 }
 
 const socialLinks = [
-  { icon: FaGithub, url: 'https://github.com/gracefoster', label: 'GitHub' },
-  { icon: FaLinkedin, url: 'https://linkedin.com/in/gracefoster', label: 'LinkedIn' },
-  { icon: FaBehance, url: 'https://behance.net/gracefoster', label: 'Behance' },
+  { icon: FaGithub, url: 'https://github.com/Fallinqqq', label: 'GitHub' },
+  { icon: FaLinkedin, url: 'https://www.linkedin.com/in/gracekfoster/', label: 'LinkedIn' },
+  { icon: FaBehance, url: 'https://www.behance.net/gracefostaa', label: 'Behance' },
   { icon: FaEnvelope, url: 'mailto:gkfoster15@gmail.com', label: 'Email' },
 ]
 

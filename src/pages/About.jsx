@@ -25,7 +25,7 @@ const About = () => {
             className="text-3xl sm:text-4xl md:text-5xl text-ink"
             style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.15 }}
           >
-            Graphic &amp; Web Design<br />
+            Graphic &amp; Web Designer<br />
             <em>based in Virginia</em>
           </motion.h1>
         </div>

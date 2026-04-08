@@ -24,17 +24,9 @@ const StevenFrancisSocials = () => (
     title={title} role={role} year={year} description={description}
     tools={tools} liveLink={liveLink || undefined} githubLink={githubLink || undefined}
   >
-    {images[0] && (
-      <figure>
-        <div className="overflow-hidden bg-[#EEECEA]">
-          <img src={images[0].src} alt={images[0].alt} className="w-full object-cover" />
-        </div>
-        {images[0].caption && <figcaption className="text-xs text-muted mt-3">{images[0].caption}</figcaption>}
-      </figure>
-    )}
-    {images.length > 1 && (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {images.slice(1).map((img, i) => (
+    {images.length > 0 && (
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {images.map((img, i) => (
           <figure key={i}>
             <div className="overflow-hidden bg-[#EEECEA]">
               <img src={img.src} alt={img.alt} className="w-full object-cover" />
