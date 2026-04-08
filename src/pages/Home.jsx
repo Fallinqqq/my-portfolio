@@ -1,346 +1,207 @@
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { FaGithub, FaLinkedin, FaEnvelope, FaBehance, FaExternalLinkAlt, FaReact, FaNode, FaPython, FaDocker } from 'react-icons/fa'
-import { SiTypescript, SiTailwindcss, SiMongodb, SiPostgresql, SiDjango, SiFigma, SiAdobeillustrator, SiAdobephotoshop } from 'react-icons/si'
-import ProjectModal from '../components/ProjectModal'
+import { useState, useEffect, useRef } from 'react'
+import { FaGithub, FaLinkedin, FaEnvelope, FaBehance } from 'react-icons/fa'
+import { projects } from '../data/projects'
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
+  }),
+}
+
+const socialLinks = [
+  { icon: FaGithub, url: 'https://github.com/gracefoster', label: 'GitHub' },
+  { icon: FaLinkedin, url: 'https://linkedin.com/in/gracefoster', label: 'LinkedIn' },
+  { icon: FaBehance, url: 'https://behance.net/gracefoster', label: 'Behance' },
+  { icon: FaEnvelope, url: 'mailto:gkfoster15@gmail.com', label: 'Email' },
+]
 
 const Home = () => {
-  const [hoveredProject, setHoveredProject] = useState(null)
-  const [selectedProject, setSelectedProject] = useState(null)
-  const [displayedText, setDisplayedText] = useState('')
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [isTyping, setIsTyping] = useState(true)
-  const [isPaused, setIsPaused] = useState(false)
-  const fullText = "Grace Foster"
+  const marqueeDesktop = useRef(null)
+  const marqueeMobile = useRef(null)
 
-  // Enhanced typing effect with backspace
+  // Never-stop marquee: uses Date.now() so position is correct even after tab switch
   useEffect(() => {
-    if (isPaused) {
-      const timeout = setTimeout(() => {
-        setIsPaused(false)
-      }, isTyping ? 2000 : 1000) // Pause 2s after typing, 1s after backspacing
-      
-      return () => clearTimeout(timeout)
+    const DURATION_DESKTOP = 28000
+    const DURATION_MOBILE = 18000
+    const startTime = Date.now()
+    let rafId
+
+    const tick = () => {
+      const elapsed = Date.now() - startTime
+      const desktop = ((elapsed % DURATION_DESKTOP) / DURATION_DESKTOP) * 100
+      const mobile  = ((elapsed % DURATION_MOBILE)  / DURATION_MOBILE)  * 100
+      if (marqueeDesktop.current) marqueeDesktop.current.setAttribute('startOffset', `-${desktop}%`)
+      if (marqueeMobile.current)  marqueeMobile.current.setAttribute('startOffset',  `-${mobile}%`)
+      rafId = requestAnimationFrame(tick)
     }
 
-    if (!isPaused) {
-      if (isTyping) {
-        // Typing forward
-        if (currentIndex < fullText.length) {
-          const timeout = setTimeout(() => {
-            setDisplayedText(prev => prev + fullText[currentIndex])
-            setCurrentIndex(prev => prev + 1)
-          }, 120) // Typing speed
-          
-          return () => clearTimeout(timeout)
-        } else {
-          // Finished typing, pause then start backspacing
-          setIsPaused(true)
-          setIsTyping(false)
-        }
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(rafId)
       } else {
-        // Backspacing
-        if (currentIndex > 0) {
-          const timeout = setTimeout(() => {
-            setDisplayedText(prev => prev.slice(0, -1))
-            setCurrentIndex(prev => prev - 1)
-          }, 80) // Backspace speed (slightly faster)
-          
-          return () => clearTimeout(timeout)
-        } else {
-          // Finished backspacing, pause then start typing again
-          setIsPaused(true)
-          setIsTyping(true)
-        }
+        rafId = requestAnimationFrame(tick)
       }
     }
-  }, [currentIndex, fullText, isTyping, isPaused])
-  
-  // Function for smooth scrolling with custom duration
-  const smoothScrollTo = (element, duration = 1500) => {
-    if (!element) return;
-    
-    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset - 40;
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-    
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const scrollY = easeInOutCubic(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, scrollY);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
+
+    rafId = requestAnimationFrame(tick)
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => {
+      cancelAnimationFrame(rafId)
+      document.removeEventListener('visibilitychange', handleVisibility)
     }
-    
-    // Easing function for smoother animation
-    function easeInOutCubic(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return c / 2 * t * t * t + b;
-      t -= 2;
-      return c / 2 * (t * t * t + 2) + b;
-    }
-    
-    requestAnimationFrame(animation);
-  };
-  
-  const socialLinks = [
-    { icon: FaGithub, url: 'https://github.com/gracefoster', label: 'GitHub' },
-    { icon: FaLinkedin, url: 'https://linkedin.com/in/gracefoster', label: 'LinkedIn' },
-    { icon: FaBehance, url: 'https://behance.net/gracefoster', label: 'Behance' },
-    { icon: FaEnvelope, url: 'mailto:gkfoster15@gmail.com', label: 'Email' }
-  ]
-  
-  const projects = [
-    {
-      id: 1,
-      title: "Commvault",
-      description: "Created various marketing Resources for Commvault including brochures, banners, and digital ads.",
-      longDescription: "Created various marketing materials for cross functional teams at Commvault including various Data sheets, infographics, whitepapers, and digital ads.",
-      image: "/images/Commvault.png",
-      additionalImages: ["/images/CVLT-Clumio_Records_Retention-_Requirements_Education_v1.1-1-1.pdf", "/images/CVLT-Establishing-Higher-Education-Minimum-Viability_Infographic_v1.2.pdf", "/images/59.-Cloud-Data-Management_Whitepaper_v1.2.pdf"],
-      category: "Web Development",
-      technologies: [
-        { name: "Adobe Indesign", icon: SiAdobeillustrator }, // Using illustrator as fallback
-        { name: "Adobe Illustrator", icon: SiAdobeillustrator },
-        { name: "Adobe Photoshop", icon: SiAdobephotoshop },
-      ],
-      features: [
-        "Infographics",
-        "Whitepapers",
-        "Data sheets",
-        "Digital ads",
-        "Print materials",
-        "Brand consistency"
-      ],
-      liveLink: "https://commvault.com",
-    },
-    {
-      id: 2,
-      title: "Brand Identity System",
-      description: "Complete brand identity package including logo design, color palette, and guidelines.",
-      longDescription: "A comprehensive brand identity system created for a modern wellness company. The project included logo design, typography selection, color palette development, and a complete brand guidelines document.",
-      image: "/images/BehanceBrandGuide_Willow-Word_FOSTER-01.png",
-      technologies: [
-        { name: "Figma", icon: SiFigma },
-        { name: "Illustrator", icon: SiAdobeillustrator },
-        { name: "Photoshop", icon: SiAdobephotoshop }
-      ],
-      features: [
-        "Logo design and variations",
-        "Typography system",
-        "Color palette",
-        "Brand guidelines document",
-        "Marketing collateral templates"
-      ],
-      liveLink: "https://behance.net/yourusername"
-    },
-    {
-      id: 3,
-      title: "Task Management Dashboard",
-      description: "A collaborative task management platform with real-time updates and team features.",
-      longDescription: "Built for remote teams, this platform offers real-time collaboration tools, task tracking, and project management features. It includes customizable workflows, time tracking, and detailed analytics.",
-      image: "/api/placeholder/1200/800",
-      technologies: [
-        { name: "React", icon: FaReact },
-        { name: "Node.js", icon: FaNode },
-        { name: "MongoDB", icon: SiMongodb }
-      ],
-      features: [
-        "Real-time collaboration",
-        "Custom workflow creation",
-        "Time tracking",
-        "Team management",
-        "Performance analytics"
-      ],
-      liveLink: "https://task-dashboard-demo.com",
-      githubLink: "https://github.com/gracefoster/task-dashboard"
-    },
-    {
-      id: 4,
-      title: "AI-Powered Data Analytics Platform",
-      description: "Enterprise-level data analytics platform with machine learning capabilities.",
-      longDescription: "An advanced analytics platform that leverages AI to provide insights from complex datasets. Features include automated reporting, predictive analytics, and customizable dashboards.",
-      image: "/api/placeholder/1200/800",
-      technologies: [
-        { name: "Python", icon: FaPython },
-        { name: "Django", icon: SiDjango },
-        { name: "PostgreSQL", icon: SiPostgresql }
-      ],
-      features: [
-        "Machine learning algorithms",
-        "Automated reporting",
-        "Custom dashboard creation",
-        "Data visualization tools",
-        "API integration"
-      ],
-      liveLink: "https://analytics-platform-demo.com",
-      githubLink: "https://github.com/gracefoster/analytics-platform"
-    },
-    {
-      id: 5,
-      title: "Sustainable Fashion Campaign",
-      description: "Digital marketing campaign for an eco-friendly fashion brand.",
-      longDescription: "A comprehensive digital marketing campaign highlighting sustainable fashion practices. Including social media assets, web banners, and email marketing templates.",
-      image: "/api/placeholder/1200/800",
-      technologies: [
-        { name: "Photoshop", icon: SiAdobephotoshop },
-        { name: "Illustrator", icon: SiAdobeillustrator }
-      ],
-      features: [
-        "Social media kit",
-        "Email templates",
-        "Web banners",
-        "Print materials",
-        "Brand guidelines"
-      ],
-      liveLink: "https://behance.net/yourusername/sustainable-fashion"
-    },
-    {
-      id: 6,
-      title: "Restaurant Ordering System",
-      description: "Full-stack application for managing restaurant orders and inventory.",
-      longDescription: "A comprehensive system for restaurants to manage orders, inventory, and customer relationships. Includes both customer-facing and administrative interfaces.",
-      image: "/api/placeholder/1200/800",
-      technologies: [
-        { name: "React", icon: FaReact },
-        { name: "Node.js", icon: FaNode },
-        { name: "Docker", icon: FaDocker }
-      ],
-      features: [
-        "Online ordering system",
-        "Inventory management",
-        "Table reservations",
-        "Customer profiles",
-        "Analytics dashboard"
-      ],
-      liveLink: "https://restaurant-system-demo.com",
-      githubLink: "https://github.com/gracefoster/restaurant-system"
-    }
-  ]
+  }, [])
+
+  const [activeCategory, setActiveCategory] = useState('All')
+  const categories = ['All', 'Graphic Design', 'Web Design']
+  const filtered = activeCategory === 'All' ? projects : projects.filter(p => p.category === activeCategory)
 
   return (
-    <div className="flex flex-col items-center min-h-screen"
-         style={{ fontFamily: 'var(--font-body)' }}>
-      {/* Hero Section */}
-      <div className="min-h-[80vh] flex items-center justify-center w-full">
-        <div className="max-w-4xl mx-auto px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="text-center space-y-12"
+    <div className="flex flex-col">
+
+      {/* ── Hero ─────────────────────────────────────────────────── */}
+      <section>
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-14 sm:py-20 md:py-28">
+
+          {/* Large editorial intro paragraph */}
+          <motion.p
+            variants={fadeUp} initial="hidden" animate="visible" custom={0}
+            className="text-xl sm:text-2xl md:text-[2rem] lg:text-[2.5rem] text-ink max-w-5xl"
+            style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: '1.3' }}
           >
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl text-gray-900 min-h-[1.2em]" 
-                  style={{ 
-                    fontFamily: 'var(--font-heading)', 
-                    fontWeight: 500,
-                    lineHeight: 1.1,
-                    letterSpacing: '-0.02em'
-                  }}>
-                {displayedText}
-                <span className="cursor-blink">|</span>
-              </h1>
-              
-              <div className="h-px w-12 bg-gray-400 mx-auto"></div>
-              
-              <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed relative glowing-text-container"
-                 style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}>
-                <span className="glowing-text">
-                  Versatile and detail-oriented Graphic & Web Designer
-                  creating thoughtful digital experiences through design.
-                </span>
-              </p>
-            </div>
+            Hello There! I'm Grace Foster, a creative graphic designer specializing in{' '}
+            <em className="font-semibold text-accent">Web design</em>,{' '}
+            <em className="font-semibold text-accent">Brand design</em>, and{' '}
+            <em className="font-semibold text-accent">Print design</em>.
+          </motion.p>
 
-            <p className="text-lg text-gray-500 max-w-lg mx-auto leading-relaxed"
-               style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}>
-             
-            </p>
+          <motion.p
+            variants={fadeUp} initial="hidden" animate="visible" custom={1}
+            className="mt-6 sm:mt-8 text-ink leading-relaxed max-w-4xl"
+            style={{ fontSize: '18px', fontFamily: 'var(--font-heading)', fontWeight: 400 }}
+          >
+            I help brands tell their stories through cohesive visuals and user-friendly web
+            experiences that look great and work beautifully.
+          </motion.p>
 
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex justify-center space-x-8"
-            >
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="visible" custom={2}
+            className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 sm:gap-5"
+          >
+            <Link to="/contact" className="btn-primary">Get in touch</Link>
+            <div className="flex items-center gap-4">
               {socialLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gray-800 transition-colors duration-300"
+                  className="text-muted hover:text-ink transition-colors duration-200"
                   aria-label={link.label}
                 >
-                  <link.icon className="w-8 h-8" />
+                  <link.icon className="w-5 h-5" />
                 </a>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
         </div>
+      </section>
+
+      {/* ── Wave with curved scrolling text ──────────────────────── */}
+      <div className="w-full overflow-hidden leading-[0] -mb-px mt-6">
+        {/* Mobile */}
+        <svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg" className="w-full block sm:hidden">
+          <defs>
+            <path id="marqueeCurveMobile" d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92" />
+          </defs>
+          <path d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92 L600,160 L0,160 Z" fill="#e8dfd0" />
+          <text fill="#4e6645" fontSize="28" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
+            <textPath ref={marqueeMobile} href="#marqueeCurveMobile" startOffset="0%">
+              {'Dream Big ✿ Work Confidently ✿   '.repeat(20)}
+            </textPath>
+          </text>
+        </svg>
+        {/* Desktop */}
+        <svg viewBox="0 0 1440 160" xmlns="http://www.w3.org/2000/svg" className="w-full hidden sm:block">
+          <defs>
+            <path id="marqueeCurve" d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92" />
+          </defs>
+          <path d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92 L1440,160 L0,160 Z" fill="#e8dfd0" />
+          <text fill="#4e6645" fontSize="22" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
+            <textPath ref={marqueeDesktop} href="#marqueeCurve" startOffset="0%">
+              {'Dream Big ✿ Work Confidently ✿   '.repeat(30)}
+            </textPath>
+          </text>
+        </svg>
       </div>
-      
-      {/* Portfolio Section */}
-      <motion.div
-        id="portfolio"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="w-full max-w-6xl mx-auto pt-4 pb-20 px-8"
-      >
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
-          {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group cursor-pointer portfolio-glow rounded-lg"
-                onClick={() => setSelectedProject(project)}
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
+
+      <section className="w-full bg-soft">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-20 md:py-24">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 sm:mb-14 md:mb-16"
+        >
+          <h3 className="label-text" style={{ fontSize: '18px' }}>View My Work</h3>
+          <div className="flex items-center gap-1">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-1.5 text-xs tracking-wide transition-colors duration-200 border ${
+                  activeCategory === cat
+                    ? 'border-accent bg-accent text-[#fbf3e7]'
+                    : 'border-soft text-muted hover:border-accent hover:text-accent'
+                }`}
               >
-                <div className="space-y-6 p-4 rounded-lg">
-                  <div className="relative overflow-hidden bg-gray-50 rounded-lg">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full aspect-[4/3] object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                    />
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <h3 className="text-xl md:text-2xl text-gray-900 group-hover:text-gray-600 transition-colors duration-300"
-                        style={{ 
-                          fontFamily: 'var(--font-heading)', 
-                          fontWeight: 500,
-                          letterSpacing: '-0.01em'
-                        }}>
+                {cat}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-12 sm:gap-y-16">
+          {filtered.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 32 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.65, delay: (index % 2) * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link to={project.path || `/projects/${project.id}`} className="group block">
+                <div className="overflow-hidden bg-card mb-4 sm:mb-5">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full aspect-[4/3] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3
+                      className="text-ink group-hover:text-muted transition-colors duration-200 mb-1"
+                      style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '18px', letterSpacing: '-0.01em' }}
+                    >
                       {project.title}
                     </h3>
-                    <p className="text-gray-500 leading-relaxed"
-                       style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}>
-                      {project.description}
-                    </p>
+                    <p className="text-muted leading-relaxed" style={{ fontSize: '18px' }}>{project.description}</p>
                   </div>
+                  <span className="text-muted text-xl ml-4 mt-0.5 group-hover:translate-x-1 transition-transform duration-200 shrink-0">→</span>
                 </div>
-              </motion.div>
-            ))}
+              </Link>
+            </motion.div>
+          ))}
         </div>
+      </div>
+      </section>
 
-        <AnimatePresence>
-          {selectedProject && (
-            <ProjectModal
-              project={selectedProject}
-              onClose={() => setSelectedProject(null)}
-            />
-          )}
-        </AnimatePresence>
-      </motion.div>
     </div>
   )
 }

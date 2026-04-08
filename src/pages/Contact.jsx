@@ -1,203 +1,172 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt, FaTwitter } from 'react-icons/fa'
+import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
     try {
       const form = e.target
-      const formData = new FormData(form)
-      
+      const data = new FormData(form)
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
+        body: new URLSearchParams(data).toString(),
       })
-
       if (response.ok) {
-        alert('Thank you for your message! I\'ll get back to you soon.')
+        setSubmitted(true)
         setFormData({ name: '', email: '', message: '' })
-      } else {
-        alert('There was an error sending your message. Please try again.')
       }
-    } catch (error) {
-      alert('There was an error sending your message. Please try again.')
+    } catch {
+      // silent fail — show error inline if desired
     } finally {
       setIsSubmitting(false)
     }
   }
 
   const contactLinks = [
-    {
-      icon: FaEnvelope,
-      label: "Email",
-      href: "mailto:gkfoster15@gmail.com",
-      text: "gkfoster15@gmail.com"
-    },
-    {
-      icon: FaLinkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/gracefoster",
-      text: "linkedin.com/in/gracefoster"
-    },
-    {
-      icon: FaGithub,
-      label: "GitHub",
-      href: "https://github.com/gracefoster",
-      text: "github.com/gracefoster"
-    }
-  ]
-
-  const socialLinks = [
-    {
-      icon: FaLinkedin,
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/gracefoster",
-      color: "#0077B5"
-    },
-    {
-      icon: FaGithub,
-      name: "GitHub",
-      url: "https://github.com/gracefoster",
-      color: "#333"
-    },
-    {
-      icon: FaTwitter,
-      name: "Twitter",
-      url: "https://twitter.com/gracefoster",
-      color: "#1DA1F2"
-    }
+    { icon: FaEnvelope, label: 'Email', href: 'mailto:gkfoster15@gmail.com', text: 'gkfoster15@gmail.com' },
+    { icon: FaLinkedin, label: 'LinkedIn', href: 'https://linkedin.com/in/gracefoster', text: 'linkedin.com/in/gracefoster' },
+    { icon: FaGithub, label: 'GitHub', href: 'https://github.com/gracefoster', text: 'github.com/gracefoster' },
   ]
 
   return (
-    <div className="pt-24 pb-8 px-8">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-6"
-        >
-          <h1 className="text-3xl mb-6" style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}>Get in Touch</h1>
-          <p className="text-gray-600 max-w-lg mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you. 
-            Send me a message and I'll get back to you soon.
-          </p>
-        </motion.div>
+    <div className="min-h-screen">
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-3 relative"
+      {/* ── Page Header ─────────────────────────────────────────── */}
+      <div className="border-b border-soft">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
+            className="label-text mb-6"
           >
-            {/* Light grey curved background with opacity */}
-            <div className="absolute inset-0 bg-gray-200/60 rounded-2xl -z-10"></div>
-            
-            <form 
-              name="contact" 
-              method="POST" 
-              data-netlify="true" 
-              netlify-honeypot="bot-field"
-              onSubmit={handleSubmit} 
-              className="space-y-6 p-6 sm:p-8"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-              <div hidden>
-                <input name="bot-field" />
+            Contact
+          </motion.p>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.08 }}
+            className="heading-lg text-ink"
+            style={{ fontFamily: 'var(--font-heading)', fontWeight: 400 }}
+          >
+            Let's work together
+          </motion.h1>
+        </div>
+      </div>
+
+      {/* ── Main Content ─────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-10 md:gap-24">
+
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: 0.15 }}
+          >
+            {submitted ? (
+              <div className="py-16">
+                <p className="text-lg text-ink mb-2" style={{ fontFamily: 'var(--font-heading)', fontWeight: 400 }}>
+                  Thank you — message received.
+                </p>
+                <p className="text-muted" style={{ fontSize: '16px' }}>I'll be in touch soon.</p>
               </div>
-              <div>
-                <label htmlFor="name" className="block text-sm text-gray-400 mb-2">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/90 border border-gray-100 focus:border-gray-300 focus:ring-0 rounded-md shadow-sm transition-colors"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm text-gray-400 mb-2">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/90 border border-gray-100 focus:border-gray-300 focus:ring-0 rounded-md shadow-sm transition-colors"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm text-gray-400 mb-2">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-white/90 border border-gray-100 focus:border-gray-300 focus:ring-0 rounded-md shadow-sm transition-colors"
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white bg-black hover:bg-gray-800 transition-colors disabled:opacity-50 rounded-md shadow-md"
+            ) : (
+              <form
+                name="contact"
+                method="POST"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={handleSubmit}
+                className="space-y-7 bg-soft rounded-lg p-8"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
+                <input type="hidden" name="form-name" value="contact" />
+                <div hidden><input name="bot-field" /></div>
+
+                <div>
+                  <label htmlFor="name" className="block text-xs text-muted mb-2 uppercase tracking-widest">Name</label>
+                  <input
+                    type="text" id="name" name="name"
+                    value={formData.name} onChange={handleChange}
+                    required
+                    className="form-field"
+                    placeholder="Your name"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-xs text-muted mb-2 uppercase tracking-widest">Email</label>
+                  <input
+                    type="email" id="email" name="email"
+                    value={formData.email} onChange={handleChange}
+                    required
+                    className="form-field"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-xs text-muted mb-2 uppercase tracking-widest">Message</label>
+                  <textarea
+                    id="message" name="message"
+                    value={formData.message} onChange={handleChange}
+                    required rows={6}
+                    className="form-field resize-none"
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-primary disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Sending…' : 'Send Message'}
+                </button>
+              </form>
+            )}
           </motion.div>
 
           {/* Contact Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="md:col-span-2 space-y-6 px-2 md:px-6 py-4"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.65, delay: 0.3 }}
+            className="flex flex-col justify-start gap-8 pt-2"
           >
-            {contactLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center space-x-4 text-gray-600 hover:text-black transition-colors"
-              >
-                <link.icon className="w-5 h-5" />
-                <span className="text-sm">{link.text}</span>
-              </a>
-            ))}
+            <div>
+              <p className="label-text mb-6 text-ink" style={{ fontSize: '16px' }}>Reach me directly</p>
+              <div className="space-y-5">
+                {contactLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-muted hover:text-ink transition-colors duration-200"
+                  >
+                    <link.icon className="w-4 h-4 shrink-0" />
+                    <span style={{ fontSize: '16px' }}>{link.text}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-t border-soft pt-8">
+                <p className="text-ink leading-relaxed" style={{ fontSize: '16px' }}>
+                Available for freelance, contract, and full-time opportunities
+                in graphic design and front-end development.
+              </p>
+            </div>
           </motion.div>
+
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Contact;
+export default Contact

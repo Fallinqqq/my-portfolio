@@ -2,49 +2,53 @@
  * Main App Component - Modern Portfolio for Grace Foster
  */
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { AnimatePresence } from 'framer-motion'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import ProjectDetail from './pages/ProjectDetail'
+import Commvault from './pages/projects/Commvault'
+import StevenFrancis from './pages/projects/StevenFrancis'
+import UniversityOfLynchburg from './pages/projects/UniversityOfLynchburg'
+import GregoryConsulting from './pages/projects/GregoryConsulting'
+import WillowAndWord from './pages/projects/WillowAndWord'
+import HavensHouse from './pages/projects/HavensHouse'
+import StevenFrancisSocials from './pages/projects/StevenFrancisSocials'
 import { useEffect } from 'react'
 
-function App() {
-  // Scroll to top when routes change
+function ScrollToTop() {
+  const { pathname } = useLocation()
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
   
+function App() {
   return (
     <Router>
-      <div className="min-h-screen w-full bg-[#fefcff] text-text-primary overflow-x-hidden relative flex flex-col">
-        {/* Dreamy Sky Pink Glow Background */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 30% 70%, rgba(173, 216, 230, 0.35), transparent 60%),
-              radial-gradient(circle at 70% 30%, rgba(255, 182, 193, 0.4), transparent 60%)`,
-          }}
-        />
-        
-        {/* Navigation - Sticky header with modern glassmorphism effect */}
+      <ScrollToTop />
+      <div className="min-h-screen w-full bg-surface text-ink overflow-x-hidden flex flex-col">
         <Navbar />
-        
-        {/* Main content area with animated page transitions */}
-        <main className="pt-16 w-full flex justify-center flex-grow relative z-10">
-          <div className="flex flex-col w-full max-w-full">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </div>
+        <main className="pt-[130px] sm:pt-[150px] w-full flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* Individual project pages */}
+            <Route path="/projects/commvault" element={<Commvault />} />
+            <Route path="/projects/steven-francis-fine-art" element={<StevenFrancis />} />
+            <Route path="/projects/university-of-lynchburg" element={<UniversityOfLynchburg />} />
+            <Route path="/projects/gregory-consulting" element={<GregoryConsulting />} />
+            <Route path="/projects/willow-and-word" element={<WillowAndWord />} />
+            <Route path="/projects/havens-house" element={<HavensHouse />} />
+            <Route path="/projects/steven-francis-socials-print" element={<StevenFrancisSocials />} />
+            {/* Fallback: old numeric ID links still work */}
+            <Route path="/projects/:id" element={<ProjectDetail />} />
+          </Routes>
         </main>
-        
-        {/* Footer - Consistent across all pages */}
         <Footer />
       </div>
     </Router>

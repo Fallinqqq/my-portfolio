@@ -1,162 +1,226 @@
 import { motion } from 'framer-motion'
 import graceProfile from '../assets/grace-profile.jpg'
-import { FaLinkedin, FaGithub, FaEnvelope, FaDownload, FaCode, FaBriefcase } from 'react-icons/fa'
+import { FaLinkedin, FaGithub, FaEnvelope, FaDownload } from 'react-icons/fa'
+
+const fadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] },
+})
+
+const designSkills = ['Graphic Design', 'Web Design', 'Brand Design', 'Social Media Design', 'Print Design', 'Marketing Collateral Design']
+const devSkills = ['Adobe Illustrator', 'Adobe InDesign', 'Adobe Photoshop', 'Adobe After Effects', 'Adobe Lightroom', 'Affinity', 'Figma', 'Canva']
+const devSkills2 = ['Wordpress (Elementor, Avada, Woo-Commerce)', 'Squarespace', 'Framer', 'HTML', 'CSS', 'JS']
 
 const About = () => {
   return (
-    <div className="pt-24 pb-8 px-8">
-      <div className="max-w-3xl mx-auto">
-        {/* Profile Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <div className="mb-8 relative inline-block">
-            <div className="w-48 h-48 mx-auto overflow-hidden rounded-full border-4 border-gray-200 shadow-lg">
-              <img 
-                src={graceProfile} 
+    <div className="min-h-screen">
+
+      {/* ── Page Header ─────────────────────────────────────────── */}
+      <div className="border-b border-soft">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20">
+          <motion.p {...fadeUp(0)} className="label-text mb-5">About</motion.p>
+          <motion.h1
+            {...fadeUp(0.1)}
+            className="text-3xl sm:text-4xl md:text-5xl text-ink"
+            style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: 1.15 }}
+          >
+            Graphic &amp; Web Design<br />
+            <em>based in Virginia</em>
+          </motion.h1>
+        </div>
+      </div>
+
+      {/* ── Main Content ─────────────────────────────────────────── */}
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-24">
+
+          {/* Left — Photo */}
+          <motion.div {...fadeUp(0.15)} className="flex flex-col gap-5">
+            <div className="overflow-hidden bg-[#EEECEA] aspect-[3/4] max-w-xs md:max-w-none">
+              <img
+                src={graceProfile}
                 alt="Grace Foster"
-                className="w-full h-full object-cover transition-all duration-500 hover:scale-110"
-                onError={(e) => {
-                  e.target.src = '/images/grace-profile.jpg';
-                }}
+                className="w-full h-full object-cover"
+                onError={(e) => { e.target.src = '/images/grace-profile.jpg' }}
               />
             </div>
-          </div>
-
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-5xl mb-6"
-            style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}
-          >
-            About Me
-          </motion.h1>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-lg text-gray-600 mb-8 leading-relaxed"
-          >
-            I'm a passionate Graphic Designer and Front-End Developer with a keen eye for detail and a love for creating beautiful, functional designs. I specialize in bringing creative ideas to life through clean code and intuitive user experiences.
-          </motion.p>
-
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex justify-center space-x-6"
-          >
-            <a 
-              href="https://linkedin.com/in/yourusername" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-blue-500 transition-colors"
-            >
-              <FaLinkedin size={24} />
-            </a>
-            <a 
-              href="https://github.com/yourusername" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              <FaGithub size={24} />
-            </a>
-            <a 
-              href="mailto:gkfoster15@gmail.com" 
-              className="text-gray-600 hover:text-red-500 transition-colors"
-            >
-              <FaEnvelope size={24} />
-            </a>
+            <div className="flex items-center gap-4">
+              <a href="https://linkedin.com/in/gracefoster" target="_blank" rel="noopener noreferrer"
+                 className="text-muted hover:text-ink transition-colors duration-200" aria-label="LinkedIn">
+                <FaLinkedin size={18} />
+              </a>
+              <a href="https://github.com/gracefoster" target="_blank" rel="noopener noreferrer"
+                 className="text-muted hover:text-ink transition-colors duration-200" aria-label="GitHub">
+                <FaGithub size={18} />
+              </a>
+              <a href="mailto:gkfoster15@gmail.com"
+                 className="text-muted hover:text-ink transition-colors duration-200" aria-label="Email">
+                <FaEnvelope size={18} />
+              </a>
+            </div>
           </motion.div>
-        </motion.div>
-        
-        {/* Professional Summary */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="mb-4"
-        >
-          <h2 className="text-2xl mb-6 text-center" style={{ fontFamily: '"Helvetica", "Arial", sans-serif', fontWeight: 600, fontStyle: 'normal' }}>Professional Summary</h2>
-          
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Skills Section */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4 flex items-center">
-                <FaCode className="mr-2 text-gray-700" />
-                Skills
-              </h3>
-              <div className="space-y-3">
-                <p className="font-medium">Design</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Adobe Creative Suite</span>
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Photoshop</span>
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Illustrator</span>
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">InDesign</span>
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Figma</span>
-                </div>
-              
-                <p className="font-medium mt-4">Development</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">HTML5 & CSS3</span>
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">JavaScript</span>
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">React</span>
-                  <span className="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-sm">Responsive Design</span>
-                </div>
-              </div>
-            </div>
-            
-            {/* Experience Highlight */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4 flex items-center">
-                <FaBriefcase className="mr-2 text-gray-700" />
-                Experience
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <p className="font-medium">Graphic Designer</p>
-                  <p className="text-gray-600 text-sm">2020 - Present</p>
-                  <p className="text-sm mt-1">Creating compelling visual designs for digital and print media</p>
-                </div>
-                <div>
-                  <p className="font-medium">Web Designer</p>
-                  <p className="text-gray-600 text-sm">2018 - 2020</p>
-                  <p className="text-sm mt-1">Designed and developed responsive websites</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <div className="text-center mt-8">
-            <p className="text-gray-600 mb-4">
-              For more details about my experience, education, and skills, please download my resume.
-            </p>
-            
-            {/* Download Resume Button */}
+
+          {/* Right — Bio + Skills + Experience */}
+          <div className="flex flex-col gap-14">
+
+            {/* Bio */}
+            <motion.div {...fadeUp(0.2)}>
+              <p className="text-ink leading-[1.9] mb-5" style={{ fontSize: '18px' }}>
+                I'm a Graphic & Web Designer with a keen eye for detail and a drive to create
+                purposeful, beautiful work. My practice spans brand identity, print, digital campaigns, and
+                interactive web experiences in CMS. With every project rooted in clear thinking and strong craft.
+              </p>
+              <p className="text-muted leading-[1.9]" style={{ fontSize: '18px' }}>
+                I've worked across marketing, editorial, and product contexts and am comfortable with both the strategy
+                conversation and the pixel-level execution. I care about work that communicates clearly and endures.
+              </p>
+            </motion.div>
+
+            {/* Skills */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <a 
-                href="/files/GraceFoster-Resume.pdf" 
-                download="GraceFoster-Resume.pdf"
-                className="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg transition-colors"
+              <p className="mb-8 text-ink font-semibold" style={{ fontSize: '20px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Capabilities</p>
+
+              {/* Mobile: stacked sections, no columns */}
+              <div className="sm:hidden flex flex-col gap-8">
+                <div>
+                  <p className="font-medium text-ink mb-4" style={{ fontSize: '16px' }}>Skills</p>
+                  <ul className="space-y-2">
+                    {designSkills.map((s) => (
+                      <li key={s} className="text-muted flex items-center gap-2" style={{ fontSize: '16px' }}>
+                        <span className="text-accent shrink-0" style={{ fontSize: '12px', lineHeight: 1 }}>✿</span>
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-medium text-ink mb-4" style={{ fontSize: '16px' }}>Tools</p>
+                  <ul className="space-y-2">
+                    {[...devSkills, ...devSkills2].map((s) => (
+                      <li key={s} className="text-muted flex items-center gap-2" style={{ fontSize: '16px' }}>
+                        <span className="text-accent shrink-0" style={{ fontSize: '12px', lineHeight: 1 }}>✿</span>
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              {/* Desktop: 3 columns */}
+              <div className="hidden sm:grid sm:grid-cols-3 gap-10">
+                <div>
+                  <p className="font-medium text-ink mb-4" style={{ fontSize: '16px' }}>Skills</p>
+                  <ul className="space-y-2">
+                    {designSkills.map((s) => (
+                      <li key={s} className="text-muted flex items-center gap-2" style={{ fontSize: '16px' }}>
+                        <span className="text-accent shrink-0" style={{ fontSize: '12px', lineHeight: 1 }}>✿</span>
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-medium text-ink mb-4" style={{ fontSize: '16px' }}>Tools</p>
+                  <ul className="space-y-2">
+                    {devSkills.map((s) => (
+                      <li key={s} className="text-muted flex items-center gap-2" style={{ fontSize: '16px' }}>
+                        <span className="text-accent shrink-0" style={{ fontSize: '12px', lineHeight: 1 }}>✿</span>
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <p className="font-medium text-ink mb-4" style={{ fontSize: '16px' }}>&nbsp;</p>
+                  <ul className="space-y-2">
+                    {devSkills2.map((s) => (
+                      <li key={s} className="text-muted flex items-center gap-2" style={{ fontSize: '16px' }}>
+                        <span className="text-accent shrink-0" style={{ fontSize: '12px', lineHeight: 1 }}>✿</span>
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Experience */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              <p className="mb-8 text-ink font-semibold" style={{ fontSize: '20px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Experience</p>
+              <div className="space-y-8 border-l border-soft pl-6">
+                {[
+                  {
+                    role: 'Gallery Graphic & Web Design Intern',
+                    company: 'Steven Francis Fine Art — Lynchburg, VA',
+                    period: 'Jan 2026 — Present',
+                    desc: 'Edit, create, and update the gallery website via Squarespace. Implement SEO best practices to improve search rankings. Maintain brand consistency across digital and social platforms using Adobe Photoshop and Canva. Design and produce client and gallery exhibition booklets using Mixbook.',
+                  },
+                  {
+                    role: 'Digital Media Assistant',
+                    company: 'University of Lynchburg — Lynchburg, VA',
+                    period: 'Aug 2025 — Present',
+                    desc: 'Design and maintain university webpages using WordPress and Elementor. Published the "Campus Traditions" and "Student Spaces" pages. Uphold brand standards across all webpages and curate events to the campus-wide digital calendar.',
+                  },
+                  {
+                    role: 'Graphic Design Intern',
+                    company: 'Commvault — Lynchburg, VA',
+                    period: 'Jun 2025 — Aug 2025',
+                    desc: 'Collaborated with an in-house design team to produce marketing collateral including infographics, datasheets, whitepapers, web assets, and e-books for multilingual campaigns. Optimized workflows using Adobe Creative Suite, Smartsheet, and Optimizely.',
+                  },
+                  {
+                    role: 'Web Designer',
+                    company: 'Veye Marketing — Lynchburg, VA',
+                    period: 'May 2024 — Dec 2024',
+                    desc: 'Designed responsive, user-focused websites using WordPress with the Avada theme. Created wireframes and interactive prototypes in Figma. Integrated visual and interactive elements for cohesive, brand-consistent web experiences.',
+                  },
+                  {
+                    role: 'Web Design Intern',
+                    company: 'Web Design Intern',
+                    period: 'Aug 2023 — May 2024',
+                    desc: 'Assisted in designing user-friendly WordPress websites, contributing to front-end layouts and content structure. Created wireframes and prototypes in Figma to plan user flows and page layouts.',
+                  },
+                ].map((item) => (
+                  <div key={item.role} className="relative">
+                    <span className="absolute text-accent" style={{ left: 'calc(-1.5rem)', top: '0px', transform: 'translateX(-50%)', fontSize: '16px', lineHeight: 1 }}>✿</span>
+                    <p className="font-medium text-ink" style={{ fontSize: '16px' }}>{item.role}</p>
+                    <p className="text-accent" style={{ fontSize: '16px' }}>{item.company}</p>
+                    <p className="text-muted mt-0.5 mb-2" style={{ fontSize: '16px' }}>{item.period}</p>
+                    <p className="text-muted leading-relaxed" style={{ fontSize: '16px' }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Resume CTA */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <a
+                href="/PDF/Resume-Grace_Foster-2026-Updated.pdf"
+                download="Resume-Grace_Foster-2026-Updated.pdf"
+                className="btn-outline inline-flex items-center gap-2"
               >
-                <FaDownload className="mr-2" />
+                <FaDownload size={13} />
                 Download Resume
               </a>
             </motion.div>
+
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   )

@@ -1,198 +1,129 @@
-/* Import Google Fonts - Must be first before all other CSS */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;600;700&display=swap');
 
 /* Import Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Custom CSS Variables for consistent theming */
+/* CSS Variables */
 :root {
-  --color-primary: #000000;       /* pure black */
-  --color-text: #1a1a1a;         /* soft black for text */
-  --color-text-secondary: #6b6b6b; /* muted gray for secondary text */
-  --color-gray: #666666;         /* medium gray */
-  --color-gray-light: #f8f8f8;   /* very light gray background */
-  --color-background: #ffffff;    /* pure white */
-  --color-hover: #f0f0f0;        /* subtle hover state */
-  --color-border: #e5e5e5;       /* light border color */
-  --font-heading: "Playfair Display", "Georgia", serif; /* Elegant serif for headings */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Clean sans-serif for body */
+  --color-surface: #fbf3e7;      /* warm cream bg */
+  --color-ink: #603913;          /* warm brown text */
+  --color-muted: #4e6645;        /* darker sage green */
+  --color-soft: #e8dfd0;         /* warm cream border */
+  --color-card: #f0e9da;         /* project card bg */
+  --color-accent: #4e6645;       /* darker sage green accent */
+  --color-accent-dark: #603913;  /* warm brown accent */
+  --font-heading: "Work Sans", "Poppins", serif;
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Base styles */
+/* Base */
 html {
   scroll-behavior: smooth;
-  /* Slower scroll behavior */
-  --scroll-behavior: smooth;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee 18s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 body {
   font-family: var(--font-body);
-  background: white;
-  color: var(--color-text);
+  background: var(--color-surface);
+  color: var(--color-ink);
   min-height: 100vh;
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Aurora background with animation */
-.bg-animation {
-  animation: animateGradient 25s ease infinite;
-  background-size: 300% 300% !important;
-  background: linear-gradient(
-    45deg,
-    #667eea 0%,
-    #764ba2 25%,
-    #f093fb 50%,
-    #f5576c 75%,
-    #4facfe 100%
-  );
+p {
+  font-size: 18px;
+  line-height: 1.8;
 }
 
-.bg-aurora {
-  background: linear-gradient(
-    135deg,
-    rgba(102, 126, 234, 0.1) 0%,
-    rgba(118, 75, 162, 0.1) 25%,
-    rgba(240, 147, 251, 0.1) 50%,
-    rgba(245, 87, 108, 0.1) 75%,
-    rgba(79, 172, 254, 0.1) 100%
-  );
-}
-
-@keyframes animateGradient {
-  0% {
-    background-position: 0% 25%;
-  }
-  25% {
-    background-position: 50% 0%;
-  }
-  50% {
-    background-position: 100% 75%;
-  }
-  75% {
-    background-position: 50% 100%;
-  }
-  100% {
-    background-position: 0% 25%;
-  }
-}
-
-/* Custom component classes using Tailwind's @apply directive */
 @layer components {
-  /* Font styles */
-  .heading-1 {
-    @apply text-4xl md:text-5xl lg:text-6xl tracking-tight;
+  .heading-xl {
     font-family: var(--font-heading);
-    font-weight: 500;
+    @apply text-6xl md:text-7xl lg:text-8xl;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+  }
+
+  .heading-lg {
+    font-family: var(--font-heading);
+    @apply text-4xl md:text-5xl;
+    font-weight: 400;
     line-height: 1.1;
     letter-spacing: -0.02em;
   }
-  
-  .heading-2 {
-    @apply text-2xl md:text-3xl;
+
+  .heading-md {
     font-family: var(--font-heading);
-    font-weight: 500;
+    @apply text-2xl md:text-3xl;
+    font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.01em;
   }
-  
-  .body-text {
-    @apply leading-relaxed;
-    color: var(--color-text-secondary);
+
+  .label-text {
     font-family: var(--font-body);
-    font-weight: 400;
+    @apply text-xs uppercase tracking-widest text-muted;
+    font-weight: 500;
   }
 
-  /* Button styles */
   .btn-primary {
-    @apply px-6 py-3 text-sm font-light tracking-wide text-white bg-black hover:bg-gray-900 transition-colors;
-  }
-  
-  .btn-secondary {
-    @apply px-6 py-3 text-sm font-light tracking-wide text-black border border-black hover:bg-black hover:text-white transition-colors;
+    @apply inline-block px-7 py-3 text-sm font-medium tracking-wide transition-colors duration-200 rounded-none;
+    background-color: var(--color-accent);
+    color: #fbf3e7;
   }
 
-  /* Form styles */
-  .form-input {
-    @apply w-full px-4 py-3 bg-gray-50 border border-gray-100 focus:border-gray-200 focus:ring-0 transition-colors;
+  .btn-primary:hover {
+    background-color: var(--color-accent-dark);
   }
 
-  /* Layout containers */
-  .container-default {
-    @apply max-w-4xl mx-auto px-8;
+  .btn-outline {
+    @apply inline-block px-7 py-3 text-sm font-medium tracking-wide transition-colors duration-200 rounded-none;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
   }
-  
-  .container-large {
-    @apply max-w-7xl mx-auto px-8;
+
+  .btn-outline:hover {
+    background-color: var(--color-accent);
+    color: #fbf3e7;
+  }
+
+  .form-field {
+    @apply w-full px-4 py-3 text-sm focus:outline-none transition-colors duration-200;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-soft);
+    color: var(--color-ink);
+  }
+
+  .form-field::placeholder {
+    color: var(--color-muted);
+  }
+
+  .form-field:focus {
+    border-color: var(--color-ink);
   }
 }
 
-/* Transitions */
-.page-transition {
-  transition: all 0.3s ease-in-out;
-}
-
-/* Hover effects */
-.hover-lift {
-  transition: transform 0.3s ease-in-out;
-}
-
-.hover-lift:hover {
-  transform: translateY(-2px);
-}
-
-/* Image treatments */
-.img-grayscale {
-  filter: grayscale(100%);
-  transition: filter 0.5s ease-in-out;
-}
-
-.img-grayscale:hover {
-  filter: grayscale(0%);
-}
-
-/* Grid layouts */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.6s ease-in-out;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-.cursor-blink {
-  animation: blink 1s infinite;
-}
-
-/* Portfolio hover glow effect */
-.portfolio-glow {
-  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.portfolio-glow:hover {
-  box-shadow: 
-    0 0 20px rgba(255, 255, 255, 0.5),
-    0 0 40px rgba(255, 255, 255, 0.3),
-    0 0 60px rgba(255, 255, 255, 0.2);
-  transform: translateY(-4px);
-}
-
-/* Typography utilities */
-.text-balance {
-  text-wrap: balance;
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Responsive utilities */
