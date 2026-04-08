@@ -85,7 +85,7 @@ p {
   }
 
   .btn-primary {
-    @apply inline-block px-7 py-3 text-sm font-medium tracking-wide transition-colors duration-200 rounded-none;
+    @apply inline-block px-7 py-3 text-sm font-medium tracking-wide transition-colors duration-200 rounded-full;
     background-color: var(--color-accent);
     color: #fbf3e7;
   }
@@ -95,7 +95,7 @@ p {
   }
 
   .btn-outline {
-    @apply inline-block px-7 py-3 text-sm font-medium tracking-wide transition-colors duration-200 rounded-none;
+    @apply inline-block px-7 py-3 text-sm font-medium tracking-wide transition-colors duration-200 rounded-full;
     color: var(--color-accent);
     border: 1px solid var(--color-accent);
   }

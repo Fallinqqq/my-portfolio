@@ -12,32 +12,29 @@
 import ProjectLayout from '../../components/ProjectLayout'
 
 // ── INFO ─────────────────────────────────────────────
-const title       = 'Havens House'
+const title       = 'Book Cover Re-Designs'
 const role        = 'Graphic Designer'
 const year        = '2024'
-const description = 'Brand identity and marketing design for Havens House, a residential interior design studio. Focused on warm, elevated aesthetics that reflect the studio\'s approach to thoughtful living spaces.'
+const description = 'A series of book cover Re-Designs for classic novels including Little Women and The Enchanted April. Focused on elegant, illustrative aesthetics with refined typography and thoughtful use of colour and texture.'
 const tools       = ['Adobe Illustrator', 'Adobe Photoshop']
 const liveLink    = ''   // leave empty to hide button
 const githubLink  = ''   // leave empty to hide button
 
 // ── IMAGES ───────────────────────────────────────────
-// Drop images into public/images/ and update the paths here.
-// Tip: Use descriptive filenames, e.g. havens-house-01.png
 const images = [
-  // {
-  //   src: '/images/havens-house-01.png',
-  //   alt: 'Havens House – brand overview',
-  //   caption: '',
-  // },
+  {
+    src: '/images/Screenshot 2025-06-01 003342.png',
+    alt: 'Book Cover Re-Designs – Little Women & The Enchanted April',
+    caption: '',
+  },
 ]
 
 // ── DELIVERABLES (optional bullet list) ─────────────
 const deliverables = [
-  'Logo design',
-  'Brand guidelines',
-  'Print collateral',
-  'Social media templates',
-  'Signage design',
+  'Cover illustration',
+  'Typography design',
+  'Colour palette',
+  'Print-ready layout',
 ]
 // ─────────────────────────────────────────────────────
 

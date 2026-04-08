@@ -100,7 +100,7 @@ const Home = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted hover:text-ink transition-colors duration-200"
+                  className="text-ink hover:text-ink transition-colors duration-200"
                   aria-label={link.label}
                 >
                   <link.icon className="w-5 h-5" />
@@ -121,7 +121,9 @@ const Home = () => {
           <path d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92 L600,160 L0,160 Z" fill="#e8dfd0" />
           <text fill="#4e6645" fontSize="28" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
             <textPath ref={marqueeMobile} href="#marqueeCurveMobile" startOffset="0%">
-              {'Dream Big ✿ Work Confidently ✿   '.repeat(20)}
+              {Array.from({ length: 20 }).map((_, i) => (
+                <tspan key={i}>Dream Big <tspan fill="#603913">✿</tspan> Work Confidently <tspan fill="#603913">✿</tspan>{'   '}</tspan>
+              ))}
             </textPath>
           </text>
         </svg>
@@ -133,7 +135,9 @@ const Home = () => {
           <path d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92 L1440,160 L0,160 Z" fill="#e8dfd0" />
           <text fill="#4e6645" fontSize="22" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
             <textPath ref={marqueeDesktop} href="#marqueeCurve" startOffset="0%">
-              {'Dream Big ✿ Work Confidently ✿   '.repeat(30)}
+              {Array.from({ length: 30 }).map((_, i) => (
+                <tspan key={i}>Dream Big <tspan fill="#603913">✿</tspan> Work Confidently <tspan fill="#603913">✿</tspan>{'   '}</tspan>
+              ))}
             </textPath>
           </text>
         </svg>
@@ -148,17 +152,18 @@ const Home = () => {
           transition={{ duration: 0.6 }}
           className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 sm:mb-14 md:mb-16"
         >
-          <h3 className="label-text" style={{ fontSize: '18px' }}>View My Work</h3>
+          <h3 className="label-text font-bold text-ink" style={{ fontSize: '18px' }}>View My Work</h3>
           <div className="flex items-center gap-1">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-1.5 text-xs tracking-wide transition-colors duration-200 border ${
+                className={`px-4 py-1.5 tracking-wide transition-colors duration-200 border font-semibold rounded-full ${
                   activeCategory === cat
                     ? 'border-accent bg-accent text-[#fbf3e7]'
-                    : 'border-soft text-muted hover:border-accent hover:text-accent'
+                    : 'border-soft text-muted hover:border-ink hover:bg-ink hover:text-[#fbf3e7]'
                 }`}
+                style={{ fontSize: '15px' }}
               >
                 {cat}
               </button>

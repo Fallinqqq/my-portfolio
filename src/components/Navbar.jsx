@@ -33,7 +33,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-base font-medium transition-colors duration-200 ${
+                className={`text-base font-bold transition-colors duration-200 ${
                   location.pathname === item.path
                     ? 'text-accent underline underline-offset-4'
                     : 'text-ink hover:text-accent'
@@ -48,6 +48,7 @@ const Navbar = () => {
             <a
               href="/PDF/Resume-Grace_Foster-2026-Updated.pdf"
               download="Resume-Grace_Foster-2026-Updated.pdf"
+              className="rounded-full px-5 py-1.5 text-sm font-medium"
               style={{ fontFamily: 'var(--font-body)', backgroundColor: 'var(--color-accent)', color: '#fbf3e7' }}
             >
               Resume
@@ -89,7 +90,7 @@ const Navbar = () => {
                     key={item.name}
                     to={item.path}
                     onClick={() => setIsOpen(false)}
-                    className={`text-sm transition-colors duration-200 ${
+                    className={`text-sm font-bold transition-colors duration-200 ${
                       location.pathname === item.path ? 'text-ink' : 'text-muted hover:text-ink'
                     }`}
                   >
@@ -99,6 +100,7 @@ const Navbar = () => {
                 <a
                   href="/PDF/Resume-Grace_Foster-2026-Updated.pdf"
                   download="Resume-Grace_Foster-2026-Updated.pdf"
+                  className="rounded-full px-5 py-1.5 text-sm font-medium"
                   style={{ backgroundColor: 'var(--color-accent)', color: '#fbf3e7' }}
                 >
                   Resume
