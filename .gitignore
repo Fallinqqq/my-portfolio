@@ -637,3 +637,5 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,visualstudio,angular,node,react
 >>>>>>> 289aca4 (fix: old files and remove node modules with gitignore)
+
+.agents/
