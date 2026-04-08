@@ -29,29 +29,41 @@ const UniversityOfLynchburg = () => {
       title={title} role={role} year={year} description={description}
       tools={tools} liveLink={liveLink || undefined} githubLink={githubLink || undefined}
     >
-      {/* Horizontal scrolling strip */}
-      <div className="flex gap-4 overflow-x-auto pb-3" style={{ scrollSnapType: 'x mandatory' }}>
-        {images.map((img, i) => (
-          <button
-            key={i}
-            onClick={() => setSelected(i)}
-            className="group relative shrink-0 overflow-hidden bg-[#EEECEA] focus:outline-none"
-            style={{ width: '220px', height: '300px', scrollSnapAlign: 'start' }}
-          >
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end">
+      {/* Page Screenshots Grid */}
+      <div>
+        <p className="text-xs uppercase tracking-widest text-muted mb-4">Pages</p>
+        <div className="grid grid-cols-2 gap-5">
+          {images.map((img, i) => (
+            <button
+              key={i}
+              onClick={() => setSelected(i)}
+              className="group text-left focus:outline-none"
+            >
+              <div className="relative overflow-hidden bg-[#EEECEA] rounded-sm" style={{ aspectRatio: '3/4' }}>
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Browser-bar decoration */}
+                <div className="absolute top-0 inset-x-0 h-5 bg-[#e4ddd5]/90 flex items-center px-2 gap-1 pointer-events-none">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#c8c0b6]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#c8c0b6]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#c8c0b6]" />
+                </div>
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-200 flex items-center justify-center pointer-events-none">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white text-xs font-medium px-3 py-1 bg-black/40 rounded-full whitespace-nowrap">
+                    View full page ↗
+                  </span>
+                </div>
+              </div>
               {img.caption && (
-                <span className="w-full text-center text-xs text-white bg-black/40 py-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {img.caption}
-                </span>
+                <p className="mt-2 text-sm text-ink font-medium">{img.caption}</p>
               )}
-            </div>
-          </button>
-        ))}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Lightbox */}

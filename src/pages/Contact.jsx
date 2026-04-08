@@ -27,7 +27,7 @@ const Contact = () => {
         setFormData({ name: '', email: '', message: '' })
       }
     } catch {
-      // silent fail — show error inline if desired
+      // silent fail
     } finally {
       setIsSubmitting(false)
     }
