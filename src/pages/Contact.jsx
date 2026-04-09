@@ -48,6 +48,7 @@ const Contact = () => {
           <motion.p
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
             className="label-text mb-6"
+            style={{ fontSize: '18px' }}
           >
             Contact
           </motion.p>
@@ -154,7 +155,7 @@ const Contact = () => {
             className="flex flex-col justify-start gap-8 pt-2"
           >
             <div>
-              <p className="label-text mb-6 text-ink" style={{ fontSize: '16px' }}>Reach me directly</p>
+              <p className="label-text mb-6 text-ink" style={{ fontSize: '18px' }}>Reach me directly</p>
               <div className="space-y-5">
                 {contactLinks.map((link) => (
                   <a

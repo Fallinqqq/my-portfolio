@@ -19,7 +19,7 @@ const About = () => {
       {/* ── Page Header ─────────────────────────────────────────── */}
       <div className="border-b border-soft">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-12 sm:py-16 md:py-20">
-          <motion.p {...fadeUp(0)} className="label-text mb-5">About</motion.p>
+          <motion.p {...fadeUp(0)} className="label-text mb-5" style={{ fontSize: '18px' }}>About</motion.p>
           <motion.h1
             {...fadeUp(0.1)}
             className="text-3xl sm:text-4xl md:text-5xl text-ink"
