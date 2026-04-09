@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' })
+  const [formData, setFormData] = useState({ name: '', email: '', service: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -24,7 +24,7 @@ const Contact = () => {
       })
       if (response.ok) {
         setSubmitted(true)
-        setFormData({ name: '', email: '', message: '' })
+        setFormData({ name: '', email: '', service: '', message: '' })
       }
     } catch {
       // silent fail
@@ -108,6 +108,22 @@ const Contact = () => {
                     className="form-field"
                     placeholder="your@email.com"
                   />
+                </div>
+
+                <div>
+                  <label htmlFor="service" className="block text-xs text-muted mb-2 uppercase tracking-widest">Service</label>
+                  <select
+                    id="service" name="service"
+                    value={formData.service} onChange={handleChange}
+                    required
+                    className="form-field bg-surface"
+                  >
+                    <option value="" disabled>Select a service...</option>
+                    <option value="Brand Design">Brand Design</option>
+                    <option value="Web Design">Web Design</option>
+                    <option value="Print & Marketing">Print &amp; Marketing</option>
+                    <option value="Custom / Other">Custom / Other</option>
+                  </select>
                 </div>
 
                 <div>
