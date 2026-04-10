@@ -5,7 +5,8 @@ const role = 'Graphic Designer'
 const year = '2025'
 const description = 'Editorial redesigns for classic titles including Little Women and The Enchanted April, developed through concept exploration, typography studies, and final mockups.'
 const tools = ['Adobe Illustrator', 'Adobe Photoshop', 'Adobe InDesign']
-const liveLink = ''
+const liveLink = 'https://www.behance.net/gallery/223468167/Book-Cover-Redesign-Project'
+const githubLink = ''
 
 const images = [
   {
