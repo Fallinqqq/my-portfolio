@@ -5,7 +5,7 @@ const role = 'Graphic Designer'
 const year = '2025'
 const description = 'An educational typography poster created to explain key anatomical parts of letterforms through clear hierarchy and expressive layout.'
 const tools = ['Adobe Illustrator']
-const liveLink = 
+const liveLink = ''
 const githubLink = ''
 
 const images = [

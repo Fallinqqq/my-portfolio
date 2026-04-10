@@ -5,7 +5,7 @@ const role = 'Type Designer'
 const year = '2025'
 const description = 'An original display serif typeface designed to feel whimsical, elegant, and expressive for editorial and branding use.'
 const tools = ['Adobe Illustrator', 'Fontself']
-const liveLink = 
+const liveLink = ''
 const githubLink = ''
 
 const images = [

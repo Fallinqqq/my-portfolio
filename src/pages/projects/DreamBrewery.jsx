@@ -5,7 +5,7 @@ const role = 'Brand Designer'
 const year = '2024'
 const description = 'A dreamy brand identity system for a brewery and café concept, built around the Creative Archetype with logo, visual language, and mockups.'
 const tools = ['Adobe Illustrator', 'Adobe Photoshop', 'Adobe InDesign']
-const liveLink = 
+const liveLink = ''
 const githubLink = ''
 
 const images = [
