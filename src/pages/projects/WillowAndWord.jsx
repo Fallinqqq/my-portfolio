@@ -14,10 +14,10 @@ import ProjectLayout from '../../components/ProjectLayout'
 // ── INFO ─────────────────────────────────────────────
 const title       = 'Willow & Word'
 const role        = 'Brand Designer'
-const year        = '2024'
+const year        = '2025'
 const description = 'Full brand identity system for Willow & Word, a boutique stationery and lifestyle brand. Includes logo suite, brand guidelines, packaging, and marketing collateral.'
-const tools       = ['Figma', 'Adobe Illustrator', 'Adobe Photoshop']
-const liveLink    = 'https://www.behance.net/gallery/221747443/Willow-Word-Branding-Identity'
+const tools       = ['Adobe Illustrator', 'Adobe Photoshop']
+const liveLink    = 
 const githubLink  = ''   // leave empty to hide button
 
 // ── IMAGES ───────────────────────────────────────────

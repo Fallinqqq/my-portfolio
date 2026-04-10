@@ -3,10 +3,10 @@ import ProjectLayout from '../../components/ProjectLayout'
 
 const title       = 'University of Lynchburg'
 const role        = 'Web Designer'
-const year        = '2024'
-const description = 'Web design and digital marketing materials for the University of Lynchburg. Included page layouts, promotional graphics, and campaign assets.'
-const tools       = ['Figma', 'Adobe Illustrator', 'Adobe Photoshop']
-const liveLink    = ''
+const year        = 'August 2025- May 2026'
+const description = 'Web design for the University of Lynchburg. Included page layouts, promotional graphics, and campaign assets.'
+const tools       = ['Wordpress', 'Elementor']
+const liveLink    = 'https://www.lynchburg.edu'
 const githubLink  = ''
 
 const images = [
