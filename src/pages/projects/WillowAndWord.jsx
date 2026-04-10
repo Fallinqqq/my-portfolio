@@ -17,16 +17,16 @@ const role        = 'Brand Designer'
 const year        = '2024'
 const description = 'Full brand identity system for Willow & Word, a boutique stationery and lifestyle brand. Includes logo suite, brand guidelines, packaging, and marketing collateral.'
 const tools       = ['Figma', 'Adobe Illustrator', 'Adobe Photoshop']
-const liveLink    = ''   // leave empty to hide button
+const liveLink    = 'https://www.behance.net/gallery/221747443/Willow-Word-Branding-Identity'
 const githubLink  = ''   // leave empty to hide button
 
 // ── IMAGES ───────────────────────────────────────────
 // Drop images into public/images/ and update the paths here.
 const images = [
   {
-    src: '/images/BehanceBrandGuide_Willow-Word_FOSTER-01.png',
-    alt: 'Willow & Word – brand guide',
-    caption: '',
+    src: '/images/Screenshot 2025-05-06 225010.png',
+    alt: 'Willow & Word – brand identity preview',
+    caption: 'Brand identity presentation for Willow & Word.',
   },
   // Add more images like the block above ↑
   // {

@@ -3,27 +3,6 @@ import { SiMongodb, SiPostgresql, SiDjango, SiFigma, SiAdobe } from 'react-icons
 
 export const projects = [
   {
-    id: 9,
-    slug: 'steven-francis-socials-print',
-    path: '/projects/steven-francis-socials-print',
-    title: 'Steven Francis Fine Art Gallery Socials & Print',
-    description: 'Social media graphics and print materials for Steven Francis Fine Art Gallery.',
-    longDescription: 'Social media content and print collateral designed for Steven Francis Fine Art Gallery. Focused on elegant, art-forward visuals that reflect the gallery\'s aesthetic and attract collectors and art enthusiasts.',
-    image: '/images/SFFA_Primary_Logo.webp',
-    technologies: [
-      { name: 'Adobe Illustrator', icon: SiAdobe },
-      { name: 'Adobe Photoshop', icon: SiAdobe }
-    ],
-    features: [
-      'Social media templates',
-      'Print materials',
-      'Event flyers',
-      'Gallery signage'
-    ],
-    category: 'Graphic Design',
-    liveLink: ''
-  },
-  {
     id: 1,
     slug: 'commvault',
     path: '/projects/commvault',
@@ -145,29 +124,74 @@ export const projects = [
       'Typography system'
     ],
     category: 'Graphic Design',
-    liveLink: ''
+    liveLink: 'https://www.behance.net/gallery/221747443/Willow-Word-Branding-Identity'
   },
   {
-    id: 8,
-    slug: 'havens-house',
-    path: '/projects/havens-house',
-    title: 'Book Cover Re-Designs',
-    description: 'Redesigned book covers for classic novels, blending editorial typography with illustrative design.',
-    longDescription: 'A series of book cover Re-Designs for classic novels including Little Women and The Enchanted April. Focused on elegant, illustrative aesthetics with refined typography and thoughtful use of colour and texture.',
+    id: 10,
+    slug: 'book-cover-redesign',
+    path: '/projects/book-cover-redesign',
+    title: 'Book Cover Redesign Project',
+    description: 'Editorial redesigns for classic book covers including Little Women and The Enchanted April.',
+    longDescription: 'A book cover redesign series exploring modern, minimal, and feminine editorial aesthetics for classic titles. The project includes concept development, draft explorations, and final hardback and paperback mockups built with typography, illustration, and thoughtful layout design.',
     image: '/images/Screenshot 2025-06-01 003342.png',
     technologies: [
-      { name: 'Illustrator', icon: SiAdobe },
-      { name: 'Photoshop', icon: SiAdobe }
+      { name: 'Adobe Illustrator', icon: SiAdobe },
+      { name: 'Adobe Photoshop', icon: SiAdobe },
+      { name: 'Adobe InDesign', icon: SiAdobe }
     ],
     features: [
-      'Cover illustration',
-      'Typography design',
-      'Colour palette',
-      'Print-ready layout'
+      'Book cover redesigns',
+      'Hardback and paperback mockups',
+      'Typography exploration',
+      'Mood board and concept development'
     ],
     category: 'Graphic Design',
-    liveLink: ''
-  }
+    liveLink: 'https://www.behance.net/gallery/223468167/Book-Cover-Redesign-Project'
+  },
+  {
+    id: 11,
+    slug: 'whimsy-deco',
+    path: '/projects/whimsy-deco',
+    title: 'WHIMSY DECO – Display Serif Typeface',
+    description: 'A custom display serif typeface with whimsical, elegant letterforms inspired by decorative editorial design.',
+    longDescription: 'An original display serif typeface created in Illustrator and Fontself, designed to feel whimsical, elegant, and expressive. The project focuses on distinctive letterform design and a cohesive display type system for creative branding and editorial use.',
+    image: 'https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/c92b03225134165.6818a70a06bc8.jpg',
+    technologies: [
+      { name: 'Adobe Illustrator', icon: SiAdobe },
+      { name: 'Fontself', icon: SiAdobe }
+    ],
+    features: [
+      'Custom typeface design',
+      'Letterform development',
+      'Display typography system',
+      'Editorial-inspired styling'
+    ],
+    category: 'Graphic Design',
+    liveLink: 'https://www.behance.net/gallery/225134165/WHIMSY-DECO-Display-Serif-Typeface'
+  },
+  {
+    id: 12,
+    slug: 'dream-brewery',
+    path: '/projects/dream-brewery',
+    title: 'Dream Brewery – Branding Identity',
+    description: 'A brand identity system for a dreamy brewery and café concept centered around the Creative Archetype.',
+    longDescription: 'This branding project was built around a brewery and café concept designed for creative-minded audiences. It includes visual identity development, brand guide assets, and mockups created in Photoshop, Illustrator, and InDesign.',
+    image: 'https://mir-s3-cdn-cf.behance.net/projects/max_808_webp/b6338e211358519.Y3JvcCw4NTksNjcxLDMxNiwzMQ.png',
+    technologies: [
+      { name: 'Adobe Illustrator', icon: SiAdobe },
+      { name: 'Adobe Photoshop', icon: SiAdobe },
+      { name: 'Adobe InDesign', icon: SiAdobe }
+    ],
+    features: [
+      'Logo and visual identity',
+      'Brand guide design',
+      'Packaging and mockups',
+      'Creative archetype strategy'
+    ],
+    category: 'Graphic Design',
+    liveLink: 'https://www.behance.net/gallery/211358519/Dream-Brewery-Branding-Identity'
+  },
+
 ]
 
 export const getProjectById = (id) =>

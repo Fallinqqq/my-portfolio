@@ -15,8 +15,9 @@ import StevenFrancis from './pages/projects/StevenFrancis'
 import UniversityOfLynchburg from './pages/projects/UniversityOfLynchburg'
 import GregoryConsulting from './pages/projects/GregoryConsulting'
 import WillowAndWord from './pages/projects/WillowAndWord'
-import HavensHouse from './pages/projects/HavensHouse'
-import StevenFrancisSocials from './pages/projects/StevenFrancisSocials'
+import BookCoverRedesign from './pages/projects/BookCoverRedesign'
+import WhimsyDeco from './pages/projects/WhimsyDeco'
+import DreamBrewery from './pages/projects/DreamBrewery'
 import { useEffect } from 'react'
 
 function ScrollToTop() {
@@ -45,8 +46,9 @@ function App() {
             <Route path="/projects/university-of-lynchburg" element={<UniversityOfLynchburg />} />
             <Route path="/projects/gregory-consulting" element={<GregoryConsulting />} />
             <Route path="/projects/willow-and-word" element={<WillowAndWord />} />
-            <Route path="/projects/havens-house" element={<HavensHouse />} />
-            <Route path="/projects/steven-francis-socials-print" element={<StevenFrancisSocials />} />
+            <Route path="/projects/book-cover-redesign" element={<BookCoverRedesign />} />
+            <Route path="/projects/whimsy-deco" element={<WhimsyDeco />} />
+            <Route path="/projects/dream-brewery" element={<DreamBrewery />} />
             {/* Fallback: old numeric ID links still work */}
             <Route path="/projects/:id" element={<ProjectDetail />} />
           </Routes>
