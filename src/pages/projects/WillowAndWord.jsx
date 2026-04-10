@@ -1,42 +1,66 @@
-/**
- * ─────────────────────────────────────────────────────
- *  PROJECT PAGE: Willow & Word
- *
- *  HOW TO EDIT THIS FILE:
- *  1. Update the text fields in the INFO block below
- *  2. To add/change images: put image files in public/images/
- *     then update the `src` paths in the IMAGES block below
- *  3. To add more images, copy any <img> block and paste it
- * ─────────────────────────────────────────────────────
- */
 import ProjectLayout from '../../components/ProjectLayout'
 
-// ── INFO ─────────────────────────────────────────────
-const title       = 'Willow & Word'
-const role        = 'Brand Designer'
-const year        = '2025'
-const description = 'Full brand identity system for Willow & Word, a boutique stationery and lifestyle brand. Includes logo suite, brand guidelines, packaging, and marketing collateral.'
-const tools       = ['Adobe Illustrator', 'Adobe Photoshop']
-const liveLink    = 
-const githubLink  = ''   // leave empty to hide button
+const title = 'Willow & Word'
+const role = 'Brand Designer'
+const year = '2025'
+const description = 'Full brand identity system for Willow & Word, a greenhouse-inspired cozy bookstore. Includes logo suite, brand guidelines, packaging, and marketing collateral.'
+const tools = ['Adobe Illustrator', 'Adobe Photoshop']
+const liveLink = ''
+const githubLink = ''
 
-// ── IMAGES ───────────────────────────────────────────
-// Drop images into public/images/ and update the paths here.
 const images = [
   {
     src: '/images/Screenshot 2025-05-06 225010.png',
-    alt: 'Willow & Word – brand identity preview',
-    caption: 'Brand identity presentation for Willow & Word.',
+    alt: 'Willow & Word – brand identity overview',
+    caption: '',
   },
-  // Add more images like the block above ↑
-  // {
-  //   src: '/images/willow-and-word-02.png',
-  //   alt: 'Willow & Word – logo variations',
-  //   caption: 'Logo suite and variations',
-  // },
+  {
+    src: '/images/Willow1.png',
+    alt: 'Willow & Word – logotype sketch and finalized versions',
+    caption: '',
+  },
+  {
+    src: '/images/Willow2.png',
+    alt: 'Willow & Word – brand description',
+    caption: '',
+  },
+  {
+    src: '/images/Willow3.png',
+    alt: 'Willow & Word – logo color variations',
+    caption: '',
+  },
+  {
+    src: '/images/Willow4.png',
+    alt: 'Willow & Word – color palette',
+    caption: '',
+  },
+  {
+    src: '/images/Willow5.png',
+    alt: 'Willow & Word – typography',
+    caption: '',
+  },
+  {
+    src: '/images/Willow6.png',
+    alt: 'Willow & Word – storefront mockup',
+    caption: '',
+  },
+  {
+    src: '/images/Willow7.png',
+    alt: 'Willow & Word – business card mockup',
+    caption: '',
+  },
+  {
+    src: '/images/Willow8.png',
+    alt: 'Willow & Word – notebook mockup',
+    caption: '',
+  },
+  {
+    src: '/images/Willow 9.png',
+    alt: 'Willow & Word – tote bag mockup',
+    caption: '',
+  },
 ]
 
-// ── DELIVERABLES (optional bullet list) ─────────────
 const deliverables = [
   'Logo suite',
   'Brand guidelines',
@@ -44,7 +68,6 @@ const deliverables = [
   'Marketing collateral',
   'Typography system',
 ]
-// ─────────────────────────────────────────────────────
 
 const WillowAndWord = () => (
   <ProjectLayout
@@ -57,15 +80,10 @@ const WillowAndWord = () => (
     githubLink={githubLink || undefined}
   >
 
-    {/* ── Primary image ──────────────────────────────────── */}
     {images[0] && (
       <figure>
-        <div className="overflow-hidden bg-[#EEECEA]">
-          <img
-            src={images[0].src}
-            alt={images[0].alt}
-            className="w-full object-cover"
-          />
+        <div className="overflow-hidden bg-[#EEECEA] rounded-2xl">
+          <img src={images[0].src} alt={images[0].alt} className="w-full object-contain" loading="lazy" />
         </div>
         {images[0].caption && (
           <figcaption className="text-xs text-muted mt-3">{images[0].caption}</figcaption>
@@ -73,13 +91,23 @@ const WillowAndWord = () => (
       </figure>
     )}
 
-    {/* ── Additional images (auto-hidden if none added) ──── */}
-    {images.length > 1 && (
+    {images[1] && (
+      <figure>
+        <div className="overflow-hidden bg-[#EEECEA] rounded-2xl">
+          <img src={images[1].src} alt={images[1].alt} className="w-full object-contain" loading="lazy" />
+        </div>
+        {images[1].caption && (
+          <figcaption className="text-xs text-muted mt-3">{images[1].caption}</figcaption>
+        )}
+      </figure>
+    )}
+
+    {images.length > 2 && (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {images.slice(1).map((img, i) => (
+        {images.slice(2).map((img, i) => (
           <figure key={i}>
-            <div className="overflow-hidden bg-[#EEECEA]">
-              <img src={img.src} alt={img.alt} className="w-full object-cover" />
+            <div className="overflow-hidden bg-[#EEECEA] rounded-2xl">
+              <img src={img.src} alt={img.alt} className="w-full object-contain" loading="lazy" />
             </div>
             {img.caption && (
               <figcaption className="text-xs text-muted mt-3">{img.caption}</figcaption>
@@ -89,7 +117,6 @@ const WillowAndWord = () => (
       </div>
     )}
 
-    {/* ── Deliverables list ──────────────────────────────── */}
     {deliverables.length > 0 && (
       <div className="border-t border-soft pt-10">
         <p className="text-xs uppercase tracking-widest text-muted mb-6">Deliverables</p>
