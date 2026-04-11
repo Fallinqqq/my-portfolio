@@ -25,6 +25,8 @@ const Navbar = () => {
               src={logoSrc}
               alt="Grace Foster Designs"
               className="h-[160px] sm:h-[200px] w-auto object-contain"
+              fetchpriority="high"
+              decoding="sync"
             />
           </Link>
 

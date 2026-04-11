@@ -42,6 +42,8 @@ const About = () => {
                 src={graceProfile}
                 alt="Grace Foster"
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
                 onError={(e) => { e.target.src = '/images/grace-profile.jpg' }}
               />
             </div>

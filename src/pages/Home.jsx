@@ -186,6 +186,8 @@ const Home = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full aspect-[4/3] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="flex items-start justify-between">
