@@ -89,7 +89,7 @@ const Commvault = () => (
             <article key={doc.src} className="rounded-2xl overflow-hidden border border-soft bg-white">
               <iframe
                 title={doc.title}
-                src={doc.src}
+                src={`${doc.src}#toolbar=0`}
                 className="w-full h-[420px] bg-white"
               />
               <div className="p-4 flex flex-col gap-3">
