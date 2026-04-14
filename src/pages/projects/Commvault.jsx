@@ -9,6 +9,7 @@
  *  3. To add more images, copy any <img> block and paste it
  * ─────────────────────────────────────────────────────
  */
+import { useState } from 'react'
 import ProjectLayout from '../../components/ProjectLayout'
 
 // ── INFO ─────────────────────────────────────────────
@@ -68,7 +69,11 @@ const deliverables = [
 ]
 // ─────────────────────────────────────────────────────
 
-const Commvault = () => (
+const Commvault = () => {
+  const [activePdf, setActivePdf] = useState(null)
+
+  return (
+  <>
   <ProjectLayout
     title={title}
     role={role}
@@ -95,14 +100,12 @@ const Commvault = () => (
               <div className="p-4 flex flex-col gap-3">
                 <p className="text-ink" style={{ fontSize: '16px' }}>{doc.title}</p>
                 <div className="flex flex-wrap gap-3">
-                  <a
-                    href={doc.src}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    onClick={() => setActivePdf(doc)}
                     className="btn-outline inline-flex items-center justify-center text-xs shrink-0"
                   >
                     Open PDF
-                  </a>
+                  </button>
                   {doc.liveUrl && (
                     <a
                       href={doc.liveUrl}
@@ -170,6 +173,41 @@ const Commvault = () => (
     )}
 
   </ProjectLayout>
-)
+
+  {/* ── PDF Lightbox ───────────────────────────────────── */}
+  {activePdf && (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4"
+      onClick={() => setActivePdf(null)}
+    >
+      <div
+        className="relative bg-white rounded-2xl overflow-hidden w-full max-w-4xl shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 py-3 border-b border-soft">
+          <p className="text-sm font-medium text-ink truncate pr-4">{activePdf.title}</p>
+          <button
+            onClick={() => setActivePdf(null)}
+            aria-label="Close PDF viewer"
+            className="text-muted hover:text-ink transition-colors shrink-0"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        {/* PDF viewer */}
+        <iframe
+          title={activePdf.title}
+          src={`${activePdf.src}#toolbar=0`}
+          className="w-full h-[75vh] bg-white"
+        />
+      </div>
+    </div>
+  )}
+  </>
+  )
+}
 
 export default Commvault
