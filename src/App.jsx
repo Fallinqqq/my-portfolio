@@ -8,7 +8,6 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import Pricing from './pages/Pricing'
 import ProjectDetail from './pages/ProjectDetail'
 import Commvault from './pages/projects/Commvault'
 import StevenFrancis from './pages/projects/StevenFrancis'
@@ -39,7 +38,6 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/pricing" element={<Pricing />} />
             {/* Individual project pages */}
             <Route path="/projects/commvault" element={<Commvault />} />
             <Route path="/projects/steven-francis-fine-art" element={<StevenFrancis />} />
