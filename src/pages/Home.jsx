@@ -143,7 +143,7 @@ const Home = () => {
         </svg>
       </div>
 
-      <section className="w-full bg-soft">
+      <section id="work" className="w-full bg-soft">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-20 md:py-24">
         <motion.div
           initial={{ opacity: 0 }}

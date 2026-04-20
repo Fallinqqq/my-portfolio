@@ -37,7 +37,7 @@ const ProjectLayout = ({
       {/* ── Back link ──────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-8 sm:pt-12 pb-4 sm:pb-6">
         <Link
-          to="/"
+          to="/#work"
           className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors duration-200"
         >
           <FaArrowLeft className="text-xs" />
