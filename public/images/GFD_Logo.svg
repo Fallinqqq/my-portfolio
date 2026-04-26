@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 269.92 231.88">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: -.02em;
+      }
+
+      .cls-2 {
+        font-family: Roca-Regular, 'Roca Regular';
+        font-size: 49.83px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #778c6d;
+      }
+
+      .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        font-family: Montserrat-Regular, Montserrat;
+        font-size: 20.97px;
+        font-variation-settings: 'wght' 400;
+      }
+
+      .cls-5 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-6 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.03em;
+      }
+    </style>
+    <filter id="drop-shadow-2" x="-9670.23" y="-8186.45" width="11942.64" height="8397.48" filterUnits="userSpaceOnUse">
+      <feOffset dx="7" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#231f20" flood-opacity=".64"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <text class="cls-2" transform="translate(36.1 101.8)"><tspan class="cls-4" x="0" y="0">G</tspan><tspan class="cls-7" x="38.37" y="0">r</tspan><tspan class="cls-6" x="60.59" y="0">a</tspan><tspan x="89.14" y="0">ce</tspan></text>
+  <g>
+    <text class="cls-2" transform="translate(72.59 145.47)"><tspan class="cls-5" x="0" y="0">F</tspan><tspan x="27.15" y="0">os</tspan><tspan class="cls-1" x="82.31" y="0">t</tspan><tspan x="101.44" y="0">er</tspan></text>
+    <text class="cls-3" transform="translate(166.66 177.2) rotate(15.02)"><tspan x="0" y="0">D</tspan></text>
+    <text class="cls-3" transform="translate(186.6 181.8) rotate(-1.04)"><tspan x="0" y="0">e</tspan></text>
+    <text class="cls-3" transform="translate(202.05 181.05) rotate(-15.06)"><tspan x="0" y="0">s</tspan></text>
+    <text class="cls-3" transform="translate(214.03 177.38) rotate(-26.11)"><tspan x="0" y="0">i</tspan></text>
+    <text class="cls-3" transform="translate(221.91 173.73) rotate(-41.08)"><tspan x="0" y="0">g</tspan></text>
+    <text class="cls-3" transform="translate(235.3 161) rotate(-62.67)"><tspan x="0" y="0">n</tspan></text>
+    <text class="cls-3" transform="translate(242.59 144.96) rotate(-80.64)"><tspan x="0" y="0">s</tspan></text>
+  </g>
+</svg>
