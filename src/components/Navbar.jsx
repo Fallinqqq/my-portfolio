@@ -48,8 +48,8 @@ const Navbar = () => {
 
             {/* Resume button */}
             <a
-              href="/PDF/Resume-Grace_Foster-2026-Updated.pdf"
-              download="Resume-Grace_Foster-2026-Updated.pdf"
+              href="/PDF/Grace_Foster_Resume_2026.pdf"
+              download="Grace_Foster_Resume_2026.pdf"
               className="rounded-full px-5 py-1.5 text-sm font-medium"
               style={{ fontFamily: 'var(--font-body)', backgroundColor: 'var(--color-accent)', color: '#fbf3e7' }}
             >
@@ -100,8 +100,8 @@ const Navbar = () => {
                   </Link>
                 ))}
                 <a
-                  href="/PDF/Resume-Grace_Foster-2026-Updated.pdf"
-                  download="Resume-Grace_Foster-2026-Updated.pdf"
+                  href="/PDF/Grace_Foster_Resume_2026.pdf"
+                  download="Grace_Foster_Resume_2026.pdf"
                   className="rounded-full px-5 py-1.5 text-sm font-medium"
                   style={{ backgroundColor: 'var(--color-accent)', color: '#fbf3e7' }}
                 >

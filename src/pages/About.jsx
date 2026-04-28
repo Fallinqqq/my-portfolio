@@ -197,8 +197,8 @@ const About = () => {
               transition={{ duration: 0.5 }}
             >
               <a
-                href="/PDF/Resume-Grace_Foster-2026-Updated.pdf"
-                download="Resume-Grace_Foster-2026-Updated.pdf"
+                href="/PDF/Grace_Foster_Resume_2026.pdf"
+                download="Grace_Foster_Resume_2026.pdf"
                 className="btn-outline inline-flex items-center gap-2"
               >
                 <FaDownload size={13} />
