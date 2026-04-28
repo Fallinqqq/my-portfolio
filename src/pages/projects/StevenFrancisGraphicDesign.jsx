@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ProjectLayout from '../../components/ProjectLayout'
 
-const title       = 'Steven Francis Fine Art Socials & Cards'
+const title       = 'Steven Francis Fine Art Socials & Posters'
 const role        = 'Graphic Designer'
 const year        = '2026–2026'
 const description = 'Ongoing graphic design work for Steven Francis Fine Art Gallery in Lynchburg, VA — including exhibition posters and social media content for their Main Street and Tradewynd gallery locations.'
