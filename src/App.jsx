@@ -18,6 +18,7 @@ import WillowAndWord from './pages/projects/WillowAndWord'
 import BookCoverRedesign from './pages/projects/BookCoverRedesign'
 import WhimsyDeco from './pages/projects/WhimsyDeco'
 import DreamBrewery from './pages/projects/DreamBrewery'
+import StevenFrancisGraphicDesign from './pages/projects/StevenFrancisGraphicDesign'
 import { useEffect } from 'react'
 
 function ScrollToTop() {
@@ -51,6 +52,7 @@ function App() {
             {/* Individual project pages */}
             <Route path="/projects/commvault" element={<Commvault />} />
             <Route path="/projects/steven-francis-fine-art" element={<StevenFrancis />} />
+            <Route path="/projects/steven-francis-graphic-design" element={<StevenFrancisGraphicDesign />} />
             <Route path="/projects/university-of-lynchburg" element={<UniversityOfLynchburg />} />
             <Route path="/projects/gregory-consulting" element={<GregoryConsulting />} />
             <Route path="/projects/willow-and-word" element={<WillowAndWord />} />

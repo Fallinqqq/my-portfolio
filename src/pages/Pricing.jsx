@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 const processSteps = [
@@ -48,11 +49,87 @@ const faqs = [
 ]
 
 const whyMe = [
-  { label: 'Clear Communication', body: 'No guessing games. You\'ll always know what stage your project is in and when to expect updates.' },
-  { label: 'On-Time Delivery', body: 'Deadlines are taken seriously. I build realistic timelines and stick to them.' },
-  { label: 'Design That Works', body: 'Pretty isn\'t enough — every design decision is made with your audience and goals in mind.' },
-  { label: 'One Designer, Start to Finish', body: 'You work directly with me, not a rotating team. Consistent vision, consistent quality.' },
+  {
+    label: 'Clear Communication',
+    body: "No guessing games. You'll always know what stage your project is in and when to expect updates.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'On-Time Delivery',
+    body: 'Deadlines are taken seriously. I build realistic timelines and stick to them.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'Design That Works',
+    body: "Pretty isn't enough — every design decision is made with your audience and goals in mind.",
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+  },
+  {
+    label: 'One Designer, Start to Finish',
+    body: 'You work directly with me, not a rotating team. Consistent vision, consistent quality.',
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    ),
+  },
 ]
+
+// FAQ accordion item
+const FaqItem = ({ faq, isOpen, onClick }) => (
+  <div className="border-b border-[#d6cfc4]">
+    <button
+      onClick={onClick}
+      className="w-full flex items-center justify-between py-6 text-left gap-4 group"
+    >
+      <span
+        className="text-ink font-semibold group-hover:text-accent transition-colors duration-200"
+        style={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px' }}
+      >
+        {faq.q}
+      </span>
+      <span
+        className="shrink-0 w-7 h-7 rounded-full border border-[#d6cfc4] flex items-center justify-center transition-all duration-300"
+        style={{ transform: isOpen ? 'rotate(45deg)' : 'rotate(0deg)', borderColor: isOpen ? 'var(--color-accent)' : undefined }}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+        </svg>
+      </span>
+    </button>
+    <AnimatePresence initial={false}>
+      {isOpen && (
+        <motion.div
+          key="content"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+          className="overflow-hidden"
+        >
+          <p
+            className="text-muted leading-relaxed pb-6"
+            style={{ fontSize: '15px', fontFamily: 'var(--font-heading)' }}
+          >
+            {faq.a}
+          </p>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+)
 
 const pricingTiers = [
   {
@@ -100,6 +177,10 @@ const pricingTiers = [
 ]
 
 const Pricing = () => {
+  const [openFaq, setOpenFaq] = useState(null)
+
+  const toggleFaq = (i) => setOpenFaq(openFaq === i ? null : i)
+
   return (
     <div className="min-h-screen">
 
@@ -133,7 +214,7 @@ const Pricing = () => {
       {/* ── Pricing Cards ────────────────────────────────────────── */}
       <section className="w-full">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-20 md:py-24">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-start">
             {pricingTiers.map((tier, i) => (
               <motion.div
                 key={tier.title}
@@ -141,19 +222,29 @@ const Pricing = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className={`flex flex-col rounded-2xl p-7 sm:p-8 border ${
+                className={`relative flex flex-col rounded-2xl p-7 sm:p-8 border ${
                   tier.featured
-                    ? 'border-accent bg-accent text-[#fbf3e7]'
+                    ? 'border-accent bg-accent text-[#fbf3e7] shadow-xl shadow-accent/20 md:-mt-4 md:-mb-4'
                     : 'border-[#d6cfc4] bg-card text-ink'
                 }`}
               >
+                {tier.featured && (
+                  <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                    <span
+                      className="bg-[#fbf3e7] text-accent text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm"
+                      style={{ fontFamily: 'Poppins, sans-serif' }}
+                    >
+                      Most Popular
+                    </span>
+                  </div>
+                )}
                 <p
                   className={`text-sm font-semibold tracking-widest uppercase mb-4 ${tier.featured ? 'text-[#fbf3e7]/70' : 'text-muted'}`}
                   style={{ fontFamily: 'Poppins, sans-serif' }}
                 >
                   {tier.title}
                 </p>
-                <div className="mb-1">
+                <div className="mb-1 flex items-end gap-2">
                   <span
                     className={`text-[2.6rem] font-bold leading-none ${tier.featured ? 'text-[#fbf3e7]' : 'text-ink'}`}
                     style={{ fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em' }}
@@ -175,7 +266,7 @@ const Pricing = () => {
                       className={`flex items-start gap-2.5 text-sm ${tier.featured ? 'text-[#fbf3e7]' : 'text-ink'}`}
                       style={{ fontFamily: 'var(--font-heading)' }}
                     >
-                      <span className={`mt-0.5 shrink-0 ${tier.featured ? 'text-[#fbf3e7]/60' : 'text-accent'}`}>✓</span>
+                      <span className={`mt-0.5 shrink-0 ${tier.featured ? 'text-[#fbf3e7]/70' : 'text-accent'}`}>✓</span>
                       {f}
                     </li>
                   ))}
@@ -224,10 +315,13 @@ const Pricing = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.6, delay: i * 0.08 }}
-                className="bg-card rounded-2xl p-7 border border-[#d6cfc4]"
+                className="bg-card rounded-2xl p-7 border border-[#d6cfc4] flex flex-col gap-3"
               >
+                <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center text-accent">
+                  {item.icon}
+                </div>
                 <p
-                  className="text-ink font-semibold mb-2"
+                  className="text-ink font-semibold"
                   style={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px' }}
                 >
                   {item.label}
@@ -260,7 +354,12 @@ const Pricing = () => {
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+          <div className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {/* Connecting line — visible on md+ */}
+            <div
+              className="hidden md:block absolute top-5 left-[calc(12.5%+1.25rem)] right-[calc(12.5%+1.25rem)] border-t border-dashed"
+              style={{ borderColor: 'var(--color-accent)', opacity: 0.25 }}
+            />
             {processSteps.map((step, i) => (
               <motion.div
                 key={step.number}
@@ -270,12 +369,18 @@ const Pricing = () => {
                 transition={{ duration: 0.65, delay: i * 0.1 }}
                 className="flex flex-col"
               >
-                <span
-                  className="text-[3rem] font-bold leading-none mb-4 text-accent opacity-30"
-                  style={{ fontFamily: 'Poppins, sans-serif' }}
+                {/* Number circle */}
+                <div
+                  className="w-10 h-10 rounded-full border-2 flex items-center justify-center mb-5 bg-surface"
+                  style={{ borderColor: 'var(--color-accent)', backgroundColor: 'var(--color-surface)' }}
                 >
-                  {step.number}
-                </span>
+                  <span
+                    className="text-xs font-bold text-accent"
+                    style={{ fontFamily: 'Poppins, sans-serif' }}
+                  >
+                    {step.number}
+                  </span>
+                </div>
                 <p
                   className="text-ink font-semibold mb-2"
                   style={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px' }}
@@ -310,28 +415,22 @@ const Pricing = () => {
             </h2>
           </motion.div>
 
-          <div className="divide-y divide-[#d6cfc4]">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.55 }}
+            className="max-w-3xl"
+          >
             {faqs.map((faq, i) => (
-              <motion.div
+              <FaqItem
                 key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-30px' }}
-                transition={{ duration: 0.55, delay: i * 0.07 }}
-                className="py-7"
-              >
-                <p
-                  className="text-ink font-semibold mb-2"
-                  style={{ fontFamily: 'Poppins, sans-serif', fontSize: '16px' }}
-                >
-                  {faq.q}
-                </p>
-                <p className="text-muted leading-relaxed" style={{ fontSize: '15px', fontFamily: 'var(--font-heading)' }}>
-                  {faq.a}
-                </p>
-              </motion.div>
+                faq={faq}
+                isOpen={openFaq === i}
+                onClick={() => toggleFaq(i)}
+              />
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -343,25 +442,33 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}
-            className="flex flex-col sm:flex-row sm:items-center justify-between gap-8 border border-[#d6cfc4] rounded-2xl p-10 sm:p-14 bg-card"
+            className="relative overflow-hidden rounded-2xl p-10 sm:p-14"
+            style={{ backgroundColor: 'var(--color-accent)' }}
           >
-            <div className="max-w-lg">
-              <h2
-                className="text-2xl sm:text-3xl text-ink mb-3"
-                style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em' }}
+            {/* Decorative circles */}
+            <div className="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-white/5 pointer-events-none" />
+            <div className="absolute -bottom-16 -left-8 w-64 h-64 rounded-full bg-white/5 pointer-events-none" />
+
+            <div className="relative flex flex-col sm:flex-row sm:items-center justify-between gap-8">
+              <div className="max-w-lg">
+                <h2
+                  className="text-2xl sm:text-3xl mb-3"
+                  style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', color: '#fbf3e7' }}
+                >
+                  Ready to start your project?
+                </h2>
+                <p className="leading-relaxed" style={{ fontSize: '16px', fontFamily: 'var(--font-heading)', color: 'rgba(251,243,231,0.75)' }}>
+                  Let's talk about what you need. A free consultation takes 15 minutes and comes with zero pressure.
+                </p>
+              </div>
+              <Link
+                to="/contact"
+                className="shrink-0 inline-block px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-200 border border-[#fbf3e7]/60 hover:border-[#fbf3e7] hover:bg-[#fbf3e7] hover:text-accent"
+                style={{ fontFamily: 'Poppins, sans-serif', color: '#fbf3e7' }}
               >
-                Ready to start your project?
-              </h2>
-              <p className="text-muted leading-relaxed" style={{ fontSize: '16px', fontFamily: 'var(--font-heading)' }}>
-                Let's talk about what you need. A free consultation takes 15 minutes and comes with zero pressure.
-              </p>
+                Book a free consult
+              </Link>
             </div>
-            <Link
-              to="/contact"
-              className="btn-primary shrink-0"
-            >
-              Book a free consult
-            </Link>
           </motion.div>
         </div>
       </section>
