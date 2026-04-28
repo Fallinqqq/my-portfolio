@@ -3,6 +3,51 @@ import { SiMongodb, SiPostgresql, SiDjango, SiFigma, SiAdobe } from 'react-icons
 
 export const projects = [
   {
+    id: 14,
+    slug: 'cafe-da-alma',
+    path: '/projects/cafe-da-alma',
+    title: 'Café da Alma – Senior Exhibition 2026',
+    description: 'A comprehensive brand identity for a bilingual Brazilian café chain, presented at the University of Lynchburg Senior Thesis Exhibition 2026.',
+    longDescription: 'A comprehensive brand identity for Café da Alma, a bilingual global café chain celebrating the vibrancy of Brazilian culture. Presented at the University of Lynchburg Senior Thesis Exhibition 2026.',
+    image: '/images/CAFE-de-ALMA-Branding (2) conflict.png',
+    imageBg: 'bg-white',
+    imageFit: 'object-contain',
+    technologies: [
+      { name: 'Adobe Illustrator', icon: SiAdobe },
+      { name: 'Adobe Photoshop', icon: SiAdobe },
+      { name: 'Adobe InDesign', icon: SiAdobe },
+    ],
+    features: [
+      'Logo & brand identity',
+      'Packaging design',
+      'Merchandise',
+      'Menu design',
+      'Brand guide',
+      'Environmental signage',
+    ],
+    category: 'Graphic Design',
+  },
+  {
+    id: 15,
+    slug: 'cafe-da-alma-web',
+    path: '/projects/cafe-da-alma-web',
+    title: 'Café da Alma – Web Design',
+    description: 'Website design for a bilingual Brazilian café chain — full e-commerce with online ordering, shop, menu, and locations pages.',
+    longDescription: 'Website design for Café da Alma, a bilingual Brazilian coffee and tea chain. Built as part of the Senior Thesis Exhibition 2026, featuring a full e-commerce experience with online ordering, a shop, menu, and locations pages.',
+    image: '/images/screencapture-cafedaalma-netlify-app-2026-04-28-12_56_28.png',
+    technologies: [
+      { name: 'Figma', icon: SiFigma },
+      { name: 'Adobe Photoshop', icon: SiAdobe },
+    ],
+    features: [
+      'Website design',
+      'E-commerce / online ordering',
+      'Menu & shop pages',
+      'Mobile responsive',
+    ],
+    category: 'Web Design',
+  },
+  {
     id: 13,
     slug: 'steven-francis-graphic-design',
     path: '/projects/steven-francis-graphic-design',

@@ -181,11 +181,11 @@ const Home = () => {
               transition={{ duration: 0.65, delay: (index % 2) * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               <Link to={project.path || `/projects/${project.id}`} className="group block">
-                <div className="overflow-hidden bg-card mb-4 sm:mb-5">
+                <div className={`overflow-hidden mb-4 sm:mb-5 ${project.imageBg || 'bg-card'}`}>
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full aspect-[4/3] object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    className={`w-full aspect-[4/3] transition-transform duration-700 ease-out group-hover:scale-[1.03] ${project.imageFit || 'object-cover'}`}
                     loading="lazy"
                     decoding="async"
                   />
