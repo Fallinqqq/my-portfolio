@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import graceProfile from '../assets/grace-profile.jpg'
+const graceProfile = '/images/671282720_18583007320041741_1406052200752008889_n.jpg'
 import { FaLinkedin, FaGithub, FaEnvelope, FaDownload } from 'react-icons/fa'
 
 const fadeUp = (delay = 0) => ({
@@ -44,7 +44,6 @@ const About = () => {
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
-                onError={(e) => { e.target.src = '/images/grace-profile.jpg' }}
               />
             </div>
             <div className="flex items-center gap-4">
