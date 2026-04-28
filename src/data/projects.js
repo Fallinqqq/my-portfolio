@@ -6,7 +6,7 @@ export const projects = [
     id: 13,
     slug: 'steven-francis-graphic-design',
     path: '/projects/steven-francis-graphic-design',
-    title: 'Steven Francis Fine Art Socials & Cards',
+    title: 'Steven Francis Fine Art Socials & Posters',
     description: 'Exhibition posters and social media graphics for a fine art gallery in Lynchburg, VA.',
     longDescription: 'Ongoing graphic design work for Steven Francis Fine Art Gallery — exhibition posters and social media content for their Main Street and Tradewynd gallery locations.',
     image: '/images/Social2 - Copy (4).png',

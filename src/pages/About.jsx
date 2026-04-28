@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 const graceProfile = '/images/671282720_18583007320041741_1406052200752008889_n.jpg'
-import { FaLinkedin, FaGithub, FaEnvelope, FaDownload } from 'react-icons/fa'
+import { FaDownload } from 'react-icons/fa'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -45,20 +45,6 @@ const About = () => {
                 loading="lazy"
                 decoding="async"
               />
-            </div>
-            <div className="flex items-center gap-4">
-              <a href="https://linkedin.com/in/gracefoster" target="_blank" rel="noopener noreferrer"
-                 className="text-muted hover:text-ink transition-colors duration-200" aria-label="LinkedIn">
-                <FaLinkedin size={18} />
-              </a>
-              <a href="https://github.com/gracefoster" target="_blank" rel="noopener noreferrer"
-                 className="text-muted hover:text-ink transition-colors duration-200" aria-label="GitHub">
-                <FaGithub size={18} />
-              </a>
-              <a href="mailto:gkfoster15@gmail.com"
-                 className="text-muted hover:text-ink transition-colors duration-200" aria-label="Email">
-                <FaEnvelope size={18} />
-              </a>
             </div>
           </motion.div>
 
