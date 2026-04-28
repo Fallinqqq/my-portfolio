@@ -21,6 +21,7 @@ import DreamBrewery from './pages/projects/DreamBrewery'
 import StevenFrancisGraphicDesign from './pages/projects/StevenFrancisGraphicDesign'
 import CafeDaAlma from './pages/projects/CafeDaAlma'
 import CafeDaAlmaWeb from './pages/projects/CafeDaAlmaWeb'
+import CategoryPage from './pages/CategoryPage'
 import { useEffect } from 'react'
 
 function ScrollToTop() {
@@ -57,6 +58,8 @@ function App() {
             <Route path="/projects/steven-francis-graphic-design" element={<StevenFrancisGraphicDesign />} />
             <Route path="/projects/cafe-da-alma" element={<CafeDaAlma />} />
             <Route path="/projects/cafe-da-alma-web" element={<CafeDaAlmaWeb />} />
+            <Route path="/graphic-design" element={<CategoryPage category="Graphic Design" />} />
+            <Route path="/web-design" element={<CategoryPage category="Web Design" />} />
             <Route path="/projects/university-of-lynchburg" element={<UniversityOfLynchburg />} />
             <Route path="/projects/gregory-consulting" element={<GregoryConsulting />} />
             <Route path="/projects/willow-and-word" element={<WillowAndWord />} />

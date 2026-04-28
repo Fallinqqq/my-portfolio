@@ -1,17 +1,37 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import logoSrc from '../assets/PORTFOLIO-PREP-BRANDING.png'
 
+const workDropdown = [
+  { name: 'Graphic Design', path: '/graphic-design' },
+  { name: 'Web Design',     path: '/web-design' },
+]
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [workOpen, setWorkOpen] = useState(false)
+  const [mobileWorkOpen, setMobileWorkOpen] = useState(false)
   const location = useLocation()
+  const dropdownRef = useRef(null)
 
   const navItems = [
-    { name: 'Work', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ]
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handler = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setWorkOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [])
+
+  const isWorkActive = location.pathname === '/graphic-design' || location.pathname === '/web-design' || location.pathname.startsWith('/projects')
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-surface border-b border-soft transition-colors duration-300 overflow-visible">
@@ -31,6 +51,61 @@ const Navbar = () => {
 
           {/* Desktop nav + Resume CTA */}
           <div className="hidden md:flex items-center gap-8">
+
+            {/* Home */}
+            <Link
+              to="/"
+              className={`text-base transition-colors duration-200 ${
+                location.pathname === '/' ? 'text-accent underline underline-offset-4' : 'text-ink hover:text-accent'
+              }`}
+              style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}
+            >
+              Home
+            </Link>
+
+            {/* Work dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setWorkOpen((o) => !o)}
+                className={`flex items-center gap-1 text-base font-bold transition-colors duration-200 ${
+                  isWorkActive ? 'text-accent underline underline-offset-4' : 'text-ink hover:text-accent'
+                }`}
+                style={{ fontFamily: 'var(--font-body)', fontWeight: 400 }}
+              >
+                Work
+                <svg
+                  className={`w-3 h-3 mt-0.5 transition-transform duration-200 ${workOpen ? 'rotate-180' : ''}`}
+                  fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              <AnimatePresence>
+                {workOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    transition={{ duration: 0.18 }}
+                    className="absolute top-full left-0 mt-2 w-44 bg-surface border border-soft rounded-lg shadow-lg py-1 z-50"
+                  >
+                    {workDropdown.map((item) => (
+                      <Link
+                        key={item.name}
+                        to={item.path}
+                        onClick={() => setWorkOpen(false)}
+                        className="block px-4 py-2.5 text-sm text-ink hover:text-accent hover:bg-soft transition-colors duration-150"
+                        style={{ fontFamily: 'var(--font-body)' }}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
             {navItems.map((item) => (
               <Link
                 key={item.name}
@@ -87,6 +162,52 @@ const Navbar = () => {
               className="md:hidden overflow-hidden border-t border-soft"
             >
               <div className="flex flex-col py-6 gap-5">
+                {/* Home */}
+                <Link
+                  to="/"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-sm font-bold transition-colors duration-200 ${
+                    location.pathname === '/' ? 'text-ink' : 'text-muted hover:text-ink'
+                  }`}
+                >
+                  Home
+                </Link>
+
+                {/* Work with sub-items */}
+                <div>
+                  <button
+                    onClick={() => setMobileWorkOpen((o) => !o)}
+                    className="flex items-center gap-1 text-sm font-bold text-muted hover:text-ink transition-colors duration-200"
+                  >
+                    Work
+                    <svg
+                      className={`w-3 h-3 mt-0.5 transition-transform duration-200 ${mobileWorkOpen ? 'rotate-180' : ''}`}
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {mobileWorkOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.18 }}
+                        className="overflow-hidden pl-3 mt-2 flex flex-col gap-3 border-l border-soft"
+                      >
+                        {workDropdown.map((item) => (
+                          <Link key={item.name} to={item.path}
+                            onClick={() => { setIsOpen(false); setMobileWorkOpen(false) }}
+                            className="text-sm text-muted hover:text-ink transition-colors">
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
                 {navItems.map((item) => (
                   <Link
                     key={item.name}

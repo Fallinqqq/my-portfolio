@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { FaGithub, FaLinkedin, FaEnvelope, FaBehance } from 'react-icons/fa'
 import { projects } from '../data/projects'
@@ -56,7 +56,11 @@ const Home = () => {
     }
   }, [])
 
-  const [activeCategory, setActiveCategory] = useState('All')
+  const [searchParams] = useSearchParams()
+  const [activeCategory, setActiveCategory] = useState(() => {
+    const cat = searchParams.get('category')
+    return cat === 'Graphic Design' || cat === 'Web Design' ? cat : 'All'
+  })
   const categories = ['All', 'Graphic Design', 'Web Design']
   const filtered = activeCategory === 'All' ? projects : projects.filter(p => p.category === activeCategory)
 
