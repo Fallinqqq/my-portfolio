@@ -77,7 +77,7 @@ const Home = () => {
             className="text-xl sm:text-2xl md:text-[2rem] lg:text-[2.5rem] text-ink max-w-5xl"
             style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: '1.3' }}
           >
-            Hello There! I'm Grace Foster, a creative graphic designer specializing in{' '}
+            Hi, I'm Grace Foster! A graphic and web designer crafting intentional work across{' '}
             <em className="font-semibold text-accent">Web design</em>,{' '}
             <em className="font-semibold text-accent">Brand design</em>, and{' '}
             <em className="font-semibold text-accent">Print design</em>.
@@ -88,8 +88,7 @@ const Home = () => {
             className="mt-6 sm:mt-8 text-ink leading-relaxed max-w-4xl"
             style={{ fontSize: '18px', fontFamily: 'var(--font-heading)', fontWeight: 400 }}
           >
-            I help brands tell their stories through cohesive visuals and user-friendly web
-            experiences that look great and work beautifully.
+            Three years of hands-on experience in branding, web design, marketing collateral, and social media content. With experience in Adobe Creative Cloud products such as Illustrator, InDesign, and Photoshop. Along with building and maintaining WordPress and Squarespace websites.
           </motion.p>
 
           <motion.div
