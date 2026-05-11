@@ -6,7 +6,7 @@ const role        = 'Web Designer'
 const year        = '2024'
 const description = 'Brand and web design for Gregory Consulting Solutions, a professional business consulting firm. Focused on conveying trust, expertise, and a clean corporate identity.'
 const tools       = ['Figma', 'Adobe Illustrator']
-const liveLink    = ''
+const liveLink    = 'https://gregoryconsultingsolutions.com/'
 const githubLink  = ''
 
 const images = [

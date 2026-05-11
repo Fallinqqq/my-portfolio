@@ -6,7 +6,7 @@ const role        = 'Web Designer'
 const year        = '2024'
 const description = 'Website design for a fine art gallery showcasing original paintings and limited edition prints. Focused on letting the artwork take center stage.'
 const tools       = ['Figma', 'Adobe Photoshop']
-const liveLink    = ''
+const liveLink    = 'https://stevenfrancisfineart.com/'
 const githubLink  = ''
 
 const images = [
