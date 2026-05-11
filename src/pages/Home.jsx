@@ -88,7 +88,7 @@ const Home = () => {
             className="mt-6 sm:mt-8 text-ink leading-relaxed max-w-4xl"
             style={{ fontSize: '18px', fontFamily: 'var(--font-heading)', fontWeight: 400 }}
           >
-            Three years of hands-on experience in branding, web design, marketing collateral, and social media content. With experience in Adobe Creative Cloud products such as Illustrator, InDesign, and Photoshop. Along with building and maintaining WordPress and Squarespace websites.
+           With three years of experience spanning branding, web design, and social media content, I specialize in creating cohesive visual identities. I am highly skilled in Adobe Illustrator, InDesign, and Photoshop, and I have extensive experience managing websites through both WordPress and Squarespace
           </motion.p>
 
           <motion.div

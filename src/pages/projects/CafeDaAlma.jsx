@@ -74,7 +74,7 @@ const CafeDaAlma = () => {
           onClick={() => setSelected(null)}
         >
           <div
-            className="relative max-w-5xl w-full max-h-[90vh] overflow-auto"
+            className="relative max-w-5xl w-full flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -86,7 +86,7 @@ const CafeDaAlma = () => {
             <img
               src={images[selected].src}
               alt={images[selected].alt}
-              className="w-full object-contain"
+              className="max-h-[80vh] max-w-full object-contain rounded-sm"
             />
             {images[selected].caption && (
               <p className="text-center text-sm text-white mt-3">{images[selected].caption}</p>

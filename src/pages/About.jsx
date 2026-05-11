@@ -54,13 +54,10 @@ const About = () => {
             {/* Bio */}
             <motion.div {...fadeUp(0.2)}>
               <p className="text-ink leading-[1.9] mb-5" style={{ fontSize: '18px' }}>
-                I'm a Graphic & Web Designer with a keen eye for detail and a drive to create
-                purposeful, beautiful work. My practice spans brand identity, print, digital campaigns, and
-                interactive web experiences in CMS. With every project rooted in clear thinking and strong craft.
+                I am a graphic and web designer with about three years of experience in branding, web design, and marketing. I have degrees in both Graphic Design and Information Systems Technology. This background helps me mix creative design with the technical skills needed to build things for the web. I am proficient in Adobe Illustrator, Photoshop, and InDesign, and I build websites using WordPress, Squarespace, and Webflow.
               </p>
               <p className="text-muted leading-[1.9]" style={{ fontSize: '18px' }}>
-                I've worked across marketing, editorial, and product contexts and am comfortable with both the strategy
-                conversation and the pixel-level execution. I care about work that communicates clearly and endures.
+                I have worked on projects for art an art gallery, university, cybersecurity company and Marketing Agency. My work includes making infographics, eBooks, and full websites from the first idea to the final launch. I am comfortable working with teams and can handle the big picture as well as the small details. I focus on creating designs that are easy to use and look professional.
               </p>
             </motion.div>
 
@@ -150,13 +147,13 @@ const About = () => {
                   {
                     role: 'Gallery Graphic & Web Design Intern',
                     company: 'Steven Francis Fine Art — Lynchburg, VA',
-                    period: 'Jan 2026 — Present',
+                    period: 'Jan 2026 — May 2026',
                     desc: 'Edit, create, and update the gallery website via Squarespace. Implement SEO best practices to improve search rankings. Maintain brand consistency across digital and social platforms using Adobe Photoshop and Canva. Design and produce client and gallery exhibition booklets using Mixbook.',
                   },
                   {
                     role: 'Digital Media Assistant',
                     company: 'University of Lynchburg — Lynchburg, VA',
-                    period: 'Aug 2025 — Present',
+                    period: 'Aug 2025 — May 2026',
                     desc: 'Design and maintain university webpages using WordPress and Elementor. Published the "Campus Traditions" and "Student Spaces" pages. Uphold brand standards across all webpages and curate events to the campus-wide digital calendar.',
                   },
                   {
