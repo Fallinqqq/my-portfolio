@@ -1,15 +1,6 @@
-/**
- * ─────────────────────────────────────────────────────
- *  PROJECT PAGE: Sustainable Fashion Campaign
- *
- *  HOW TO EDIT THIS FILE:
- *  1. Update the text fields in the INFO block below
- *  2. Drop images into public/images/ and update paths below
- * ─────────────────────────────────────────────────────
- */
+import { useState } from 'react'
 import ProjectLayout from '../../components/ProjectLayout'
 
-// ── INFO ─────────────────────────────────────────────
 const title       = 'Sustainable Fashion Campaign'
 const role        = 'Graphic Designer'
 const year        = '2022'
@@ -18,26 +9,14 @@ const tools       = ['Adobe Photoshop', 'Adobe Illustrator']
 const liveLink    = ''
 const githubLink  = ''
 
-// ── IMAGES ───────────────────────────────────────────
 const images = [
   {
-    src: '/images/fashion-campaign-hero.png',   // ← replace with your image
+    src: '/images/fashion-campaign-hero.png',
     alt: 'Sustainable Fashion Campaign – hero',
     caption: '',
   },
-  // {
-  //   src: '/images/fashion-campaign-social.png',
-  //   alt: 'Social media kit',
-  //   caption: 'Instagram post grid',
-  // },
-  // {
-  //   src: '/images/fashion-campaign-banner.png',
-  //   alt: 'Web banner',
-  //   caption: 'Leaderboard banner — 728×90',
-  // },
 ]
 
-// ── DELIVERABLES ─────────────────────────────────────
 const deliverables = [
   'Social media kit',
   'Email templates',
@@ -45,66 +24,76 @@ const deliverables = [
   'Print materials',
   'Brand guidelines',
 ]
-// ─────────────────────────────────────────────────────
 
-const FashionCampaign = () => (
-  <ProjectLayout
-    title={title}
-    role={role}
-    year={year}
-    description={description}
-    tools={tools}
-    liveLink={liveLink || undefined}
-    githubLink={githubLink || undefined}
-  >
+const FashionCampaign = () => {
+  const [selected, setSelected] = useState(null)
 
-    {images[0] && (
-      <figure>
-        <div className="overflow-hidden bg-[#EEECEA] min-h-[240px] flex items-center justify-center">
-          <img
-            src={images[0].src}
-            alt={images[0].alt}
-            className="w-full object-cover"
-            onError={(e) => { e.target.style.display = 'none' }}
-          />
-        </div>
-        {images[0].caption && (
-          <figcaption className="text-xs text-muted mt-3">{images[0].caption}</figcaption>
-        )}
-      </figure>
-    )}
+  return (
+    <ProjectLayout
+      title={title} role={role} year={year} description={description}
+      tools={tools} liveLink={liveLink || undefined} githubLink={githubLink || undefined}
+    >
+      {images[0] && (
+        <button onClick={() => setSelected(0)} className="group w-full text-left focus:outline-none">
+          <div className="overflow-hidden bg-[#EEECEA] min-h-[240px] flex items-center justify-center">
+            <img
+              src={images[0].src}
+              alt={images[0].alt}
+              className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+              onError={(e) => { e.target.style.display = 'none' }}
+            />
+          </div>
+          {images[0].caption && <p className="text-xs text-muted mt-3">{images[0].caption}</p>}
+        </button>
+      )}
 
-    {images.length > 1 && (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {images.slice(1).map((img, i) => (
-          <figure key={i}>
-            <div className="overflow-hidden bg-[#EEECEA]">
-              <img src={img.src} alt={img.alt} className="w-full object-cover"
-                   onError={(e) => { e.target.style.display = 'none' }} />
-            </div>
-            {img.caption && (
-              <figcaption className="text-xs text-muted mt-3">{img.caption}</figcaption>
-            )}
-          </figure>
-        ))}
-      </div>
-    )}
-
-    {deliverables.length > 0 && (
-      <div className="border-t border-soft pt-10">
-        <p className="text-xs uppercase tracking-widest text-muted mb-6">Deliverables</p>
-        <ul className="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-6">
-          {deliverables.map((d) => (
-            <li key={d} className="flex items-center gap-2 text-ink" style={{ fontSize: '16px' }}>
-              <span className="w-1 h-1 rounded-full bg-muted shrink-0" />
-              {d}
-            </li>
+      {images.length > 1 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {images.slice(1).map((img, i) => (
+            <button key={i} onClick={() => setSelected(i + 1)} className="group w-full text-left focus:outline-none">
+              <div className="overflow-hidden bg-[#EEECEA]">
+                <img src={img.src} alt={img.alt} className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  onError={(e) => { e.target.style.display = 'none' }} />
+              </div>
+              {img.caption && <p className="text-xs text-muted mt-3">{img.caption}</p>}
+            </button>
           ))}
-        </ul>
-      </div>
-    )}
+        </div>
+      )}
 
-  </ProjectLayout>
-)
+      {selected !== null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4" onClick={() => setSelected(null)}>
+          <div className="relative max-w-5xl w-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setSelected(null)}
+              className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/80 transition-colors text-lg leading-none"
+            >×</button>
+            <img src={images[selected].src} alt={images[selected].alt} className="max-h-[80vh] max-w-full object-contain rounded-sm" />
+            {images[selected].caption && <p className="text-center text-sm text-white mt-3">{images[selected].caption}</p>}
+            {images.length > 1 && (
+              <div className="flex justify-between mt-4 w-full">
+                <button onClick={() => setSelected((selected - 1 + images.length) % images.length)} className="text-white text-sm px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">← Prev</button>
+                <button onClick={() => setSelected((selected + 1) % images.length)} className="text-white text-sm px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">Next →</button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {deliverables.length > 0 && (
+        <div className="border-t border-soft pt-10">
+          <p className="text-xs uppercase tracking-widest text-muted mb-6">Deliverables</p>
+          <ul className="grid grid-cols-2 md:grid-cols-3 gap-y-3 gap-x-6">
+            {deliverables.map((d) => (
+              <li key={d} className="flex items-center gap-2 text-ink" style={{ fontSize: '16px' }}>
+                <span className="w-1 h-1 rounded-full bg-muted shrink-0" />{d}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </ProjectLayout>
+  )
+}
 
 export default FashionCampaign

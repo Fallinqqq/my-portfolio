@@ -71,6 +71,7 @@ const deliverables = [
 
 const Commvault = () => {
   const [activePdf, setActivePdf] = useState(null)
+  const [selectedImg, setSelectedImg] = useState(null)
 
   return (
   <>
@@ -131,9 +132,11 @@ const Commvault = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {images.slice(1).map((img, i) => (
             <figure key={i}>
-              <div className="overflow-hidden bg-white border border-soft rounded-2xl p-3">
-                <img src={img.src} alt={img.alt} className="w-full max-h-[520px] object-contain" />
-              </div>
+              <button onClick={() => setSelectedImg(i + 1)} className="group w-full text-left focus:outline-none">
+                <div className="overflow-hidden bg-white border border-soft rounded-2xl p-3">
+                  <img src={img.src} alt={img.alt} className="w-full max-h-[520px] object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
+                </div>
+              </button>
               {(img.caption || img.liveUrl) && (
                 <div className="mt-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                   {img.caption && (
@@ -173,6 +176,26 @@ const Commvault = () => {
     )}
 
   </ProjectLayout>
+
+  {/* ── Image Lightbox ─────────────────────────────────── */}
+  {selectedImg !== null && (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4" onClick={() => setSelectedImg(null)}>
+      <div className="relative max-w-5xl w-full flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
+        <button
+          onClick={() => setSelectedImg(null)}
+          className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/80 transition-colors text-lg leading-none"
+        >×</button>
+        <img src={images[selectedImg].src} alt={images[selectedImg].alt} className="max-h-[80vh] max-w-full object-contain rounded-sm" />
+        {images[selectedImg].caption && <p className="text-center text-sm text-white mt-3">{images[selectedImg].caption}</p>}
+        {images.length > 2 && (
+          <div className="flex justify-between mt-4 w-full">
+            <button onClick={() => setSelectedImg(selectedImg === 1 ? images.length - 1 : selectedImg - 1)} className="text-white text-sm px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">← Prev</button>
+            <button onClick={() => setSelectedImg(selectedImg === images.length - 1 ? 1 : selectedImg + 1)} className="text-white text-sm px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors">Next →</button>
+          </div>
+        )}
+      </div>
+    </div>
+  )}
 
   {/* ── PDF Lightbox ───────────────────────────────────── */}
   {activePdf && (
