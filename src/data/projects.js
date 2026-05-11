@@ -6,7 +6,7 @@ export const projects = [
     id: 14,
     slug: 'cafe-da-alma',
     path: '/projects/cafe-da-alma',
-    title: 'Café da Alma – Senior Exhibition 2026',
+    title: 'Café da Alma – Senior Thesis Exhibition 2026',
     description: 'A comprehensive brand identity for a bilingual Brazilian café chain, presented at the University of Lynchburg Senior Thesis Exhibition 2026.',
     longDescription: 'A comprehensive brand identity for Café da Alma, a bilingual global café chain celebrating the vibrancy of Brazilian culture. Presented at the University of Lynchburg Senior Thesis Exhibition 2026.',
     image: '/images/CAFE-de-ALMA-Branding (2) conflict.png',

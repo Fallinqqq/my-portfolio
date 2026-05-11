@@ -54,10 +54,10 @@ const About = () => {
             {/* Bio */}
             <motion.div {...fadeUp(0.2)}>
               <p className="text-ink leading-[1.9] mb-5" style={{ fontSize: '18px' }}>
-                I am a graphic and web designer with about three years of experience in branding, web design, and marketing. I have degrees in both Graphic Design and Information Systems Technology. This background helps me mix creative design with the technical skills needed to build things for the web. I am proficient in Adobe Illustrator, Photoshop, and InDesign, and I build websites using WordPress, Squarespace, and Webflow.
+                I am a graphic and web designer with about 3 years of experience in branding, web design, and marketing collateral. I have degrees in both Graphic Design and Information Systems Technology. This background helps me mix creative design with the technical skills needed to build things for the web. I am proficient in Adobe Illustrator, Photoshop, and InDesign, and I build websites using WordPress, Squarespace, and Webflow.
               </p>
               <p className="text-muted leading-[1.9]" style={{ fontSize: '18px' }}>
-                I have worked on projects for art an art gallery, university, cybersecurity company and Marketing Agency. My work includes making infographics, eBooks, and full websites from the first idea to the final launch. I am comfortable working with teams and can handle the big picture as well as the small details. I focus on creating designs that are easy to use and look professional.
+                I have worked on projects for art an Art Gallery, University, Cybersecurity company, and Marketing Agency. My work includes making infographics, eBooks, and full websites from the first idea to the final launch. I am comfortable working with teams and can handle the big picture as well as the small details. I focus on creating designs that are easy to use and look professional.
               </p>
             </motion.div>
 

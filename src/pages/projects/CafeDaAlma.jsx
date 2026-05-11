@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ProjectLayout from '../../components/ProjectLayout'
 
-const title       = 'Café da Alma – Senior Exhibition 2026'
+const title       = 'Café da Alma – Senior Thesis Exhibition 2026'
 const role        = 'Graphic & Web Designer'
 const year        = '2025-2026'
 const description = 'A comprehensive brand identity for Café da Alma, a bilingual global café chain celebrating the vibrancy of Brazilian culture. Presented at the University of Lynchburg Senior Thesis Exhibition 2026 — spanning logo design, color system, packaging, merchandise, menus, and environmental signage.'
