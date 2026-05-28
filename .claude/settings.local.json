@@ -5,7 +5,9 @@
       "Bash(git pull *)",
       "Bash(git stash *)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git fetch *)",
+      "Bash(curl -s http://localhost:5173/)"
     ]
   }
 }
