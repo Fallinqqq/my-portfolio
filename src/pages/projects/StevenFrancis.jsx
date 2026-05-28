@@ -3,7 +3,7 @@ import ProjectLayout from '../../components/ProjectLayout'
 
 const title       = 'Steven Francis Fine Art Gallery'
 const role        = 'Web Designer'
-const year        = '2024'
+const year        = '2026'
 const description = 'Website design for a fine art gallery showcasing original paintings and limited edition prints. Focused on letting the artwork take center stage.'
 const tools       = ['Figma', 'Adobe Photoshop']
 const liveLink    = 'https://stevenfrancisfineart.com/'
