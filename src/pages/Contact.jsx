@@ -41,6 +41,8 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
+      <title>Contact | Grace Foster</title>
+      <meta name="description" content="Get in touch with Grace Foster for graphic design, branding, or web design projects." />
 
       {/* ── Page Header ─────────────────────────────────────────── */}
       <div className="border-b border-soft">

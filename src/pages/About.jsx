@@ -15,6 +15,8 @@ const devSkills2 = ['Wordpress (Elementor, Avada, Woo-Commerce)', 'Squarespace',
 const About = () => {
   return (
     <div className="min-h-screen">
+      <title>About | Grace Foster</title>
+      <meta name="description" content="About Grace Foster — graphic designer and front-end developer based in Lynchburg, VA, specialising in branding, print, and web design." />
 
       {/* ── Page Header ─────────────────────────────────────────── */}
       <div className="border-b border-soft">

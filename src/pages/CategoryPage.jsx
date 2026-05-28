@@ -7,6 +7,8 @@ const CategoryPage = ({ category }) => {
 
   return (
     <div className="min-h-screen">
+      <title>{category} | Grace Foster</title>
+      <meta name="description" content={`Browse Grace Foster's ${category.toLowerCase()} portfolio — ${category === 'Graphic Design' ? 'branding, print, typography, and visual identity projects' : 'website design and front-end development projects'}.`} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-20 md:py-24">
 
         {/* Header */}

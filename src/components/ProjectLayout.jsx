@@ -34,6 +34,8 @@ const ProjectLayout = ({
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       className="min-h-screen"
     >
+      <title>{title} | Grace Foster</title>
+      {description && <meta name="description" content={description} />}
       {/* ── Back link ──────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-8 sm:pt-12 pb-4 sm:pb-6">
         <Link

@@ -66,6 +66,8 @@ const Home = () => {
 
   return (
     <div className="flex flex-col">
+      <title>Grace Foster | Graphic Designer & Web Designer</title>
+      <meta name="description" content="Grace Foster — graphic designer and front-end developer. Portfolio of branding, print, typography, and web design work." />
 
       {/* ── Hero ─────────────────────────────────────────────────── */}
       <section>

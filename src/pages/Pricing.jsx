@@ -183,6 +183,8 @@ const Pricing = () => {
 
   return (
     <div className="min-h-screen">
+      <title>Pricing | Grace Foster</title>
+      <meta name="description" content="Graphic design and web design pricing packages from Grace Foster. Transparent rates for branding, print, and web projects." />
 
       {/* ── Page Header ─────────────────────────────────────────── */}
       <div className="border-b border-soft">
