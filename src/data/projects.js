@@ -105,9 +105,7 @@ export const projects = [
     longDescription: 'Website design for Steven Francis Fine Art Gallery, featuring a clean, elegant layout to showcase original paintings and limited edition prints. Focused on letting the artwork take center stage.',
     image: '/images/Screenshot 2026-04-02 112023.png',
     technologies: [
-      { name: 'React', icon: FaReact },
-      { name: 'Node.js', icon: FaNode },
-      { name: 'MongoDB', icon: SiMongodb }
+      { name: 'Squarespace', icon: null }
     ],
     features: [
       'Real-time collaboration',

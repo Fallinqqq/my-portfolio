@@ -40,7 +40,7 @@ const ProjectModal = ({ project, onClose }) => {
           <div className="flex flex-wrap gap-3 mb-4">
             {project.technologies.map((tech, index) => (
               <div key={index} className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full">
-                <tech.icon className="text-gray-600" />
+                {tech.icon && <tech.icon className="text-gray-600" />}
                 <span className="text-sm">{tech.name}</span>
               </div>
             ))}
