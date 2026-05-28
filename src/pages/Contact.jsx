@@ -36,7 +36,7 @@ const Contact = () => {
   const contactLinks = [
     { icon: FaEnvelope, label: 'Email', href: 'mailto:gkfoster15@gmail.com', text: 'gkfoster15@gmail.com' },
     { icon: FaLinkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/gracekfoster/', text: 'linkedin.com/in/gracekfoster' },
-    { icon: FaGithub, label: 'GitHub', href: 'https://github.com/gracefoster', text: 'github.com/gracefoster' },
+    { icon: FaGithub, label: 'GitHub', href: 'https://github.com/Fallinqqq', text: 'github.com/Fallinqqq' },
   ]
 
   return (
