@@ -17,6 +17,8 @@ import { FaArrowLeft, FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
  *  description string    — main paragraph shown below the header
  *  children    ReactNode — image gallery / custom sections go here
  */
+const WEB_ROLES = ['Web Designer', 'UI Designer & Developer']
+
 const ProjectLayout = ({
   title,
   role,
@@ -27,6 +29,9 @@ const ProjectLayout = ({
   description,
   children,
 }) => {
+  const backPath  = WEB_ROLES.includes(role) ? '/web-design' : '/graphic-design'
+  const backLabel = backPath === '/web-design' ? 'Web design' : 'Graphic design'
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 18 }}
@@ -39,11 +44,11 @@ const ProjectLayout = ({
       {/* ── Back link ──────────────────────────────────────────── */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 pt-8 sm:pt-12 pb-4 sm:pb-6">
         <Link
-          to="/#work"
+          to={backPath}
           className="inline-flex items-center gap-2 text-sm text-muted hover:text-ink transition-colors duration-200"
         >
           <FaArrowLeft className="text-xs" />
-          All work
+          {backLabel}
         </Link>
       </div>
 
