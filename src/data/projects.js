@@ -151,9 +151,8 @@ export const projects = [
     longDescription: 'Brand and web design for Gregory Consulting Solutions, a professional business consulting firm. Focused on conveying trust, expertise, and a clean corporate identity.',
     image: '/images/Screenshot 2026-04-02 112136.png',
     technologies: [
-      { name: 'React', icon: FaReact },
-      { name: 'Node.js', icon: FaNode },
-      { name: 'Docker', icon: FaDocker }
+      { name: 'WordPress', icon: null },
+      { name: 'Avada', icon: null }
     ],
     features: [
       'Online ordering system',
