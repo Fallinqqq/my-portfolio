@@ -101,7 +101,7 @@ export const projects = [
     slug: 'steven-francis-fine-art',
     path: '/projects/steven-francis-fine-art',
     title: 'Steven Francis Fine Art Gallery',
-    description: 'Website design for a fine art gallery showcasing original paintings and limited edition prints.',
+    description: 'Website design for a fine art gallery showcasing original paintings, exhibition posters, showcards, and booklets. Along with creating the exhibition calendar to show upcoming and current shows.',
     longDescription: 'Website design for Steven Francis Fine Art Gallery, featuring a clean, elegant layout to showcase original paintings and limited edition prints. Focused on letting the artwork take center stage.',
     image: '/images/Screenshot 2026-04-02 112023.png',
     technologies: [
