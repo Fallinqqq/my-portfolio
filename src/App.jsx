@@ -59,7 +59,7 @@ function App() {
             <Route path="/projects/cafe-da-alma" element={<CafeDaAlma />} />
             <Route path="/projects/cafe-da-alma-web" element={<CafeDaAlmaWeb />} />
             <Route path="/graphic-design" element={<CategoryPage category="Graphic Design" />} />
-            <Route path="/web-design" element={<CategoryPage category="Web Design" />} />
+            <Route path="/web-design" element={<CategoryPage category="Web Design" title="Websites" />} />
             <Route path="/projects/university-of-lynchburg" element={<UniversityOfLynchburg />} />
             <Route path="/projects/gregory-consulting" element={<GregoryConsulting />} />
             <Route path="/projects/willow-and-word" element={<WillowAndWord />} />

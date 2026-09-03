@@ -50,7 +50,7 @@ const RestaurantSystem = () => (
 
     {images[0] && (
       <figure>
-        <div className="overflow-hidden bg-[#EEECEA] min-h-[240px] flex items-center justify-center">
+        <div className="overflow-hidden bg-[#95B1EE] min-h-[240px] flex items-center justify-center">
           <img
             src={images[0].src}
             alt={images[0].alt}
@@ -68,7 +68,7 @@ const RestaurantSystem = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {images.slice(1).map((img, i) => (
           <figure key={i}>
-            <div className="overflow-hidden bg-[#EEECEA]">
+            <div className="overflow-hidden bg-[#95B1EE]">
               <img src={img.src} alt={img.alt} className="w-full object-cover"
                    onError={(e) => { e.target.style.display = 'none' }} />
             </div>

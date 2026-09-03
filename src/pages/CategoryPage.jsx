@@ -2,12 +2,13 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { projects } from '../data/projects'
 
-const CategoryPage = ({ category }) => {
+const CategoryPage = ({ category, title }) => {
   const filtered = projects.filter(p => p.category === category)
+  const heading = title || category
 
   return (
     <div className="min-h-screen">
-      <title>{category} | Grace Foster</title>
+      <title>{heading} | Grace Foster</title>
       <meta name="description" content={`Browse Grace Foster's ${category.toLowerCase()} portfolio — ${category === 'Graphic Design' ? 'branding, print, typography, and visual identity projects' : 'website design and front-end development projects'}.`} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-20 md:py-24">
 
@@ -16,14 +17,13 @@ const CategoryPage = ({ category }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-12 sm:mb-16"
+          className="mb-12 sm:mb-16 text-center"
         >
-          <p className="text-xs uppercase tracking-widest text-muted mb-3">Work</p>
           <h1
             className="text-ink"
-            style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.02em' }}
+            style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '0.06em', textTransform: 'uppercase' }}
           >
-            {category}
+            {heading}
           </h1>
         </motion.div>
 

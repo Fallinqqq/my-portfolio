@@ -5,13 +5,13 @@
 
 /* CSS Variables */
 :root {
-  --color-surface: #fdf8f2;      /* warm cream bg */
-  --color-ink: #603913;          /* warm brown text */
-  --color-muted: #4e6645;        /* darker sage green */
-  --color-soft: #e8dfd0;         /* warm cream border */
-  --color-card: #f0e9da;         /* project card bg */
-  --color-accent: #4e6645;       /* darker sage green accent */
-  --color-accent-dark: #603913;  /* warm brown accent */
+  --color-surface: #fffdf5;        /* base white/cream bg */
+  --color-ink: #364c84;            /* dark blue text */
+  --color-muted: rgba(54,76,132,0.65); /* dark blue, muted */
+  --color-soft: #e7f1a8;           /* light green border/section bg */
+  --color-card: #95b1ee;           /* light blue project card bg */
+  --color-accent: #364c84;         /* dark blue accent */
+  --color-accent-dark: #2b3d69;    /* darker blue hover state */
   --font-heading: "Work Sans", "Poppins", serif;
   --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -19,6 +19,14 @@
 /* Base */
 html {
   scroll-behavior: smooth;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 /* Marquee */
@@ -84,7 +92,7 @@ p {
   .btn-primary {
     @apply inline-block px-7 py-3 text-sm font-medium tracking-wide transition-colors duration-200 rounded-full;
     background-color: var(--color-accent);
-    color: #fbf3e7;
+    color: #fffdf5;
   }
 
   .btn-primary:hover {
@@ -99,7 +107,7 @@ p {
 
   .btn-outline:hover {
     background-color: var(--color-accent);
-    color: #fbf3e7;
+    color: #fffdf5;
   }
 
   .form-field {
@@ -115,6 +123,57 @@ p {
 
   .form-field:focus {
     border-color: var(--color-ink);
+  }
+
+  .field-label {
+    font-family: var(--font-body);
+    @apply text-base font-semibold;
+    color: var(--color-ink);
+  }
+
+  .field-sublabel {
+    font-family: var(--font-body);
+    @apply block text-sm font-semibold mb-1;
+    color: var(--color-ink);
+  }
+
+  .field-required {
+    @apply text-xs font-normal;
+    color: var(--color-muted);
+  }
+
+  .field-hint {
+    font-family: var(--font-body);
+    @apply text-xs mt-1 mb-3;
+    color: var(--color-muted);
+  }
+
+  .form-field-sharp {
+    @apply w-full px-4 py-3 text-sm focus:outline-none transition-colors duration-200 mt-1;
+    background-color: #ffffff;
+    border: 1px solid var(--color-ink);
+    border-radius: 0;
+    color: var(--color-ink);
+  }
+
+  .form-field-sharp:focus {
+    border-width: 2px;
+  }
+
+  .checkbox-sharp {
+    @apply w-5 h-5 shrink-0 cursor-pointer;
+    accent-color: var(--color-ink);
+    border-radius: 0;
+  }
+
+  .btn-dark {
+    @apply inline-block px-8 py-4 text-sm font-bold tracking-wide transition-colors duration-200 rounded-full;
+    background-color: var(--color-ink);
+    color: var(--color-surface);
+  }
+
+  .btn-dark:hover {
+    background-color: var(--color-accent-dark);
   }
 }
 

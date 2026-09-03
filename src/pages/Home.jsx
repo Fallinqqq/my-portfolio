@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import { Link, useSearchParams } from 'react-router-dom'
-import { useState, useEffect, useRef } from 'react'
-import { FaGithub, FaLinkedin, FaEnvelope, FaBehance } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { projects } from '../data/projects'
 
 const fadeUp = {
@@ -12,13 +12,6 @@ const fadeUp = {
     transition: { duration: 0.7, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
   }),
 }
-
-const socialLinks = [
-  { icon: FaGithub, url: 'https://github.com/Fallinqqq', label: 'GitHub' },
-  { icon: FaLinkedin, url: 'https://www.linkedin.com/in/gracekfoster/', label: 'LinkedIn' },
-  { icon: FaBehance, url: 'https://www.behance.net/gracefostaa', label: 'Behance' },
-  { icon: FaEnvelope, url: 'mailto:gkfoster15@gmail.com', label: 'Email' },
-]
 
 const Home = () => {
   const marqueeDesktop = useRef(null)
@@ -56,13 +49,45 @@ const Home = () => {
     }
   }, [])
 
-  const [searchParams] = useSearchParams()
-  const [activeCategory, setActiveCategory] = useState(() => {
-    const cat = searchParams.get('category')
-    return cat === 'Graphic Design' || cat === 'Web Design' ? cat : 'All'
-  })
-  const categories = ['All', 'Graphic Design', 'Web Design']
-  const filtered = activeCategory === 'All' ? projects : projects.filter(p => p.category === activeCategory)
+  const highlights = projects.slice(0, 6)
+  const carouselRef = useRef(null)
+
+  const scrollCarousel = (dir) => {
+    const el = carouselRef.current
+    if (!el) return
+    const card = el.querySelector('[data-card]')
+    const amount = card ? card.offsetWidth + 24 : el.clientWidth * 0.8
+    el.scrollBy({ left: dir * amount, behavior: 'smooth' })
+  }
+
+  // Auto-advance the work highlights carousel; pauses while hovered
+  useEffect(() => {
+    const el = carouselRef.current
+    if (!el) return
+    let paused = false
+    const pause = () => { paused = true }
+    const resume = () => { paused = false }
+    el.addEventListener('mouseenter', pause)
+    el.addEventListener('mouseleave', resume)
+
+    const intervalId = setInterval(() => {
+      if (paused) return
+      const card = el.querySelector('[data-card]')
+      const amount = card ? card.offsetWidth + 24 : el.clientWidth * 0.8
+      const maxScroll = el.scrollWidth - el.clientWidth
+      if (el.scrollLeft >= maxScroll - 5) {
+        el.scrollTo({ left: 0, behavior: 'smooth' })
+      } else {
+        el.scrollBy({ left: amount, behavior: 'smooth' })
+      }
+    }, 6500)
+
+    return () => {
+      clearInterval(intervalId)
+      el.removeEventListener('mouseenter', pause)
+      el.removeEventListener('mouseleave', resume)
+    }
+  }, [])
 
   return (
     <div className="flex flex-col">
@@ -74,44 +99,24 @@ const Home = () => {
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-14 sm:py-20 md:py-28">
 
           {/* Large editorial intro paragraph */}
-          <motion.p
+          <motion.h1
             variants={fadeUp} initial="hidden" animate="visible" custom={0}
             className="text-xl sm:text-2xl md:text-[2rem] lg:text-[2.5rem] text-ink max-w-5xl"
             style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: '1.3' }}
           >
-            Hi, I'm Grace Foster! A graphic and web designer crafting intentional work across{' '}
-            <em className="font-semibold text-accent">Web design</em>,{' '}
-            <em className="font-semibold text-accent">Brand design</em>, and{' '}
-            <em className="font-semibold text-accent">Print design</em>.
-          </motion.p>
-
-          <motion.p
-            variants={fadeUp} initial="hidden" animate="visible" custom={1}
-            className="mt-6 sm:mt-8 text-ink leading-relaxed max-w-4xl"
-            style={{ fontSize: '18px', fontFamily: 'var(--font-heading)', fontWeight: 400 }}
-          >
-           With three years of experience spanning branding, web design, and social media content, I specialize in creating cohesive visual identities. I am highly skilled in Adobe Illustrator, InDesign, and Photoshop, and I have extensive experience managing websites through both WordPress and Squarespace
-          </motion.p>
+            Hi, I'm Grace Foster. A designer with a focus on{' '}
+            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>web design</span> &{' '}
+            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>brand design</span>, who's driven by clean{' '}
+            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>print design</span>. I build responsive sites with{' '}
+            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>WordPress</span> and{' '}
+            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>Squarespace</span>, and bring 3+ years of hands-on experience with Adobe Illustrator, InDesign, and Photoshop to every project.
+          </motion.h1>
 
           <motion.div
-            variants={fadeUp} initial="hidden" animate="visible" custom={2}
+            variants={fadeUp} initial="hidden" animate="visible" custom={1}
             className="mt-8 sm:mt-10 flex flex-wrap items-center gap-4 sm:gap-5"
           >
             <Link to="/contact" className="btn-primary">Get in touch</Link>
-            <div className="flex items-center gap-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-ink hover:text-ink transition-colors duration-200"
-                  aria-label={link.label}
-                >
-                  <link.icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
           </motion.div>
         </div>
       </section>
@@ -123,11 +128,11 @@ const Home = () => {
           <defs>
             <path id="marqueeCurveMobile" d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92" />
           </defs>
-          <path d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92 L600,160 L0,160 Z" fill="#e8dfd0" />
-          <text fill="#4e6645" fontSize="28" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
+          <path d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92 L600,160 L0,160 Z" fill="#e7f1a8" />
+          <text fill="#364c84" fontSize="28" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
             <textPath ref={marqueeMobile} href="#marqueeCurveMobile" startOffset="0%">
               {Array.from({ length: 20 }).map((_, i) => (
-                <tspan key={i}>Dream Big <tspan fill="#603913">✿</tspan> Work Confidently <tspan fill="#603913">✿</tspan>{'   '}</tspan>
+                <tspan key={i}>Brand Systems <tspan fill="#95b1ee">✿</tspan> Figma / UI Design <tspan fill="#95b1ee">✿</tspan> Web Design <tspan fill="#95b1ee">✿</tspan> Editorial &amp; Packaging <tspan fill="#95b1ee">✿</tspan>{'   '}</tspan>
               ))}
             </textPath>
           </text>
@@ -137,11 +142,11 @@ const Home = () => {
           <defs>
             <path id="marqueeCurve" d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92" />
           </defs>
-          <path d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92 L1440,160 L0,160 Z" fill="#e8dfd0" />
-          <text fill="#4e6645" fontSize="22" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
+          <path d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92 L1440,160 L0,160 Z" fill="#e7f1a8" />
+          <text fill="#364c84" fontSize="22" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
             <textPath ref={marqueeDesktop} href="#marqueeCurve" startOffset="0%">
               {Array.from({ length: 30 }).map((_, i) => (
-                <tspan key={i}>Dream Big <tspan fill="#603913">✿</tspan> Work Confidently <tspan fill="#603913">✿</tspan>{'   '}</tspan>
+                <tspan key={i}>Brand Systems <tspan fill="#95b1ee">✿</tspan> Figma / UI Design <tspan fill="#95b1ee">✿</tspan> Web Design <tspan fill="#95b1ee">✿</tspan> Editorial &amp; Packaging <tspan fill="#95b1ee">✿</tspan>{'   '}</tspan>
               ))}
             </textPath>
           </text>
@@ -155,35 +160,24 @@ const Home = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10 sm:mb-14 md:mb-16"
+          className="mb-10 sm:mb-14 md:mb-16"
         >
-          <h3 className="label-text font-bold text-ink" style={{ fontSize: '18px' }}>View My Work</h3>
-          <div className="flex items-center gap-1">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-1.5 tracking-wide transition-colors duration-200 border font-semibold rounded-full ${
-                  activeCategory === cat
-                    ? 'border-accent bg-accent text-[#fbf3e7]'
-                    : 'border-soft text-muted hover:border-ink hover:bg-ink hover:text-[#fbf3e7]'
-                }`}
-                style={{ fontSize: '15px' }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <h2 className="label-text text-ink text-center" style={{ fontSize: '28px', fontWeight: 900 }}>Work Highlights</h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-12 sm:gap-y-16">
-          {filtered.map((project, index) => (
+        <div
+          ref={carouselRef}
+          className="no-scrollbar flex gap-6 sm:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 pb-2"
+        >
+          {highlights.map((project, index) => (
             <motion.div
               key={project.id}
+              data-card
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.65, delay: (index % 2) * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="snap-start shrink-0 w-[calc(50%-12px)] sm:w-[calc(50%-20px)]"
             >
               <Link to={project.path || `/projects/${project.id}`} className="group block">
                 <div className={`overflow-hidden mb-4 sm:mb-5 ${project.imageBg || 'bg-card'}`}>
@@ -195,25 +189,37 @@ const Home = () => {
                     decoding="async"
                   />
                 </div>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3
-                      className="text-ink group-hover:text-muted transition-colors duration-200 mb-1"
-                      style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '18px', letterSpacing: '-0.01em' }}
-                    >
-                      {project.title}
-                    </h3>
-                    <p className="text-muted leading-relaxed" style={{ fontSize: '18px' }}>{project.description}</p>
-                  </div>
-                  <span className="text-muted text-xl ml-4 mt-0.5 group-hover:translate-x-1 transition-transform duration-200 shrink-0">→</span>
-                </div>
+                <h3
+                  className="text-center text-ink group-hover:text-muted transition-colors duration-200"
+                  style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400, fontSize: '18px', letterSpacing: '-0.01em' }}
+                >
+                  {project.title}
+                </h3>
               </Link>
             </motion.div>
           ))}
         </div>
+
+        <div className="flex items-center justify-center gap-2 mt-8 sm:mt-10">
+          <button
+            onClick={() => scrollCarousel(-1)}
+            aria-label="Previous projects"
+            className="p-2.5 rounded-full border border-soft text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-200"
+          >
+            <FaChevronLeft size={14} />
+          </button>
+          <button
+            onClick={() => scrollCarousel(1)}
+            aria-label="Next projects"
+            className="p-2.5 rounded-full border border-soft text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-200"
+          >
+            <FaChevronRight size={14} />
+          </button>
+        </div>
       </div>
       </section>
 
+      <div className="bg-surface h-16 sm:h-20 md:h-24" />
 
     </div>
   )

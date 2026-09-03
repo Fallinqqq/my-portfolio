@@ -28,7 +28,7 @@ const StevenFrancisSocials = () => (
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {images.map((img, i) => (
           <figure key={i}>
-            <div className="overflow-hidden bg-[#EEECEA]">
+            <div className="overflow-hidden bg-[#95B1EE]">
               <img src={img.src} alt={img.alt} className="w-full object-cover" />
             </div>
             {img.caption && <figcaption className="text-xs text-muted mt-3">{img.caption}</figcaption>}

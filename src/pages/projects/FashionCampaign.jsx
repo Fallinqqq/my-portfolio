@@ -35,7 +35,7 @@ const FashionCampaign = () => {
     >
       {images[0] && (
         <button onClick={() => setSelected(0)} className="group w-full text-left focus:outline-none">
-          <div className="overflow-hidden bg-[#EEECEA] min-h-[240px] flex items-center justify-center">
+          <div className="overflow-hidden bg-[#95B1EE] min-h-[240px] flex items-center justify-center">
             <img
               src={images[0].src}
               alt={images[0].alt}
@@ -51,7 +51,7 @@ const FashionCampaign = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {images.slice(1).map((img, i) => (
             <button key={i} onClick={() => setSelected(i + 1)} className="group w-full text-left focus:outline-none">
-              <div className="overflow-hidden bg-[#EEECEA]">
+              <div className="overflow-hidden bg-[#95B1EE]">
                 <img src={img.src} alt={img.alt} className="w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   onError={(e) => { e.target.style.display = 'none' }} />
               </div>

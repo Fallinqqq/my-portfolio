@@ -226,14 +226,14 @@ const Pricing = () => {
                 transition={{ duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                 className={`relative flex flex-col rounded-2xl p-7 sm:p-8 border ${
                   tier.featured
-                    ? 'border-accent bg-accent text-[#fbf3e7] shadow-xl shadow-accent/20 md:-mt-4 md:-mb-4'
+                    ? 'border-accent bg-accent text-white shadow-xl shadow-accent/20 md:-mt-4 md:-mb-4'
                     : 'border-[#d6cfc4] bg-card text-ink'
                 }`}
               >
                 {tier.featured && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                     <span
-                      className="bg-[#fbf3e7] text-accent text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm"
+                      className="bg-white text-accent text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-sm"
                       style={{ fontFamily: 'Poppins, sans-serif' }}
                     >
                       Most Popular
@@ -241,22 +241,22 @@ const Pricing = () => {
                   </div>
                 )}
                 <p
-                  className={`text-sm font-semibold tracking-widest uppercase mb-4 ${tier.featured ? 'text-[#fbf3e7]/70' : 'text-muted'}`}
+                  className={`text-sm font-semibold tracking-widest uppercase mb-4 ${tier.featured ? 'text-white/70' : 'text-muted'}`}
                   style={{ fontFamily: 'Poppins, sans-serif' }}
                 >
                   {tier.title}
                 </p>
                 <div className="mb-1 flex items-end gap-2">
                   <span
-                    className={`text-[2.6rem] font-bold leading-none ${tier.featured ? 'text-[#fbf3e7]' : 'text-ink'}`}
+                    className={`text-[2.6rem] font-bold leading-none ${tier.featured ? 'text-white' : 'text-ink'}`}
                     style={{ fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em' }}
                   >
                     {tier.price}
                   </span>
                 </div>
-                <p className={`text-xs mb-5 ${tier.featured ? 'text-[#fbf3e7]/60' : 'text-muted'}`}>{tier.unit}</p>
+                <p className={`text-xs mb-5 ${tier.featured ? 'text-white/60' : 'text-muted'}`}>{tier.unit}</p>
                 <p
-                  className={`text-sm leading-relaxed mb-7 ${tier.featured ? 'text-[#fbf3e7]/80' : 'text-muted'}`}
+                  className={`text-sm leading-relaxed mb-7 ${tier.featured ? 'text-white/80' : 'text-muted'}`}
                   style={{ fontFamily: 'var(--font-heading)' }}
                 >
                   {tier.description}
@@ -265,10 +265,10 @@ const Pricing = () => {
                   {tier.features.map((f) => (
                     <li
                       key={f}
-                      className={`flex items-start gap-2.5 text-sm ${tier.featured ? 'text-[#fbf3e7]' : 'text-ink'}`}
+                      className={`flex items-start gap-2.5 text-sm ${tier.featured ? 'text-white' : 'text-ink'}`}
                       style={{ fontFamily: 'var(--font-heading)' }}
                     >
-                      <span className={`mt-0.5 shrink-0 ${tier.featured ? 'text-[#fbf3e7]/70' : 'text-accent'}`}>✓</span>
+                      <span className={`mt-0.5 shrink-0 ${tier.featured ? 'text-white/70' : 'text-accent'}`}>✓</span>
                       {f}
                     </li>
                   ))}
@@ -277,8 +277,8 @@ const Pricing = () => {
                   to="/contact"
                   className={`mt-auto text-center py-3 px-6 rounded-full font-semibold text-sm transition-all duration-200 border ${
                     tier.featured
-                      ? 'bg-[#fbf3e7] text-accent border-[#fbf3e7] hover:bg-transparent hover:text-[#fbf3e7]'
-                      : 'bg-transparent text-ink border-[#d6cfc4] hover:bg-ink hover:text-[#fbf3e7] hover:border-ink'
+                      ? 'bg-white text-accent border-white hover:bg-transparent hover:text-white hover:border-white'
+                      : 'bg-transparent text-ink border-[#d6cfc4] hover:bg-ink hover:text-white hover:border-ink'
                   }`}
                   style={{ fontFamily: 'Poppins, sans-serif' }}
                 >
@@ -455,18 +455,18 @@ const Pricing = () => {
               <div className="max-w-lg">
                 <h2
                   className="text-2xl sm:text-3xl mb-3"
-                  style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', color: '#fbf3e7' }}
+                  style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', color: '#fffdf5' }}
                 >
                   Ready to start your project?
                 </h2>
-                <p className="leading-relaxed" style={{ fontSize: '16px', fontFamily: 'var(--font-heading)', color: 'rgba(251,243,231,0.75)' }}>
+                <p className="leading-relaxed" style={{ fontSize: '16px', fontFamily: 'var(--font-heading)', color: 'rgba(255,253,245,0.75)' }}>
                   Let's talk about what you need. A free consultation takes 15 minutes and comes with zero pressure.
                 </p>
               </div>
               <Link
                 to="/contact"
-                className="shrink-0 inline-block px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-200 border border-[#fbf3e7]/60 hover:border-[#fbf3e7] hover:bg-[#fbf3e7] hover:text-accent"
-                style={{ fontFamily: 'Poppins, sans-serif', color: '#fbf3e7' }}
+                className="shrink-0 inline-block px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-200 border border-white/60 hover:border-white hover:bg-white hover:text-accent"
+                style={{ fontFamily: 'Poppins, sans-serif', color: '#fffdf5' }}
               >
                 Book a free consult
               </Link>

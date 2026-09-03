@@ -49,7 +49,7 @@ const CafeDaAlmaWeb = () => {
               onClick={() => setSelected(i)}
               className="group text-left focus:outline-none"
             >
-              <div className="relative overflow-hidden bg-[#EEECEA] rounded-sm" style={{ aspectRatio: '3/4' }}>
+              <div className="relative overflow-hidden bg-[#95B1EE] rounded-sm" style={{ aspectRatio: '3/4' }}>
                 <img
                   src={img.src}
                   alt={img.alt}

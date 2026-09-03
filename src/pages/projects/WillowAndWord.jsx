@@ -40,8 +40,8 @@ const WillowAndWord = () => {
     >
       {images[0] && (
         <button onClick={() => setSelected(0)} className="group w-full text-left focus:outline-none">
-          <div className="overflow-hidden bg-[#EEECEA] rounded-2xl">
-            <img src={images[0].src} alt={images[0].alt} className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy" />
+          <div className="overflow-hidden bg-[#95B1EE] rounded-2xl">
+            <img src={images[0].src} alt={images[0].alt} className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" />
           </div>
           {images[0].caption && <p className="text-xs text-muted mt-3">{images[0].caption}</p>}
         </button>
@@ -49,7 +49,7 @@ const WillowAndWord = () => {
 
       {images[1] && (
         <button onClick={() => setSelected(1)} className="group w-full text-left focus:outline-none">
-          <div className="overflow-hidden bg-[#EEECEA] rounded-2xl">
+          <div className="overflow-hidden bg-[#95B1EE] rounded-2xl">
             <img src={images[1].src} alt={images[1].alt} className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy" />
           </div>
           {images[1].caption && <p className="text-xs text-muted mt-3">{images[1].caption}</p>}
@@ -60,7 +60,7 @@ const WillowAndWord = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {images.slice(2).map((img, i) => (
             <button key={i} onClick={() => setSelected(i + 2)} className="group w-full text-left focus:outline-none">
-              <div className="overflow-hidden bg-[#EEECEA] rounded-2xl">
+              <div className="overflow-hidden bg-[#95B1EE] rounded-2xl">
                 <img src={img.src} alt={img.alt} className="w-full object-contain transition-transform duration-500 group-hover:scale-[1.02]" loading="lazy" />
               </div>
               {img.caption && <p className="text-xs text-muted mt-3">{img.caption}</p>}
