@@ -87,3 +87,10 @@ export default MyProject
 - Dark mode is configured via `[data-theme="dark"]` selector (not `prefers-color-scheme`). ThemeContext toggles this attribute on `<html>`.
 - Max content width is `max-w-6xl` with `px-4 sm:px-6 md:px-10` padding — use this on all full-width sections.
 - The Navbar is `fixed` with height `h-[130px] sm:h-[150px]`; `main` has `pt-[130px] sm:pt-[150px]` to compensate.
+
+## Git Workflow
+
+- **Correct remote/branch**: `origin` → `https://github.com/Fallinqqq/my-portfolio.git`, deployed branch is **`master`**. A separate repo, `my-portfolio-development`, exists on the same GitHub account and is **not** the live one — don't push there by default.
+- **Repo root = project root.** The working copy should sit directly at the repo root (`src/`, `index.html`, `package.json` at the top level) with no extra nesting folder. A prior session's GitHub Desktop setup created a duplicated `my-portfolio-development/my-portfolio-development/` nested layout that briefly caused commits to land in the wrong repo with the wrong folder structure — if you ever see doubled folder names in paths, stop and check `pwd`/`git rev-parse --show-toplevel` before committing.
+- **Commit once real progress is made** — don't let a long session of edits sit uncommitted. After a meaningful chunk of changes (a feature, a set of related fixes, end of a work session), stage and commit.
+- **Always remind the user before committing/pushing** rather than doing it silently — confirm scope, then commit with a clear message and push to `origin/master`.
