@@ -90,7 +90,9 @@ export default MyProject
 
 ## Git Workflow
 
-- **Correct remote/branch**: `origin` → `https://github.com/Fallinqqq/my-portfolio.git`, deployed branch is **`master`**. A separate repo, `my-portfolio-development`, exists on the same GitHub account and is **not** the live one — don't push there by default.
+- **Correct remote**: `origin` → `https://github.com/Fallinqqq/my-portfolio.git`. A separate repo, `my-portfolio-development`, exists on the same GitHub account and is **not** the live one — don't push there by default.
+- **`development` is the default working branch.** All day-to-day requested changes get committed there, and that's what's checked out locally for `npm run dev` / local viewing.
+- **`master` is the Netlify-deploy branch** — pushing to `master` triggers an automatic live deploy. Never push to `master` directly while making changes; only sync `master` to match `development` (fast-forward) at a good checkpoint, and only after confirming with the user first. Regressions or changes going live get checked with the user before that sync happens.
 - **Repo root = project root.** The working copy should sit directly at the repo root (`src/`, `index.html`, `package.json` at the top level) with no extra nesting folder. A prior session's GitHub Desktop setup created a duplicated `my-portfolio-development/my-portfolio-development/` nested layout that briefly caused commits to land in the wrong repo with the wrong folder structure — if you ever see doubled folder names in paths, stop and check `pwd`/`git rev-parse --show-toplevel` before committing.
-- **Commit once real progress is made** — don't let a long session of edits sit uncommitted. After a meaningful chunk of changes (a feature, a set of related fixes, end of a work session), stage and commit.
-- **Always remind the user before committing/pushing** rather than doing it silently — confirm scope, then commit with a clear message and push to `origin/master`.
+- **Commit to `development` once real progress is made** — don't let a long session of edits sit uncommitted. After a meaningful chunk of changes (a feature, a set of related fixes, end of a work session), stage and commit.
+- **Always remind the user before committing/pushing**, and always confirm before syncing `master` — confirm scope, then commit with a clear message.
