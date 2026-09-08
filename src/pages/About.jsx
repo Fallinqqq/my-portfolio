@@ -16,7 +16,6 @@ const clients = [
   { name: 'Steven Francis Fine Art', url: 'https://stevenfrancisfineart.com/' },
   { name: 'University of Lynchburg', url: 'https://www.lynchburg.edu/' },
   { name: 'Commvault', url: 'https://www.commvault.com/' },
-  { name: 'Veye Marketing', url: 'https://veyemarketing.com/' },
 ]
 
 const About = () => {
