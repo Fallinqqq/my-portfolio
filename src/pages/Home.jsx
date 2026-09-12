@@ -52,12 +52,17 @@ const Home = () => {
   const highlights = projects.slice(0, 6)
   const carouselRef = useRef(null)
 
+  const getScrollStep = (el) => {
+    const card = el.querySelector('[data-card]')
+    if (!card) return el.clientWidth * 0.8
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0
+    return card.offsetWidth + gap
+  }
+
   const scrollCarousel = (dir) => {
     const el = carouselRef.current
     if (!el) return
-    const card = el.querySelector('[data-card]')
-    const amount = card ? card.offsetWidth + 24 : el.clientWidth * 0.8
-    el.scrollBy({ left: dir * amount, behavior: 'smooth' })
+    el.scrollBy({ left: dir * getScrollStep(el), behavior: 'smooth' })
   }
 
   // Auto-advance the work highlights carousel; pauses while hovered
@@ -72,8 +77,7 @@ const Home = () => {
 
     const intervalId = setInterval(() => {
       if (paused) return
-      const card = el.querySelector('[data-card]')
-      const amount = card ? card.offsetWidth + 24 : el.clientWidth * 0.8
+      const amount = getScrollStep(el)
       const maxScroll = el.scrollWidth - el.clientWidth
       if (el.scrollLeft >= maxScroll - 5) {
         el.scrollTo({ left: 0, behavior: 'smooth' })
@@ -128,7 +132,7 @@ const Home = () => {
           <defs>
             <path id="marqueeCurveMobile" d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92" />
           </defs>
-          <path d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92 L600,160 L0,160 Z" fill="#e7f1a8" />
+          <path d="M0,92 C150,42 250,42 300,72 C380,98 500,98 600,92 L600,160 L0,160 Z" fill="var(--color-soft)" />
           <text fill="#364c84" fontSize="28" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
             <textPath ref={marqueeMobile} href="#marqueeCurveMobile" startOffset="0%">
               {Array.from({ length: 20 }).map((_, i) => (
@@ -142,7 +146,7 @@ const Home = () => {
           <defs>
             <path id="marqueeCurve" d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92" />
           </defs>
-          <path d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92 L1440,160 L0,160 Z" fill="#e7f1a8" />
+          <path d="M0,92 C300,42 500,42 720,72 C940,98 1200,98 1440,92 L1440,160 L0,160 Z" fill="var(--color-soft)" />
           <text fill="#364c84" fontSize="22" fontFamily="Montserrat, sans-serif" fontWeight="700" letterSpacing="1">
             <textPath ref={marqueeDesktop} href="#marqueeCurve" startOffset="0%">
               {Array.from({ length: 30 }).map((_, i) => (
@@ -154,7 +158,7 @@ const Home = () => {
       </div>
 
       <section id="work" className="w-full bg-soft">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 py-16 sm:py-20 md:py-24">
+      <div className="max-w-6xl lg:max-w-7xl xl:max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 lg:px-14 py-16 sm:py-20 md:py-24">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -167,7 +171,7 @@ const Home = () => {
 
         <div
           ref={carouselRef}
-          className="no-scrollbar flex gap-6 sm:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 pb-2"
+          className="no-scrollbar flex gap-5 sm:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 pb-2"
         >
           {highlights.map((project, index) => (
             <motion.div
@@ -177,7 +181,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.65, delay: (index % 2) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="snap-start shrink-0 w-[calc(50%-12px)] sm:w-[calc(50%-20px)]"
+              className="snap-start shrink-0 w-[88%] sm:w-[calc(50%-16px)] lg:w-[calc((100%-80px)/3)]"
             >
               <Link to={project.path || `/projects/${project.id}`} className="group block">
                 <div className={`overflow-hidden mb-4 sm:mb-5 ${project.imageBg || 'bg-card'}`}>
@@ -219,7 +223,7 @@ const Home = () => {
       </div>
       </section>
 
-      <div className="bg-surface h-16 sm:h-20 md:h-24" />
+      <div className="bg-soft h-16 sm:h-20 md:h-24" />
 
     </div>
   )

@@ -33,8 +33,8 @@ const About = () => {
           <div className="flex flex-col">
             <motion.h1
               {...fadeUp(0)}
-              className="text-accent mb-6"
-              style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, textTransform: 'uppercase', fontSize: 'clamp(2.75rem, 7vw, 5rem)', letterSpacing: '-0.02em', lineHeight: 0.95 }}
+              className="text-accent mb-6 whitespace-nowrap"
+              style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, textTransform: 'uppercase', fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.02em', lineHeight: 0.95 }}
             >
               Hi, I'm Grace!
             </motion.h1>

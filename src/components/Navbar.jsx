@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import logoSrc from '../assets/PORTFOLIO-PREP-BRANDING.png'
+import logoSrc from '../assets/grace-foster-logo.png'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -15,8 +15,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-50 bg-[#FFFDF5] border-b border-soft transition-colors duration-300 overflow-visible rounded-b-3xl"
-      style={{ boxShadow: '0 16px 32px -4px rgba(231, 241, 168, 0.95)' }}
+      className="fixed top-0 left-0 right-0 z-50 bg-surface border-b border-soft transition-colors duration-300 overflow-visible rounded-b-3xl"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 overflow-visible">
         <div className="flex items-center justify-between h-[130px] sm:h-[150px]">

@@ -5,13 +5,13 @@
 
 /* CSS Variables */
 :root {
-  --color-surface: #fffdf5;        /* base white/cream bg */
-  --color-ink: #364c84;            /* dark blue text */
-  --color-muted: rgba(54,76,132,0.65); /* dark blue, muted */
-  --color-soft: #e7f1a8;           /* light green border/section bg */
-  --color-card: #95b1ee;           /* light blue project card bg */
-  --color-accent: #364c84;         /* dark blue accent */
-  --color-accent-dark: #2b3d69;    /* darker blue hover state */
+  --color-surface: #f4f8fd;        /* light blue-white bg */
+  --color-ink: #16274a;            /* deep navy text */
+  --color-muted: rgba(22,39,74,0.65); /* navy, muted */
+  --color-soft: #d6e6f7;           /* light blue border/section bg */
+  --color-card: #aecbef;           /* medium blue project card bg */
+  --color-accent: #2f6fde;         /* vivid blue accent */
+  --color-accent-dark: #1f4fae;    /* deeper blue hover state */
   --font-heading: "Work Sans", "Poppins", serif;
   --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 }

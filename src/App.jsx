@@ -21,6 +21,7 @@ import DreamBrewery from './pages/projects/DreamBrewery'
 import StevenFrancisGraphicDesign from './pages/projects/StevenFrancisGraphicDesign'
 import CafeDaAlma from './pages/projects/CafeDaAlma'
 import CafeDaAlmaWeb from './pages/projects/CafeDaAlmaWeb'
+import SingletonMedia from './pages/projects/SingletonMedia'
 import CategoryPage from './pages/CategoryPage'
 import { useEffect } from 'react'
 
@@ -66,6 +67,7 @@ function App() {
             <Route path="/projects/book-cover-redesign" element={<BookCoverRedesign />} />
             <Route path="/projects/whimsy-deco" element={<WhimsyDeco />} />
             <Route path="/projects/dream-brewery" element={<DreamBrewery />} />
+            <Route path="/projects/singleton-media" element={<SingletonMedia />} />
             {/* Fallback: old numeric ID links still work */}
             <Route path="/projects/:id" element={<ProjectDetail />} />
           </Routes>

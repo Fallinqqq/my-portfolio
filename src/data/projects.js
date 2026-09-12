@@ -3,6 +3,26 @@ import { SiMongodb, SiPostgresql, SiDjango, SiFigma, SiAdobe } from 'react-icons
 
 export const projects = [
   {
+    id: 16,
+    slug: 'singleton-media',
+    path: '/projects/singleton-media',
+    title: 'Singleton Media LLC by Justus Media Marketing',
+    description: 'Website design for Singleton Media, a nationwide video production company, built for client Justus Media Marketing.',
+    longDescription: 'Website design for Singleton Media LLC, a nationwide video production company for business. Built for client Justus Media Marketing, the site highlights cinematic video production services with a bold, dark, editorial aesthetic.',
+    image: '/images/singleton-media-hero.png',
+    technologies: [
+      { name: 'WordPress', icon: null },
+    ],
+    features: [
+      'Website design',
+      'Mobile responsive',
+      'Services & portfolio pages',
+      'Discovery call booking CTA',
+    ],
+    category: 'Web Design',
+    liveLink: '#',
+  },
+  {
     id: 14,
     slug: 'cafe-da-alma',
     path: '/projects/cafe-da-alma',
