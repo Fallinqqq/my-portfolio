@@ -47,17 +47,14 @@ const CategoryPage = ({ category, title }) => {
                     decoding="async"
                   />
                 </div>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h3
-                      className="text-ink group-hover:text-muted transition-colors duration-200 mb-1"
-                      style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '18px', letterSpacing: '-0.01em' }}
-                    >
-                      {project.title}
-                    </h3>
-                    <p className="text-muted leading-relaxed" style={{ fontSize: '18px' }}>{project.description}</p>
-                  </div>
-                  <span className="text-muted text-xl ml-4 mt-0.5 group-hover:translate-x-1 transition-transform duration-200 shrink-0">→</span>
+                <div>
+                  <h3
+                    className="text-ink group-hover:text-muted transition-colors duration-200 mb-1"
+                    style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '18px', letterSpacing: '-0.01em' }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p className="text-muted leading-relaxed" style={{ fontSize: '18px' }}>{project.description}</p>
                 </div>
               </Link>
             </motion.div>

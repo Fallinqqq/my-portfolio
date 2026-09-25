@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 const graceProfile = '/images/671282720_18583007320041741_1406052200752008889_n.jpg'
-import { FaDownload } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 const fadeUp = (delay = 0) => ({
@@ -11,8 +10,9 @@ const fadeUp = (delay = 0) => ({
 
 const services = ['Print and Digital Design', 'Website Design and Web Management', 'Marketing Collateral Design', 'Brand Design', 'Social Media Design']
 const clients = [
+  { 
+    name: 'Justus Media Marketing', url: 'https://justusmediamarketing.com/' },
   { name: 'Benton Buckley Books', url: 'https://bentonbuckleybooks.com/' },
-  { name: 'Justus Media Marketing', url: 'https://justusmediamarketing.com/' },
   { name: 'Steven Francis Fine Art', url: 'https://stevenfrancisfineart.com/' },
   { name: 'University of Lynchburg', url: 'https://www.lynchburg.edu/' },
   { name: 'Commvault', url: 'https://www.commvault.com/' },
@@ -33,8 +33,8 @@ const About = () => {
           <div className="flex flex-col">
             <motion.h1
               {...fadeUp(0)}
-              className="text-accent mb-6 whitespace-nowrap"
-              style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, textTransform: 'uppercase', fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.02em', lineHeight: 0.95 }}
+              className="text-ink mb-6 whitespace-nowrap"
+              style={{ fontFamily: 'var(--font-heading)', fontWeight: 800, fontSize: 'clamp(2rem, 5vw, 3.5rem)', letterSpacing: '-0.02em', lineHeight: 0.95 }}
             >
               Hi, I'm Grace!
             </motion.h1>
@@ -45,7 +45,7 @@ const About = () => {
               style={{ fontSize: 'clamp(1.15rem, 2.2vw, 1.4rem)', lineHeight: 1.4 }}
             >
               My name is Grace, and I'm a graphic &amp; web designer based out of{' '}
-              <span className="relative inline-block text-accent px-1">
+              <span className="relative inline-block text-ink px-1">
                 Lynchburg, VA
                 <svg
                   className="absolute pointer-events-none"
@@ -72,7 +72,7 @@ const About = () => {
                 I have a Bachelors Degree in Graphic Design from the University of Lynchburg and an Associates Degree in Information Systems Technology from Central Virginia Community College, a mix that's let me pair creative design with the technical skills to build things for branding, web, and digital media alike.
               </p>
               <p className="text-ink leading-[1.8]" style={{ fontSize: '17px' }}>
-                Over the past 3+ years I've worked across branding, web design, and marketing collateral. I'm proficient in Adobe Illustrator, Photoshop, and InDesign, and I build websites using WordPress, Squarespace, Wix, and Webflow.
+                Over the past 3+ years I've worked and studied across branding, web design, and marketing collateral. I'm proficient in Adobe Illustrator, Photoshop, and InDesign, and I build websites using WordPress, Squarespace, Wix, and Webflow.
               </p>
             </motion.div>
 
@@ -123,24 +123,6 @@ const About = () => {
               ))}
             </ul>
           </div>
-        </motion.div>
-
-        {/* ── Resume CTA ─────────────────────────────────────────── */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mt-14"
-        >
-          <a
-            href="/PDF/Grace_Foster_Resume_2026.pdf"
-            download="Grace_Foster_Resume_2026.pdf"
-            className="inline-flex items-center gap-2 px-7 py-3 text-sm font-medium tracking-wide rounded-full bg-accent text-[#fffdf5] border border-accent hover:bg-soft hover:text-ink hover:border-soft hover:scale-110 transition-all duration-200"
-          >
-            <FaDownload size={13} />
-            Download Resume
-          </a>
         </motion.div>
 
       </div>

@@ -4,6 +4,8 @@ import { useEffect, useRef } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { projects } from '../data/projects'
 
+const hl = { fontWeight: 700, fontStyle: 'italic', color: '#364c84' }
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i = 0) => ({
@@ -108,12 +110,13 @@ const Home = () => {
             className="text-xl sm:text-2xl md:text-[2rem] lg:text-[2.5rem] text-ink max-w-5xl"
             style={{ fontFamily: 'var(--font-heading)', fontWeight: 400, letterSpacing: '-0.02em', lineHeight: '1.3' }}
           >
-            Hi, I'm Grace Foster. A designer with a focus on{' '}
-            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>web design</span> &{' '}
-            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>brand design</span>, who's driven by clean{' '}
-            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>print design</span>. I build responsive sites with{' '}
-            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>WordPress</span> and{' '}
-            <span style={{ fontWeight: 700, fontStyle: 'italic', color: '#364c84' }}>Squarespace</span>, and bring 3+ years of hands-on experience with Adobe Illustrator, InDesign, and Photoshop to every project.
+            Hi, I'm Grace Foster, a designer with{' '}
+            <span style={hl}>3+ years</span> of experience in{' '}
+            <span style={hl}>web design</span> and{' '}
+            <span style={hl}>brand design</span>, with a love for clean{' '}
+            <span style={hl}>print design</span>. I build responsive sites in{' '}
+            <span style={hl}>WordPress</span> and{' '}
+            <span style={hl}>Squarespace</span>, and bring Adobe Illustrator, InDesign, and Photoshop to every project.
           </motion.h1>
 
           <motion.div

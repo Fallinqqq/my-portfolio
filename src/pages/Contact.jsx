@@ -202,13 +202,15 @@ const Contact = () => {
                 />
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="btn-dark disabled:opacity-50 hover:scale-110 transition-transform duration-200"
-              >
-                {isSubmitting ? 'Sending…' : 'Send It!'}
-              </button>
+              <div className="text-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-dark disabled:opacity-50 hover:scale-110 transition-transform duration-200"
+                >
+                  {isSubmitting ? 'Sending…' : 'Send It!'}
+                </button>
+              </div>
             </form>
           )}
         </motion.div>

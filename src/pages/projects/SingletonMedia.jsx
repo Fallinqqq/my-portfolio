@@ -23,6 +23,17 @@ const deliverables = [
   'Discovery call booking CTA',
 ]
 
+const caseStudy = [
+  {
+    heading: 'The Challenge',
+    body: 'The client wanted a website he could be proud to share with others and post across his socials — something clean, simple, and to-the-point that would represent his brand well.',
+  },
+  {
+    heading: 'The Solution',
+    body: 'I helped bring that vision to life by designing a site that’s clean, modern, and easy to read, fully responsive across devices, and built to put his work front and center.',
+  },
+]
+
 const SingletonMedia = () => {
   const [selected, setSelected] = useState(null)
 
@@ -31,6 +42,19 @@ const SingletonMedia = () => {
       title={title} role={role} year={year} description={description}
       tools={tools} liveLink={liveLink || undefined} githubLink={githubLink || undefined}
     >
+      {/* Case Study */}
+      <div>
+        <p className="text-xs uppercase tracking-widest text-muted mb-6">Case Study</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {caseStudy.map((section) => (
+            <div key={section.heading}>
+              <h3 className="text-ink font-bold mb-2" style={{ fontSize: '17px' }}>{section.heading}</h3>
+              <p className="text-ink leading-[1.8]" style={{ fontSize: '16px' }}>{section.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Page Screenshots */}
       <div>
         <p className="text-xs uppercase tracking-widest text-muted mb-4">Pages</p>

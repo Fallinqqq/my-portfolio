@@ -63,7 +63,7 @@ const Navbar = () => {
             {/* Contact button */}
             <Link
               to="/contact"
-              className="rounded-full px-5 py-2 text-xs bg-accent hover:bg-soft text-[#fffdf5] hover:text-ink hover:scale-110 transition-all duration-200"
+              className="rounded-full px-5 py-2 text-xs bg-ink hover:bg-soft text-[#fffdf5] hover:text-ink hover:scale-110 transition-all duration-200"
               style={{ fontFamily: 'var(--font-body)', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase' }}
             >
               Let's Chat
@@ -128,7 +128,7 @@ const Navbar = () => {
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="rounded-full px-5 py-1.5 text-xs w-fit bg-accent hover:bg-soft text-[#fffdf5] hover:text-ink hover:scale-110 transition-all duration-200"
+                  className="rounded-full px-5 py-1.5 text-xs w-fit bg-ink hover:bg-soft text-[#fffdf5] hover:text-ink hover:scale-110 transition-all duration-200"
                   style={{ fontFamily: 'var(--font-body)', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase' }}
                 >
                   Let's Chat
