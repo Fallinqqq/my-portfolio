@@ -6,7 +6,7 @@ const role        = 'Web Designer'
 const year        = '2026'
 const description = 'Website design for Singleton Media, a nationwide video production company, built for client Justus Media Marketing.'
 const tools       = ['WordPress']
-const liveLink    = '#'
+const liveLink    = 'https://singletonmediallc.com/'
 const githubLink  = ''
 
 const images = [

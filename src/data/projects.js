@@ -20,7 +20,7 @@ export const projects = [
       'Discovery call booking CTA',
     ],
     category: 'Web Design',
-    liveLink: '#',
+    liveLink: 'https://singletonmediallc.com/',
   },
   {
     id: 14,

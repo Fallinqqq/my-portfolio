@@ -171,7 +171,7 @@ const Home = () => {
 
         <div
           ref={carouselRef}
-          className="no-scrollbar flex gap-5 sm:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0 pb-2"
+          className="no-scrollbar flex gap-5 sm:gap-8 lg:gap-10 overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-[10%] sm:mx-0 sm:px-0 pb-2"
         >
           {highlights.map((project, index) => (
             <motion.div
@@ -181,7 +181,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.65, delay: (index % 2) * 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="snap-start shrink-0 w-[88%] sm:w-[calc(50%-16px)] lg:w-[calc((100%-80px)/3)]"
+              className="snap-center shrink-0 w-[80%] sm:w-[calc(50%-16px)] lg:w-[calc((100%-80px)/3)]"
             >
               <Link to={project.path || `/projects/${project.id}`} className="group block">
                 <div className={`overflow-hidden mb-4 sm:mb-5 ${project.imageBg || 'bg-card'}`}>
