@@ -144,7 +144,7 @@ export const projects = [
     path: '/projects/university-of-lynchburg',
     title: 'University of Lynchburg',
     description: 'Web design and digital marketing materials for the University of Lynchburg.',
-    longDescription: 'Web design and digital marketing materials created for the University of Lynchburg. Included page layouts, promotional graphics, and campaign assets.',
+    longDescription: 'Designed page layouts for the University of Lynchburg.',
     image: '/images/Screenshot 2026-04-02 111935.png',
     technologies: [
       { name: 'Python', icon: FaPython },

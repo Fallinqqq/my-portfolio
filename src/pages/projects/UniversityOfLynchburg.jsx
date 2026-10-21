@@ -6,7 +6,7 @@ const role        = 'Web Designer'
 const year        = 'August 2025- May 2026'
 const description = 'Web design for the University of Lynchburg. Included page layouts, promotional graphics, and campaign assets.'
 const tools       = ['Wordpress', 'Elementor']
-const liveLink    = 'https://www.lynchburg.edu'
+const liveLink    = ''
 const githubLink  = ''
 
 const images = [
