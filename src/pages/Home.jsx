@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { projects } from '../data/projects'
 
@@ -53,6 +53,7 @@ const Home = () => {
 
   const highlights = projects.slice(0, 6)
   const carouselRef = useRef(null)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   const getScrollStep = (el) => {
     const card = el.querySelector('[data-card]')
@@ -64,21 +65,75 @@ const Home = () => {
   const scrollCarousel = (dir) => {
     const el = carouselRef.current
     if (!el) return
-    el.scrollBy({ left: dir * getScrollStep(el), behavior: 'smooth' })
+    const maxScroll = el.scrollWidth - el.clientWidth
+    if (dir === 1 && el.scrollLeft >= maxScroll - 5) {
+      el.scrollTo({ left: 0, behavior: 'smooth' })
+    } else if (dir === -1 && el.scrollLeft <= 5) {
+      el.scrollTo({ left: maxScroll, behavior: 'smooth' })
+    } else {
+      el.scrollBy({ left: dir * getScrollStep(el), behavior: 'smooth' })
+    }
   }
 
-  // Auto-advance the work highlights carousel; pauses while hovered
+  const scrollToIndex = (index) => {
+    const el = carouselRef.current
+    if (!el) return
+    el.scrollTo({ left: index * getScrollStep(el), behavior: 'smooth' })
+  }
+
+  // Track which card is active so the dot indicators stay in sync
+  useEffect(() => {
+    const el = carouselRef.current
+    if (!el) return
+
+    let rafId
+    const updateActiveIndex = () => {
+      rafId = requestAnimationFrame(() => {
+        const step = getScrollStep(el)
+        const index = step ? Math.round(el.scrollLeft / step) : 0
+        setActiveIndex(Math.max(0, Math.min(index, highlights.length - 1)))
+      })
+    }
+
+    updateActiveIndex()
+    el.addEventListener('scroll', updateActiveIndex, { passive: true })
+    window.addEventListener('resize', updateActiveIndex)
+    return () => {
+      cancelAnimationFrame(rafId)
+      el.removeEventListener('scroll', updateActiveIndex)
+      window.removeEventListener('resize', updateActiveIndex)
+    }
+  }, [highlights.length])
+
+  // Auto-advance the work highlights carousel; pauses on hover/touch and when off-screen
   useEffect(() => {
     const el = carouselRef.current
     if (!el) return
     let paused = false
-    const pause = () => { paused = true }
-    const resume = () => { paused = false }
+    let resumeTimeout
+    const pause = () => {
+      paused = true
+      clearTimeout(resumeTimeout)
+    }
+    const resumeSoon = () => {
+      clearTimeout(resumeTimeout)
+      resumeTimeout = setTimeout(() => { paused = false }, 2500)
+    }
+
     el.addEventListener('mouseenter', pause)
-    el.addEventListener('mouseleave', resume)
+    el.addEventListener('mouseleave', resumeSoon)
+    el.addEventListener('touchstart', pause, { passive: true })
+    el.addEventListener('touchend', resumeSoon)
+
+    let visible = true
+    const observer = new IntersectionObserver(
+      ([entry]) => { visible = entry.isIntersecting },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
 
     const intervalId = setInterval(() => {
-      if (paused) return
+      if (paused || !visible || document.hidden) return
       const amount = getScrollStep(el)
       const maxScroll = el.scrollWidth - el.clientWidth
       if (el.scrollLeft >= maxScroll - 5) {
@@ -90,8 +145,12 @@ const Home = () => {
 
     return () => {
       clearInterval(intervalId)
+      clearTimeout(resumeTimeout)
+      observer.disconnect()
       el.removeEventListener('mouseenter', pause)
-      el.removeEventListener('mouseleave', resume)
+      el.removeEventListener('mouseleave', resumeSoon)
+      el.removeEventListener('touchstart', pause)
+      el.removeEventListener('touchend', resumeSoon)
     }
   }, [])
 
@@ -207,18 +266,33 @@ const Home = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-center gap-2 mt-8 sm:mt-10">
+        <div className="flex items-center justify-center gap-3 sm:gap-4 mt-8 sm:mt-10">
           <button
             onClick={() => scrollCarousel(-1)}
             aria-label="Previous projects"
-            className="p-2.5 rounded-full border border-soft text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-200"
+            className="p-2.5 rounded-full border border-soft text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-200 shrink-0"
           >
             <FaChevronLeft size={14} />
           </button>
+
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {highlights.map((project, index) => (
+              <button
+                key={project.id}
+                onClick={() => scrollToIndex(index)}
+                aria-label={`Go to ${project.title}`}
+                aria-current={index === activeIndex}
+                className={`h-2 rounded-full bg-ink transition-all duration-300 ${
+                  index === activeIndex ? 'w-6' : 'w-2 opacity-25 hover:opacity-50'
+                }`}
+              />
+            ))}
+          </div>
+
           <button
             onClick={() => scrollCarousel(1)}
             aria-label="Next projects"
-            className="p-2.5 rounded-full border border-soft text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-200"
+            className="p-2.5 rounded-full border border-soft text-ink hover:bg-ink hover:text-white hover:border-ink transition-colors duration-200 shrink-0"
           >
             <FaChevronRight size={14} />
           </button>
